@@ -1,11 +1,11 @@
-// version 1.4
+// version 1.5
 var comp = {};
 var DATA = {};
 
 async function initData() {
   console.log('initData()');
-  // DATA = await fetchData('/data/locale/en/common.json');
-  DATA = await fetchData('/data/en-property.json');
+  DATA = await fetchData('/data/locale/en/common.json');
+  // DATA = await fetchData('/data/en-property.json');
 }
 
 async function initRoutes() {
@@ -183,6 +183,10 @@ async function loadContent({ url,params }) {
         }
       };
 
+      if (typeof themeChange === 'function') {
+        themeChange(false);
+      }
+
       // trigger anchor if any
       // note: to check if there is no fragment, look for an empty string
       // if (window.location.hash === '') {}
@@ -263,19 +267,19 @@ function loadScript(code) {
 
 function resetHead() {
   let base = document.head.querySelector('base');
-  base.setAttribute('href', '/');
+  if (base) base.setAttribute('href', '/');
 
   let charset = document.head.querySelector('meta[charset]');
-  charset.setAttribute('charset', 'utf-8');
+  if (charset) charset.setAttribute('charset', 'utf-8');
 
   let viewport = document.head.querySelector('meta[name="viewport"]');
-  viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
+  if (viewport) viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
 
   let author = document.head.querySelector('meta[name="author"]');
-  author.setAttribute('content', '');
+  if (author) author.setAttribute('content', '');
 
   let description = document.head.querySelector('meta[name="description"]');
-  description.setAttribute('content', '');
+  if (description) description.setAttribute('content', '');
 
   // let keywords = document.head.querySelector('meta[name="keywords"]');
   // keywords.setAttribute('content', '');
