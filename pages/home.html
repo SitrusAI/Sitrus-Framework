@@ -6,8 +6,11 @@
 	<title>Title</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
+	<script>!function(){try{var d=document.documentElement,c=d.classList;c.remove('light','dark');var e=localStorage.getItem('theme');if('system'===e||(!e&&true)){var t='(prefers-color-scheme: dark)',m=window.matchMedia(t);if(m.media!==t||m.matches){d.style.colorScheme = 'dark';c.add('dark')}else{d.style.colorScheme = 'light';c.add('light')}}else if(e){c.add(e|| '')}if(e==='light'||e==='dark')d.style.colorScheme=e}catch(e){}}()</script>
 </head>
 <body x-data="DATA" x-cloak x-import="logo,header,footer">
+
+	
 
 	<!-- Header -->
 	<x-header></x-header>
@@ -20,12 +23,12 @@
 
 			<!-- Content -->
 			<div class="gap-lg text-center">
-				<h1>Sitrus Starter Project</h1>
+				<h1 class="dark:text-primary">Sitrus Starter Project</h1>
 				<h5>A straightforward template for websites and apps.</h5>
 				<a class="primary m-auto" href="https://github.com/SitrusAI/Sitrus-Starter-Project" target="_blank">Go to GitHub <span class="iconify" data-icon="ph:arrow-right"></span></a>
 
 				<!-- Test Theme Toggle OUTSIDE COMPONENT -->
-				<button data-toggle-theme="light,dark">
+				<button data-toggle-theme="light,dark" x-data x-init="themeChange(false)">
 					<span class="iconify" data-icon="ph:sun"></span>
 				</button>
 
