@@ -1445,6 +1445,12 @@ a.button {
 	text-decoration: none;
 }
 
+/* Small modifier */
+a.small {
+	font-size: var(--small-size);
+	font-weight: var(--small-weight);
+}
+
 /* Header modifier */
 header a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, li a, blockquote a, code a, kbd a, span a, mark a, .button) {
 	font-family: var(--link-header-font);
