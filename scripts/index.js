@@ -35,7 +35,7 @@ async function initRoutes() {
 
 async function router() {
   // init data first
-  if (!app || typeof app !== 'object' || Object.keys(DATA).length < 1) await initData();
+  if (!app || typeof app !== 'object' || Object.keys(app).length < 1) await initData();
   // load routes from json
   const routes = await initRoutes();
   // console.dir('routes', routes);
