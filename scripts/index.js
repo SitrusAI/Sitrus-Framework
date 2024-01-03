@@ -1,11 +1,11 @@
 // version 1.5
 var comp = {};
-var DATA = {};
+var app = {};
 
 async function initData() {
   console.log('initData()');
-  DATA = await fetchData('/data/locale/en/common.json');
-  // DATA = await fetchData('/data/en-property.json');
+  app = await fetchData('/data/locale/en/common.json');
+  // app = await fetchData('/data/en-property.json');
 }
 
 async function initRoutes() {
@@ -35,7 +35,7 @@ async function initRoutes() {
 
 async function router() {
   // init data first
-  if (!DATA || typeof DATA !== 'object' || Object.keys(DATA).length < 1) await initData();
+  if (!app || typeof app !== 'object' || Object.keys(DATA).length < 1) await initData();
   // load routes from json
   const routes = await initRoutes();
   // console.dir('routes', routes);
@@ -183,6 +183,7 @@ async function loadContent({ url,params }) {
         }
       };
 
+      // theme switching
       if (typeof themeChange === 'function') {
         themeChange(false);
       }
