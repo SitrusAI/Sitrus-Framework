@@ -1235,7 +1235,7 @@ textarea {
 }
 
 /* Floating Label */
-.floating-label {
+.floating {
 	position: relative;
 	display: flex;
 	overflow: visible;
@@ -1251,15 +1251,15 @@ textarea {
 	}
 
 	/* Override default input height to avoid crowding */
-	input {
+	& input {
 		min-height: var(--input-floating-height);
 		height: var(--input-floating-height);
 		max-height: var(--input-floating-height);
 	}
 
 	/* Styles removed since parent has them */
-	input,
-	textarea {
+	& input,
+	& textarea {
 		background: none;
 		border: none;
 		outline-offset: calc(var(--focus-outline-offset) + 1px);
@@ -1294,7 +1294,7 @@ textarea {
 	}
 
 	/* Label text */
-	span {
+	& span {
 		position: absolute;
 		top: 0;
 		inset-inline-start: var(--input-padding);
@@ -1310,11 +1310,11 @@ textarea {
 		pointer-events: none;
 	}
 
-	textarea:placeholder-shown ~ span {
+	& textarea:placeholder-shown ~ span {
 		top: calc(var(--input-padding) * 2);
 	}
 
-	textarea:placeholder-shown:focus ~ span {
+	& textarea:placeholder-shown:focus ~ span {
 		top: 0;
 	}
 }
@@ -1890,6 +1890,23 @@ table {
 		}
 	  
 	}
+}
+
+/*** Text Color Modifiers ***/
+
+/* Primary modifier */
+h1.primary, h2.primary, h3.primary, h4.primary, h5.primary, h6.primary, p.primary, small.primary, caption.primary, pre.primary, blockquote.primary, code.primary, kbd.primary, li.primary {
+	color: hsl(var(--primary-text));
+}
+
+/* Secondary modifier */
+h1.secondary, h2.secondary, h3.secondary, h4.secondary, h5.secondary, h6.secondary, p.secondary, small.secondary, caption.secondary, pre.secondary, blockquote.secondary, code.secondary, kbd.secondary, li.secondary {
+	color: hsl(var(--secondary-text));
+}
+
+/* Danger modifier */
+h1.danger, h2.danger, h3.danger, h4.danger, h5.danger, h6.danger, p.danger, small.danger, caption.danger, pre.danger, blockquote.danger, code.danger, kbd.danger, li.danger {
+	color: hsl(var(--danger-text));
 }
 
 
