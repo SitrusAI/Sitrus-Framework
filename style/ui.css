@@ -1172,7 +1172,7 @@ form {
 
 
 /*** Input ***/
-input, textarea, .floating-label {
+input, textarea, label.floating {
 	width: 100%;
 	min-width: var(--input-height);
 	max-width: 100%;
@@ -1235,7 +1235,7 @@ textarea {
 }
 
 /* Floating Label */
-.floating {
+label.floating {
 	position: relative;
 	display: flex;
 	overflow: visible;
