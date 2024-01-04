@@ -4,7 +4,7 @@ var app = {};
 
 async function initData() {
   console.log('initData()');
-  app = await fetchData('/data/en.json');
+  app = await fetchData('/cms/en.json');
 }
 
 async function initRoutes() {
