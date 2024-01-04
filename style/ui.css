@@ -1451,6 +1451,12 @@ a.small {
 	font-weight: var(--small-weight);
 }
 
+/* Caption modifier */
+a.caption {
+	font-size: var(--caption-size);
+	font-weight: var(--caption-weight);
+}
+
 /* Header modifier */
 header a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, li a, blockquote a, code a, kbd a, span a, mark a, .button) {
 	font-family: var(--link-header-font);
