@@ -1028,6 +1028,27 @@ input[type="color"] {
 }
 
 
+/* Error Message (form field validation) */
+.error-msg[hidden] {
+	opacity: 0;
+	height: 0px;
+	transform: scale(0);
+}
+
+.error-msg {
+	display: block;
+	transform-origin: left;
+	margin-left: 0.5em;
+	font-family: var(--error-msg-font);
+	font-weight: var(--error-msg-weight);
+	font-style: var(--error-msg-style);
+	font-size: var(--error-msg-size);
+	line-height: var(--error-msg-leading);
+	color: hsl(var(--error-msg-color));
+	transition: var(--transition);
+}
+
+
 /*** Heading 1 (Main Title) ***/
 h1 {
 	margin: 0;
@@ -1168,26 +1189,6 @@ form {
 	gap: var(--lg);
 	width: 100%;
 	max-width: 100%;
-
-	/* Validation error messge triggered by */
-	.error-msg[hidden] {
-        opacity: 0;
-        height: 0px;
-        transform: scale(0);
-    }
-
-    .error-msg {
-        display: block;
-		transform-origin: left;
-        margin-left: 0.5em;
-        font-family: var(--error-msg-font);
-        font-weight: var(--error-msg-weight);
-        font-style: var(--error-msg-style);
-        font-size: var(--error-msg-size);
-        line-height: var(--error-msg-leading);
-        color: hsl(var(--error-msg-color));
-        transition: var(--transition);
-    }
 }
 
 
