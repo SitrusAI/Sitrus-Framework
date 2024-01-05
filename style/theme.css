@@ -91,6 +91,15 @@
 		--code-radius: var(--xs);
 		--code-shadow: none;
 
+		/* Error Message (Form Field Validation) */
+		--error-msg-margin-left: 0.5;
+		--error-msg-font: var(--caption-font);
+		--error-msg-weight: var(--caption-weight);
+		--error-msg-style: var(--caption-style);
+		--error-msg-size: var(--caption-size);
+		--error-msg-leading: var(--caption-leading);
+		--error-msg-color: var(--danger-text);
+
 		/* Disabled */
 		--disabled-opacity: 50%;
 
