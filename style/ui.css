@@ -1378,25 +1378,9 @@ label {
 
 
 /*** Link ***/
+
+/* Standalone link */
 a {
-	font-weight: var(--a-weight);
-	font-style: var(--a-style);
-	color: hsl(var(--a));
-	text-decoration: var(--a-decoration);
-	text-decoration-color: hsl(var(--a-decoration-color));
-	text-decoration-thickness: var(--a-decoration-thickness);
-	text-underline-offset: var(--a-underline-offset);
-
-	&:hover {
-		color: hsl(var(--a-hover));
-		text-decoration: var(--a-decoration-hover);
-		text-decoration-color: hsl(var(--a-decoration-color));
-		text-decoration-thickness: var(--a-decoration-thickness-hover);
-	}
-}
-
-/* Standalone link modifier */
-a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, li a, blockquote a, pre code a, code a, kbd a, span a, mark a, .button) {
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
@@ -1416,6 +1400,24 @@ a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, l
 	&:hover {
 		color: hsl(var(--link-hover));
 		text-decoration: var(--link-decoration-hover);
+	}
+}
+
+/* Inline link */
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, li a, blockquote a, pre code a, code a, kbd a, span a, mark a {
+	font-weight: var(--a-weight);
+	font-style: var(--a-style);
+	color: hsl(var(--a));
+	text-decoration: var(--a-decoration);
+	text-decoration-color: hsl(var(--a-decoration-color));
+	text-decoration-thickness: var(--a-decoration-thickness);
+	text-underline-offset: var(--a-underline-offset);
+
+	&:hover {
+		color: hsl(var(--a-hover));
+		text-decoration: var(--a-decoration-hover);
+		text-decoration-color: hsl(var(--a-decoration-color));
+		text-decoration-thickness: var(--a-decoration-thickness-hover);
 	}
 }
 
@@ -1485,41 +1487,45 @@ a.caption {
 }
 
 /* Header modifier */
-header a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, li a, blockquote a, code a, kbd a, span a, mark a, .button) {
-	font-family: var(--link-header-font);
-	font-weight: var(--link-header-weight);
-	font-style: var(--link-header-style);
-	font-size: var(--link-header-size);
-	line-height: var(--link-header-leading);
-	color: hsl(var(--link-header));
-	text-decoration: var(--link-header-decoration);
-	text-decoration-color: hsl(var(--link-header-decoration-color));
-	text-decoration-thickness: var(--link-header-decoration-thickness);
-	text-underline-offset: var(--link-header-underline-offset);
+header {
+	& a {
+		font-family: var(--link-header-font);
+		font-weight: var(--link-header-weight);
+		font-style: var(--link-header-style);
+		font-size: var(--link-header-size);
+		line-height: var(--link-header-leading);
+		color: hsl(var(--link-header));
+		text-decoration: var(--link-header-decoration);
+		text-decoration-color: hsl(var(--link-header-decoration-color));
+		text-decoration-thickness: var(--link-header-decoration-thickness);
+		text-underline-offset: var(--link-header-underline-offset);
 
-	&:hover {
-		color: hsl(var(--link-header-hover));
-		text-decoration: var(--link-header-decoration-hover);
-		
+		&:hover {
+			color: hsl(var(--link-header-hover));
+			text-decoration: var(--link-header-decoration-hover);
+			
+		}
 	}
 }
 
 /* Footer modifier */
-footer a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, li a, blockquote a, code a, kbd a, span a, mark a, .button) {
-	font-family: var(--link-footer-font);
-	font-weight: var(--link-footer-weight);
-	font-style: var(--link-footer-style);
-	font-size: var(--link-footer-size);
-	line-height: var(--link-footer-leading);
-	color: hsl(var(--link-footer));
-	text-decoration: var(--link-footer-decoration);
-	text-decoration-color: hsl(var(--link-footer-decoration-color));
-	text-decoration-thickness: var(--link-footer-decoration-thickness);
-	text-underline-offset: var(--link-footer-underline-offset);
+footer {
+	& a {
+		font-family: var(--link-footer-font);
+		font-weight: var(--link-footer-weight);
+		font-style: var(--link-footer-style);
+		font-size: var(--link-footer-size);
+		line-height: var(--link-footer-leading);
+		color: hsl(var(--link-footer));
+		text-decoration: var(--link-footer-decoration);
+		text-decoration-color: hsl(var(--link-footer-decoration-color));
+		text-decoration-thickness: var(--link-footer-decoration-thickness);
+		text-underline-offset: var(--link-footer-underline-offset);
 
-	&:hover {
-		color: hsl(var(--link-footer-hover));
-		text-decoration: var(--link-footer-decoration-hover);
+		&:hover {
+			color: hsl(var(--link-footer-hover));
+			text-decoration: var(--link-footer-decoration-hover);
+		}
 	}
 }
 
