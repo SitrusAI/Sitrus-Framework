@@ -470,9 +470,9 @@
 		--input-hover: 240 4% 87%; /* zinc-250 (custom) */
 		--input-focus: 240 4.9% 83.9%; /* zinc-300 */
 		--input-placeholder: var(--text-faint);
-		--input-border: transparent;
-		--input-border-hover: transparent;
-		--input-border-focus: transparent;
+		--input-border: var(--input);
+		--input-border-hover: var(--input);
+		--input-border-focus: var(--input);
 		--input-value: 240 5.3% 26.1%; /* zinc-700 */
 		--modal: 0 0% 98%; /* zinc-50 */
 		--modal-divider: 240 5.9% 90%; /* zinc-200 */
@@ -620,9 +620,9 @@
 		--input-hover: 240 4% 87%; /* zinc-250 (custom) */
 		--input-focus: 240 4.9% 83.9%; /* zinc-300 */
 		--input-placeholder: var(--text-faint);
-		--input-border: transparent;
-		--input-border-hover: transparent;
-		--input-border-focus: transparent;
+		--input-border: var(--input);
+		--input-border-hover: var(--input);
+		--input-border-focus: var(--input);
 		--input-value: 240 5.3% 26.1%; /* zinc-700 */
 		--modal: 0 0% 98%; /* zinc-50 */
 		--modal-divider: 240 5.9% 90%; /* zinc-200 */
@@ -773,9 +773,9 @@
 			--input-focus: 240 4% 40%; /* zinc-550 (custom) */
 			--input-placeholder: var(--text-faint);
 			--input-value: 0 0% 98%; /* zinc-50 */
-			--input-border: transparent;
-			--input-border-hover: transparent;
-			--input-border-focus: transparent;
+			--input-border: var(--input);
+			--input-border-hover: var(--input);
+			--input-border-focus: var(--input);
 			--modal: 240 5.3% 26.1%; /* zinc-700 */
 			--modal-divider: 240 5.2% 33.9%; /* zinc-600 */
 			--page: 240 10% 3.9%; /* zinc-950 */
@@ -926,9 +926,9 @@
 		--input-focus: 240 4% 40%; /* zinc-550 (custom) */
 		--input-placeholder: var(--text-faint);
 		--input-value: 0 0% 98%; /* zinc-50 */
-		--input-border: transparent;
-		--input-border-hover: transparent;
-		--input-border-focus: transparent;
+		--input-border: var(--input);
+		--input-border-hover: var(--input);
+		--input-border-focus: var(--input);
 		--modal: 240 5.3% 26.1%; /* zinc-700 */
 		--modal-divider: 240 5.2% 33.9%; /* zinc-600 */
 		--page: 240 10% 3.9%; /* zinc-950 */
