@@ -872,7 +872,7 @@ input[type="color"] {
 
 
 /*** Dropdown Menu ***/
-.dropdown {
+.dropdown-menu {
 	position: absolute;
 	top: calc(100% + var(---dropdown-offset));
 	left: 0;
@@ -1166,7 +1166,7 @@ fieldset.row {
 	width: 100%;
 	max-width: 100%;
 
-	& > * {
+	& > input {
 		flex-grow: 1;
 		width: auto;
 		max-width: 100%;
@@ -1207,7 +1207,9 @@ input, textarea, label.floating {
 	text-transform: var(--input-case);
 	background: hsl(var(--input));
 	border-radius: var(--input-radius);
-	border: var(--input-border-width) var(--input-border-style) hsl(var(--input-border));
+	border-width: var(--input-border-width);
+	border-style: var(--input-border-style);
+	border-color: hsl(var(--input-border));
 	border-bottom-width: var(--input-border-bottom-width);
 	box-shadow: var(--input-shadow);
 	cursor: var(--input-cursor);
@@ -1503,7 +1505,6 @@ header {
 		&:hover {
 			color: hsl(var(--link-header-hover));
 			text-decoration: var(--link-header-decoration-hover);
-			
 		}
 	}
 }
@@ -1620,6 +1621,11 @@ dialog, [popover] {
 		width: calc(100vw - var(--sm) - var(--sm));
 		margin: auto;
 	}
+}
+
+/* Side menu right side modifier */
+.side-menu-right {
+
 }
 
 

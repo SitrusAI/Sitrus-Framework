@@ -278,6 +278,8 @@
 		--link-header-underline-offset: 0;
 		--link-header-decoration: none;
 		--link-header-decoration-hover: none;
+		--link-header-decoration-thickness: 0;
+		--link-header-decoration-thickness-hover: 0;
 
 		/* Link (Footer) */
 		--link-footer-font: var(--sans);
@@ -288,6 +290,8 @@
 		--link-footer-underline-offset: 0;
 		--link-footer-decoration: none;
 		--link-footer-decoration-hover: none;
+		--link-footer-decoration-thickness: 0;
+		--link-footer-decoration-thickness-hover: 0;
 
 		/* Modals */
 		--modal-width: 500px;
@@ -352,6 +356,7 @@
 
 		/* Stacking Order */
 		--stack-basic: 10;
+		--stack-subnav: 15;
 		--stack-nav: 20;
 		--stack-toolbar: 30;
 		--stack-popover: 40;
