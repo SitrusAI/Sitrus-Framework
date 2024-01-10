@@ -203,14 +203,29 @@ async function loadContent({ url,params }) {
       script.remove(); // remove original by reference
     };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8e4d059bdc6c7a1e9d62938ced57cd26a33b12e5
     // overwrite body content, without the scripts
     // document.body.parentNode.replaceChild(pageDoc.body, document.body); // vui incompatible
     // Alpine.store('app').body = pageDoc.body.innerHTML; // deprecated
 
     // vui requires imports to be loaded per page
     const ximports = pageDoc.body.getAttribute('x-import');
+<<<<<<< HEAD
     if (ximports) document.body.setAttribute('x-import', ximports);
     $vui.setHtml(document.body, pageDoc.body.innerHTML);
+=======
+    console.log('body',pageDoc.body,ximports);
+    // if (ximports) document.body.setAttribute('x-import', ximports);
+    // $vui.setHtml(document.body, pageDoc.body.innerHTML);
+
+    const xbody = document.getElementById('xbody');
+    $vui.$api(xbody).content = pageDoc.body.innerHTML;
+    $vui.$api(xbody).imports = ximports;
+
+>>>>>>> 8e4d059bdc6c7a1e9d62938ced57cd26a33b12e5
 
     // re-initialize the body scripts, into the head
     for (let script of copiedScripts) {
