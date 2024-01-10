@@ -1,16 +1,15 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>Title</title>
+	<title>Home</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<script>!function(){try{var d=document.documentElement,c=d.classList;c.remove('light','dark');var e=localStorage.getItem('theme');if('system'===e||(!e&&true)){var t='(prefers-color-scheme: dark)',m=window.matchMedia(t);if(m.media!==t||m.matches){d.style.colorScheme = 'dark';c.add('dark')}else{d.style.colorScheme = 'light';c.add('light')}}else if(e){c.add(e|| '')}if(e==='light'||e==='dark')d.style.colorScheme=e}catch(e){}}()</script>
 </head>
-<body x-data="app" x-cloak x-import="logo,header,footer">
 
-	
+<body x-data="$store.app" x-cloak x-import="logo,header,footer">
 
 	<!-- Header -->
 	<x-header></x-header>
@@ -27,6 +26,7 @@
 				<h5>A straightforward template for websites and apps.</h5>
 				<a class="primary m-auto" href="https://github.com/SitrusAI/Sitrus-Starter-Project" target="_blank">Go to GitHub <span class="iconify" data-icon="ph:arrow-right"></span></a>
 			</div>
+			
 		</section>
 
 	</main>

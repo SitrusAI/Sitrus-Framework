@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" class="light">
+
 <head>
 	<base href="/">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>Project Name</title>
+	<title>Starter Project</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="stylesheet" href="/style/theme.css">
@@ -13,16 +14,20 @@
 	<script src="/scripts/components.js"></script>
 	<script src="/scripts/icons.js"></script>
 	<script src="/scripts/colors.js"></script>
+	<script defer src="https://unpkg.com/@colinaut/alpinejs-plugin-simple-validate@1/dist/alpine.validate.min.js"></script>
 	<script src="/scripts/tailwind.v3.4.js"></script>
 	<script src="/scripts/tailwind.config.js"></script>
 	<script defer src="/scripts/alpine.v3.13.3.js"></script>
 	<script> $vui.config = { namespace: 'x' }; $vui.config.importMap = { "*": '/pages/components/${component}.html' } </script>
-	
+
 	<!-- Style -->
 	<style> [x-cloak] { display: none !important; } </style>
-	
+
 	<!-- Custom -->
+	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 </head>
-<body x-data="app"></body>
+
+<body x-data="$store.app"></body>
+
 </html>

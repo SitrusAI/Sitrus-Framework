@@ -1,0 +1,45 @@
+{
+    "lang": {
+      "default": "en",
+      "defaultToBrowser": true,
+      "locales": ["en"]
+    },
+    "cms": {
+      "path": "/cms/",
+      "files": ["cms.json"]
+    },
+    "db": {},
+    "pages": {
+      "index": "home",
+      "notfound": "home",
+      "active": {
+        "home": {
+          "file": "/pages/home.html",
+          "cms": [],
+          "routes": [
+            {
+              "path": "home"
+            }
+          ]
+        },
+        "privacy": {
+          "file": "/pages/privacy.html",
+          "cms": [],
+          "routes": [
+            {
+              "path": "privacy"
+            }
+          ]
+        },
+        "terms": {
+          "file": "/pages/terms.html",
+          "cms": [],
+          "routes": [
+            {
+              "path": "terms"
+            }
+          ]
+        }
+      }
+    }
+  }

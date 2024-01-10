@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<title>Terms of Use</title>
+	<meta name="description" content="Smarter home automation.">
+	<meta name="author" content="Votion">
+</head>
+
+<body x-data="$store.app"  x-cloak x-import="footer,header,logo">
+
+	<!-- Header -->
+	<x-header></x-header>
+
+	<!-- Page Content -->
+	<main>
+
+		<!-- Agreement -->
+		<article id="markdown" class="pt-48 pb-2xl"></article>
+
+	</main>
+	<!-- End Page Content -->
+
+	<!-- Footer -->
+	<x-footer></x-footer>
+
+	<!-- Markdown Fetching -->
+	<script>
+	fetch( '/cms/terms.md' )
+	.then( response => response.text() )
+	.then( (result) => {
+		var content = marked.parse(result);
+		document.querySelector( '#markdown' ).innerHTML = content;
+	});
+	</script>
+
+</body>
+
+</html>

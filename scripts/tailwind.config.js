@@ -8,6 +8,7 @@ try {
 const plugin = tailwind.plugin;
 
 tailwind.config = {
+	darkMode: ['class', '[data-theme="dark"]'],
 	theme: {
 		extend: {
 			colors: {
@@ -260,8 +261,15 @@ tailwind.config = {
 				"input": "var(--input-padding)",
 				"page": "var(--page-margin)",
 			},
+			scrollPadding: {
+				"page": "var(--page-margin)",
+			},
+			scrollMargin: {
+				"page": "var(--page-margin)",
+			},
 			zIndex: {
 				"basic": "var(--stack-basic)",
+				"subnav": "var(--stack-subnav)",
 				"nav": "var(--stack-nav)",
 				"toolbar": "var(--stack-toolbar)",
 				"popover": "var(--stack-popover)",
@@ -491,7 +499,7 @@ tailwind.config = {
 				"background": {
 				  '0%, 100%': { backgroundPosition: '0% 50%' },
 				  '50%': { backgroundPosition: '100% 50%' },
-				},
+				}
 			},
 			screens: {
 				"page": "var(--page-width)",
