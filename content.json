@@ -1,0 +1,27 @@
+{
+  "lang": {
+    "default": "en",
+    "defaultToBrowser": true,
+    "locales": ["en"]
+  },
+  "cms": {
+    "path": "/cms/",
+    "files": []
+  },
+  "db": {},
+  "pages": {
+    "index": "home",
+    "notfound": "home",
+    "active": {
+      "home": {
+        "file": "/pages/home.html",
+        "cms": [],
+        "routes": [
+          {
+            "path": "home"
+          }
+        ]
+      }
+    }
+  }
+}
