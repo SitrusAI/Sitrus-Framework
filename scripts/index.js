@@ -211,12 +211,12 @@ async function loadContent({ url,params }) {
     // vui requires imports to be loaded per page
     const ximports = pageDoc.body.getAttribute('x-import');
     console.log('body',pageDoc.body,ximports);
-    // if (ximports) document.body.setAttribute('x-import', ximports);
-    // $vui.setHtml(document.body, pageDoc.body.innerHTML);
+    if (ximports) document.body.setAttribute('x-import', ximports);
+    $vui.setHtml(document.body, pageDoc.body.innerHTML);
 
-    const xbody = document.getElementById('xbody');
-    $vui.$api(xbody).content = pageDoc.body.innerHTML;
-    $vui.$api(xbody).imports = ximports;
+    // const xbody = document.getElementById('xbody');
+    // $vui.$api(xbody).content = pageDoc.body.innerHTML;
+    // $vui.$api(xbody).imports = ximports;
 
 
     // re-initialize the body scripts, into the head
