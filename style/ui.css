@@ -872,7 +872,7 @@ input[type="color"] {
 
 
 /*** Dropdown Menu ***/
-.dropdown {
+.dropdown-menu {
 	position: absolute;
 	top: calc(100% + var(---dropdown-offset));
 	left: 0;
@@ -1028,6 +1028,27 @@ input[type="color"] {
 }
 
 
+/* Error Message (form field validation) */
+.error-msg[hidden] {
+	opacity: 0;
+	height: 0px;
+	transform: scale(0);
+}
+
+.error-msg {
+	display: block;
+	transform-origin: left;
+	margin-left: 0.5em;
+	font-family: var(--error-msg-font);
+	font-weight: var(--error-msg-weight);
+	font-style: var(--error-msg-style);
+	font-size: var(--error-msg-size);
+	line-height: var(--error-msg-leading);
+	color: hsl(var(--error-msg-color));
+	transition: var(--transition);
+}
+
+
 /*** Heading 1 (Main Title) ***/
 h1 {
 	margin: 0;
@@ -1037,6 +1058,7 @@ h1 {
 	font-size: var(--h1-size);
 	line-height: var(--h1-leading);
 	letter-spacing: var(--h1-kerning);
+	text-transform: var(--h1-case);
 	color: hsl(var(--h1));
 }
 
@@ -1050,6 +1072,7 @@ h2 {
 	font-size: var(--h2-size);
 	line-height: var(--h2-leading);
 	letter-spacing: var(--h2-kerning);
+	text-transform: var(--h2-case);
 	color: hsl(var(--h2));
 }
 
@@ -1063,6 +1086,7 @@ h3 {
 	font-size: var(--h3-size);
 	line-height: var(--h3-leading);
 	letter-spacing: var(--h3-kerning);
+	text-transform: var(--h3-case);
 	color: hsl(var(--h3));
 }
 
@@ -1076,6 +1100,7 @@ h4 {
 	font-size: var(--h4-size);
 	line-height: var(--h4-leading);
 	letter-spacing: var(--h4-kerning);
+	text-transform: var(--h4-case);
 	color: hsl(var(--h4));
 }
 
@@ -1089,6 +1114,7 @@ h5 {
 	font-size: var(--h5-size);
 	line-height: var(--h5-leading);
 	letter-spacing: var(--h5-kerning);
+	text-transform: var(--h5-case);
 	color: hsl(var(--h5));
 }
 
@@ -1102,6 +1128,7 @@ h6 {
 	font-size: var(--h6-size);
 	line-height: var(--h6-leading);
 	letter-spacing: var(--h6-kerning);
+	text-transform: var(--h6-case);
 	color: hsl(var(--h6));
 }
 
@@ -1139,7 +1166,7 @@ fieldset.row {
 	width: 100%;
 	max-width: 100%;
 
-	& > * {
+	& > input {
 		flex-grow: 1;
 		width: auto;
 		max-width: 100%;
@@ -1166,7 +1193,7 @@ form {
 
 
 /*** Input ***/
-input, textarea, .floating-label {
+input, textarea, label.floating {
 	width: 100%;
 	min-width: var(--input-height);
 	max-width: 100%;
@@ -1180,7 +1207,9 @@ input, textarea, .floating-label {
 	text-transform: var(--input-case);
 	background: hsl(var(--input));
 	border-radius: var(--input-radius);
-	border: var(--input-border-width) var(--input-border-style) hsl(var(--input-border));
+	border-width: var(--input-border-width);
+	border-style: var(--input-border-style);
+	border-color: hsl(var(--input-border));
 	border-bottom-width: var(--input-border-bottom-width);
 	box-shadow: var(--input-shadow);
 	cursor: var(--input-cursor);
@@ -1229,7 +1258,7 @@ textarea {
 }
 
 /* Floating Label */
-.floating-label {
+label.floating {
 	position: relative;
 	display: flex;
 	overflow: visible;
@@ -1245,15 +1274,15 @@ textarea {
 	}
 
 	/* Override default input height to avoid crowding */
-	input {
+	& input {
 		min-height: var(--input-floating-height);
 		height: var(--input-floating-height);
 		max-height: var(--input-floating-height);
 	}
 
 	/* Styles removed since parent has them */
-	input,
-	textarea {
+	& input,
+	& textarea {
 		background: none;
 		border: none;
 		outline-offset: calc(var(--focus-outline-offset) + 1px);
@@ -1288,7 +1317,7 @@ textarea {
 	}
 
 	/* Label text */
-	span {
+	& span {
 		position: absolute;
 		top: 0;
 		inset-inline-start: var(--input-padding);
@@ -1304,11 +1333,11 @@ textarea {
 		pointer-events: none;
 	}
 
-	textarea:placeholder-shown ~ span {
+	& textarea:placeholder-shown ~ span {
 		top: calc(var(--input-padding) * 2);
 	}
 
-	textarea:placeholder-shown:focus ~ span {
+	& textarea:placeholder-shown:focus ~ span {
 		top: 0;
 	}
 }
@@ -1351,25 +1380,9 @@ label {
 
 
 /*** Link ***/
+
+/* Standalone link */
 a {
-	font-weight: var(--a-weight);
-	font-style: var(--a-style);
-	color: hsl(var(--a));
-	text-decoration: var(--a-decoration);
-	text-decoration-color: hsl(var(--a-decoration-color));
-	text-decoration-thickness: var(--a-decoration-thickness);
-	text-underline-offset: var(--a-underline-offset);
-
-	&:hover {
-		color: hsl(var(--a-hover));
-		text-decoration: var(--a-decoration-hover);
-		text-decoration-color: hsl(var(--a-decoration-color));
-		text-decoration-thickness: var(--a-decoration-thickness-hover);
-	}
-}
-
-/* Standalone link modifier */
-a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, li a, blockquote a, pre code a, code a, kbd a, span a, mark a, .button) {
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
@@ -1392,9 +1405,28 @@ a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, l
 	}
 }
 
+/* Inline link */
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, li a, blockquote a, pre code a, code a, kbd a, span a, mark a {
+	font-weight: var(--a-weight);
+	font-style: var(--a-style);
+	color: hsl(var(--a));
+	text-decoration: var(--a-decoration);
+	text-decoration-color: hsl(var(--a-decoration-color));
+	text-decoration-thickness: var(--a-decoration-thickness);
+	text-underline-offset: var(--a-underline-offset);
+
+	&:hover {
+		color: hsl(var(--a-hover));
+		text-decoration: var(--a-decoration-hover);
+		text-decoration-color: hsl(var(--a-decoration-color));
+		text-decoration-thickness: var(--a-decoration-thickness-hover);
+	}
+}
+
 /* Primary modifier */
 a.primary {
 	color: hsl(var(--primary-text));
+	text-decoration-color: hsl(var(--primary-text));
 
 	&:hover {
 		color: hsl(var(--primary-text));
@@ -1410,6 +1442,7 @@ a.primary {
 /* Secondary modifier */
 a.secondary {
 	color: hsl(var(--secondary-text));
+	text-decoration-color: hsl(var(--secondary-text));
 
 	&:hover {
 		color: hsl(var(--secondary-text));
@@ -1425,6 +1458,7 @@ a.secondary {
 /* Danger modifier */
 a.danger {
 	color: hsl(var(--danger-text));
+	text-decoration-color: hsl(var(--danger-text));
 
 	&:hover {
 		color: hsl(var(--danger-text));
@@ -1442,49 +1476,64 @@ a.button {
 	text-decoration: none;
 }
 
-/* Header modifier */
-header a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, li a, blockquote a, code a, kbd a, span a, mark a, .button) {
-	font-family: var(--link-header-font);
-	font-weight: var(--link-header-weight);
-	font-style: var(--link-header-style);
-	font-size: var(--link-header-size);
-	line-height: var(--link-header-leading);
-	color: hsl(var(--link-header));
-	text-decoration: var(--link-header-decoration);
-	text-decoration-color: hsl(var(--link-header-decoration-color));
-	text-decoration-thickness: var(--link-header-decoration-thickness);
-	text-underline-offset: var(--link-header-underline-offset);
+/* Small modifier */
+a.small {
+	font-size: var(--small-size);
+	font-weight: var(--small-weight);
+}
 
-	&:hover {
-		color: hsl(var(--link-header-hover));
-		text-decoration: var(--link-header-decoration-hover);
-		
+/* Caption modifier */
+a.caption {
+	font-size: var(--caption-size);
+	font-weight: var(--caption-weight);
+}
+
+/* Header modifier */
+header {
+	& a {
+		font-family: var(--link-header-font);
+		font-weight: var(--link-header-weight);
+		font-style: var(--link-header-style);
+		font-size: var(--link-header-size);
+		line-height: var(--link-header-leading);
+		color: hsl(var(--link-header));
+		text-decoration: var(--link-header-decoration);
+		text-decoration-color: hsl(var(--link-header-decoration-color));
+		text-decoration-thickness: var(--link-header-decoration-thickness);
+		text-underline-offset: var(--link-header-underline-offset);
+
+		&:hover {
+			color: hsl(var(--link-header-hover));
+			text-decoration: var(--link-header-decoration-hover);
+		}
 	}
 }
 
 /* Footer modifier */
-footer a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, li a, blockquote a, code a, kbd a, span a, mark a, .button) {
-	font-family: var(--link-footer-font);
-	font-weight: var(--link-footer-weight);
-	font-style: var(--link-footer-style);
-	font-size: var(--link-footer-size);
-	line-height: var(--link-footer-leading);
-	color: hsl(var(--link-footer));
-	text-decoration: var(--link-footer-decoration);
-	text-decoration-color: hsl(var(--link-footer-decoration-color));
-	text-decoration-thickness: var(--link-footer-decoration-thickness);
-	text-underline-offset: var(--link-footer-underline-offset);
+footer {
+	& a {
+		font-family: var(--link-footer-font);
+		font-weight: var(--link-footer-weight);
+		font-style: var(--link-footer-style);
+		font-size: var(--link-footer-size);
+		line-height: var(--link-footer-leading);
+		color: hsl(var(--link-footer));
+		text-decoration: var(--link-footer-decoration);
+		text-decoration-color: hsl(var(--link-footer-decoration-color));
+		text-decoration-thickness: var(--link-footer-decoration-thickness);
+		text-underline-offset: var(--link-footer-underline-offset);
 
-	&:hover {
-		color: hsl(var(--link-footer-hover));
-		text-decoration: var(--link-footer-decoration-hover);
+		&:hover {
+			color: hsl(var(--link-footer-hover));
+			text-decoration: var(--link-footer-decoration-hover);
+		}
 	}
 }
 
 
 /*** List (Ordered / Numbered) ***/
 ol {
-	padding-left: 2ch;
+	padding-left: 0;
 	font-family: var(--p-font);
 	font-weight: var(--p-weight);
 	font-style: var(--p-style);
@@ -1495,7 +1544,7 @@ ol {
 
 	/* List item */
 	& > li {
-		padding-left: 0.5ch;
+		padding-left: 0;
 		line-height: 2;
 
 		&::marker {
@@ -1506,7 +1555,7 @@ ol {
 
 /*** List (Unordered / Bullets) ***/
 ul {
-	padding-left: 1ch;
+	padding-left: 0;
 	font-family: var(--p-font);
 	font-weight: var(--p-weight);
 	font-style: var(--p-style);
@@ -1517,7 +1566,7 @@ ul {
 
 	/* List item */
 	& > li {
-		padding-left: 0.5ch;
+		padding-left: 0;
 		line-height: 2;
 
 		&::marker {
@@ -1572,6 +1621,11 @@ dialog, [popover] {
 		width: calc(100vw - var(--sm) - var(--sm));
 		margin: auto;
 	}
+}
+
+/* Side menu right side modifier */
+.side-menu-right {
+
 }
 
 
@@ -1869,6 +1923,23 @@ table {
 		}
 	  
 	}
+}
+
+/*** Text Color Modifiers ***/
+
+/* Primary modifier */
+h1.primary, h2.primary, h3.primary, h4.primary, h5.primary, h6.primary, p.primary, small.primary, caption.primary, pre.primary, blockquote.primary, code.primary, kbd.primary, li.primary {
+	color: hsl(var(--primary-text));
+}
+
+/* Secondary modifier */
+h1.secondary, h2.secondary, h3.secondary, h4.secondary, h5.secondary, h6.secondary, p.secondary, small.secondary, caption.secondary, pre.secondary, blockquote.secondary, code.secondary, kbd.secondary, li.secondary {
+	color: hsl(var(--secondary-text));
+}
+
+/* Danger modifier */
+h1.danger, h2.danger, h3.danger, h4.danger, h5.danger, h6.danger, p.danger, small.danger, caption.danger, pre.danger, blockquote.danger, code.danger, kbd.danger, li.danger {
+	color: hsl(var(--danger-text));
 }
 
 

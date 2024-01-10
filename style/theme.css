@@ -91,6 +91,15 @@
 		--code-radius: var(--xs);
 		--code-shadow: none;
 
+		/* Error Message (Form Field Validation) */
+		--error-msg-margin-left: 0.5;
+		--error-msg-font: var(--caption-font);
+		--error-msg-weight: var(--caption-weight);
+		--error-msg-style: var(--caption-style);
+		--error-msg-size: var(--caption-size);
+		--error-msg-leading: var(--caption-leading);
+		--error-msg-color: var(--danger-text);
+
 		/* Disabled */
 		--disabled-opacity: 50%;
 
@@ -269,6 +278,8 @@
 		--link-header-underline-offset: 0;
 		--link-header-decoration: none;
 		--link-header-decoration-hover: none;
+		--link-header-decoration-thickness: 0;
+		--link-header-decoration-thickness-hover: 0;
 
 		/* Link (Footer) */
 		--link-footer-font: var(--sans);
@@ -279,6 +290,8 @@
 		--link-footer-underline-offset: 0;
 		--link-footer-decoration: none;
 		--link-footer-decoration-hover: none;
+		--link-footer-decoration-thickness: 0;
+		--link-footer-decoration-thickness-hover: 0;
 
 		/* Modals */
 		--modal-width: 500px;
@@ -343,6 +356,7 @@
 
 		/* Stacking Order */
 		--stack-basic: 10;
+		--stack-subnav: 15;
 		--stack-nav: 20;
 		--stack-toolbar: 30;
 		--stack-popover: 40;
@@ -456,9 +470,9 @@
 		--input-hover: 240 4% 87%; /* zinc-250 (custom) */
 		--input-focus: 240 4.9% 83.9%; /* zinc-300 */
 		--input-placeholder: var(--text-faint);
-		--input-border: transparent;
-		--input-border-hover: transparent;
-		--input-border-focus: transparent;
+		--input-border: var(--input);
+		--input-border-hover: var(--input);
+		--input-border-focus: var(--input);
 		--input-value: 240 5.3% 26.1%; /* zinc-700 */
 		--modal: 0 0% 98%; /* zinc-50 */
 		--modal-divider: 240 5.9% 90%; /* zinc-200 */
@@ -606,9 +620,9 @@
 		--input-hover: 240 4% 87%; /* zinc-250 (custom) */
 		--input-focus: 240 4.9% 83.9%; /* zinc-300 */
 		--input-placeholder: var(--text-faint);
-		--input-border: transparent;
-		--input-border-hover: transparent;
-		--input-border-focus: transparent;
+		--input-border: var(--input);
+		--input-border-hover: var(--input);
+		--input-border-focus: var(--input);
 		--input-value: 240 5.3% 26.1%; /* zinc-700 */
 		--modal: 0 0% 98%; /* zinc-50 */
 		--modal-divider: 240 5.9% 90%; /* zinc-200 */
@@ -759,9 +773,9 @@
 			--input-focus: 240 4% 40%; /* zinc-550 (custom) */
 			--input-placeholder: var(--text-faint);
 			--input-value: 0 0% 98%; /* zinc-50 */
-			--input-border: transparent;
-			--input-border-hover: transparent;
-			--input-border-focus: transparent;
+			--input-border: var(--input);
+			--input-border-hover: var(--input);
+			--input-border-focus: var(--input);
 			--modal: 240 5.3% 26.1%; /* zinc-700 */
 			--modal-divider: 240 5.2% 33.9%; /* zinc-600 */
 			--page: 240 10% 3.9%; /* zinc-950 */
@@ -912,9 +926,9 @@
 		--input-focus: 240 4% 40%; /* zinc-550 (custom) */
 		--input-placeholder: var(--text-faint);
 		--input-value: 0 0% 98%; /* zinc-50 */
-		--input-border: transparent;
-		--input-border-hover: transparent;
-		--input-border-focus: transparent;
+		--input-border: var(--input);
+		--input-border-hover: var(--input);
+		--input-border-focus: var(--input);
 		--modal: 240 5.3% 26.1%; /* zinc-700 */
 		--modal-divider: 240 5.2% 33.9%; /* zinc-600 */
 		--page: 240 10% 3.9%; /* zinc-950 */
