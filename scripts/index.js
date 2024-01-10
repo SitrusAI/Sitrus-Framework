@@ -218,12 +218,12 @@ async function loadContent({ url,params }) {
     $vui.setHtml(document.body, pageDoc.body.innerHTML);
 =======
     console.log('body',pageDoc.body,ximports);
-    // if (ximports) document.body.setAttribute('x-import', ximports);
-    // $vui.setHtml(document.body, pageDoc.body.innerHTML);
+    if (ximports) document.body.setAttribute('x-import', ximports);
+    $vui.setHtml(document.body, pageDoc.body.innerHTML);
 
-    const xbody = document.getElementById('xbody');
-    $vui.$api(xbody).content = pageDoc.body.innerHTML;
-    $vui.$api(xbody).imports = ximports;
+    // const xbody = document.getElementById('xbody');
+    // $vui.$api(xbody).content = pageDoc.body.innerHTML;
+    // $vui.$api(xbody).imports = ximports;
 
 >>>>>>> 8e4d059bdc6c7a1e9d62938ced57cd26a33b12e5
 
