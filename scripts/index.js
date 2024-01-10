@@ -27,7 +27,7 @@ async function launch() {
     sitrus.cms = {};
     for (const filename of sitrus.config.cms.files) {
       const cms = await fetchCms(`${sitrus.lang.prefix}${filename}`);
-      if (!cms) return; // continue
+      if (!cms) continue; // continue
       // todo: support .md files
       const {name} = chopFilename(filename);
       sitrus.cms[name] = cms;
@@ -202,7 +202,6 @@ async function loadContent({ url,params }) {
       copiedScripts.push(copiedScript);
       script.remove(); // remove original by reference
     };
-
 
     // overwrite body content, without the scripts
     // document.body.parentNode.replaceChild(pageDoc.body, document.body); // vui incompatible

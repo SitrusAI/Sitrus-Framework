@@ -6,7 +6,7 @@
   },
   "cms": {
     "path": "/cms/",
-    "files": []
+    "files": ["cms.json"]
   },
   "db": {},
   "pages": {
@@ -19,6 +19,24 @@
         "routes": [
           {
             "path": "home"
+          }
+        ]
+      },
+      "privacy": {
+        "file": "/pages/privacy.html",
+        "cms": [],
+        "routes": [
+          {
+            "path": "privacy"
+          }
+        ]
+      },
+      "terms": {
+        "file": "/pages/terms.html",
+        "cms": [],
+        "routes": [
+          {
+            "path": "terms"
           }
         ]
       }
