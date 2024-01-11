@@ -309,7 +309,7 @@ mark.secondary {
 
 /*** Bold Text */
 b, strong {
-	color: hsl(var(--b));
+	color: hsl(var(--bold));
 	font-weight: bolder;
 }
 
@@ -874,7 +874,7 @@ input[type="color"] {
 /*** Dropdown Menu ***/
 .dropdown-menu {
 	position: absolute;
-	top: calc(100% + var(---dropdown-offset));
+	top: calc(100% + var(--dropdown-offset));
 	left: 0;
 	display: flex;
 	flex-flow: column nowrap;
