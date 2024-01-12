@@ -1166,7 +1166,7 @@ fieldset.row {
 	width: 100%;
 	max-width: 100%;
 
-	& > * {
+	& > input {
 		flex-grow: 1;
 		width: auto;
 		max-width: 100%;
