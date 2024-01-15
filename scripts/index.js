@@ -8,7 +8,7 @@ var ready = {
 async function launch() {
   try {
     // pull and parse sitrus app config
-    const response = await fetch('/content.json');
+    const response = await fetch('/app.json');
     if (!response.ok) return;
     sitrus.config = await response.json();
 

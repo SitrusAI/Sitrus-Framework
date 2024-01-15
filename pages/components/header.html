@@ -6,12 +6,33 @@
     <nav class="flex justify-between items-center gap-lg w-page max-w-full py-lg">
         
         <!-- Logo -->
-        <x-logo class="h-lg fill-link"></x-logo>
+        <a href="/" aria-label="Home"><x-logo class="h-lg fill-link"></x-logo></a>
 
-        <!-- Color Theme -->
-        <button data-toggle-theme="dark,light" x-data x-init="themeChange(false)">
-            <span class="iconify" data-icon="ph:sun"></span>
-        </button>
+        <!-- Color Theme Switcher -->
+        <div class="relative" 
+            x-data="{ dropdown: false, theme: 'light' }"
+            x-init="theme = localStorage.getItem('theme') || 'light'">
+
+            <!-- Button -->
+            <button class="" @click="dropdown = !dropdown" aria-label="Color Theme">
+                <span class="iconify" :data-icon="theme === 'light' ? 'ph:sun' : theme === 'dark' ? 'ph:moon' : 'tabler:sun-moon'"></span>
+            </button>
+
+            <!-- Menu -->
+            <ul class="dropdown-menu left-auto right-0" x-cloak x-show="dropdown" x-transition @click.away="dropdown = false">
+                
+                <li data-set-theme="light" @click="theme = 'light'; $store.colors.refresh()">
+                    <span class="iconify" data-icon="ph:sun"></span> Light
+                </li>
+                <li data-set-theme="dark" @click="theme = 'dark'; $store.colors.refresh()">
+                    <span class="iconify" data-icon="ph:moon"></span> Dark
+                </li>
+                <li data-set-theme="" class="js-theme-remove" @click="theme = ''; $store.colors.refresh()">
+                    <span class="iconify" data-icon="tabler:sun-moon"></span> System
+                </li>
+            </ul>
+
+        </div>
 
     </nav>
 

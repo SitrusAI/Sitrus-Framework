@@ -535,7 +535,7 @@
 		--h5: 240 5.2% 33.9%; /* zinc-600 */
 		--h6: 240 5.9% 10%; /* zinc-900 */
 		--p: 240 5.3% 26.1%; /* zinc-700 */
-		--b: 240 5.9% 10%; /* zinc-900 */
+		--bold: 240 5.9% 10%; /* zinc-900 */
 		--a: 240 5.9% 10%; /* zinc-900 */
 		--a-hover: 240 5.9% 10%; /* zinc-900 */
 		--a-decoration-color: var(--primary-text);
@@ -685,7 +685,7 @@
 		--h5: 240 5.2% 33.9%; /* zinc-600 */
 		--h6: 240 5.9% 10%; /* zinc-900 */
 		--p: 240 5.3% 26.1%; /* zinc-700 */
-		--b: 240 5.9% 10%; /* zinc-900 */
+		--bold: 240 5.9% 10%; /* zinc-900 */
 		--a: 240 5.9% 10%; /* zinc-900 */
 		--a-hover: 240 5.9% 10%; /* zinc-900 */
 		--a-decoration-color: var(--primary-text);
@@ -837,7 +837,7 @@
 			--h5: 240 5% 64.9%; /* zinc-400 */
 			--h6: 0 0% 100%; /* white */
 			--p: 240 4.9% 83.9%; /* zinc-300 */
-			--b: 0 0% 100%; /* white */
+			--bold: 0 0% 100%; /* white */
 			--a: 0 0% 100%; /* white */
 			--a-hover: 0 0% 100%; /* white */
 			--a-decoration-color: var(--primary-text);
@@ -990,7 +990,7 @@
 		--h5: 240 5% 64.9%; /* zinc-400 */
 		--h6: 0 0% 100%; /* white */
 		--p: 240 4.9% 83.9%; /* zinc-300 */
-		--b: 0 0% 100%; /* white */
+		--bold: 0 0% 100%; /* white */
 		--a: 0 0% 100%; /* white */
 		--a-hover: 0 0% 100%; /* white */
 		--a-decoration-color: var(--primary-text);

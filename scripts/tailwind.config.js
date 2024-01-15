@@ -19,7 +19,7 @@ tailwind.config = {
 				"a-hover": "hsl(var(--a-hover) / <alpha-value>)",
 				"a-decoration": "hsl(var(--a-decoration-color) / <alpha-value>)",
 				"a-decoration-hover": "hsl(var(--a-decoration-color-hover) / <alpha-value>)",
-				"b": "hsl(var(--b) / <alpha-value>)",
+				"bold": "hsl(var(--bold) / <alpha-value>)",
 				"backdrop": "hsl(var(--backdrop) / <alpha-value>)",
 				"bullet": "hsl(var(--bullet) / <alpha-value>)",
 				"button": "hsl(var(--button) / <alpha-value>)",

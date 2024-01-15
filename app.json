@@ -6,7 +6,7 @@
   },
   "cms": {
     "path": "/cms/",
-    "files": ["cms.json"]
+    "files": ["general.json"]
   },
   "db": {},
   "pages": {
