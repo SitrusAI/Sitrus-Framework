@@ -1,124 +1,10 @@
-/****** GENERIC ******/
-
-/* Page defaults */
-body {
-	display: flex;
-	flex-flow: column;
-	justify-content: center;
-	min-height: 100vh;
-	background: hsl(var(--page));
-}
-
-/* Main container defaults */
-main {
-	display: flex;
-	flex-flow: column;
-	width: 100%;
-	max-width: 100%;
-	margin: auto;
-}
-
-/* Section container defaults */
-section {
-	width: 100%;
-	max-width: 100%;
-	padding: var(--2xl) var(--page-margin);
-
-	/* Center nested content container */
-	& > div {
-		display: flex;
-		flex-flow: column nowrap;
-		width: var(--page-width);
-		max-width: 100%;
-		margin: auto;
-	}
-}
-
-/* Header defaults */
-header {
-	display: flex;
-	justify-content: center;
-	padding: 0 var(--page-margin) ;
-
-	& nav {
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: space-between;
-		width: var(--page-width);
-		max-width: 100%;
-		margin: auto;
-	}
-}
-
-/* Footer defaults */
-footer {
-	display: flex;
-	justify-content: center;
-	margin-top: auto;
-	padding: var(--page-margin) 0;
-
-	& nav {
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: space-between;
-		width: var(--page-width);
-		max-width: 100%;
-		margin: auto;
-	}
-}
-
-/* Cursor default */
-a, a span, button span { cursor: pointer; }
-
-/* Disabled state */
-:disabled {
-	opacity: var(--disabled-opacity);
-	pointer-events: none;
-}
-
-/* Font smoothing for iOS and Mac */
-@media (-webkit-min-device-pixel-ratio: 2) {
-
-	a, blockquote, button, code, figcaption, h1, h2, h3, h4, h5, h6, kbd, li, mark, p, pre, small, span   {
-		-webkit-font-smoothing: antialiased; /* Chrome, Safari */
-		-moz-osx-font-smoothing: grayscale; /* Firefox */
-	}
-}
-
-/* Scrollbar removal */
-.no-scrollbar {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
-
-	&::-webkit-scrollbar {
-		display: none;
-	}
-}
-
-/* Smooth anchor link scrolling */
-html { scroll-behavior: smooth; }
-
-/* Transitions */
-a, button, input, textarea, select {
-	transition: var(--transition);
-
-	&:focus {
-		outline: none;
-	}
-
-	&:focus-visible {
-		outline-width: var(--focus-outline-width);
-		outline-style: var(--focus-outline-style);
-		outline-color: hsl(var(--focus-outline));
-		outline-offset: var(--focus-outline-offset);
-	}
-}
+/*** Alpine cloaking ***/
+/* Prevent Alpine-invoked elements from flickering on page load */
+[x-cloak] { display: none !important; }
 
 
-/****** UI ELEMENTS ******/
-
-
-/*** Article (for long-form typography formatting) ***/
+/*** Article (container preset) ***/
+/* A formatting container for text articles and blogs */
 article {
 	width: var(--article-width);
 	max-width: 100%;
@@ -147,7 +33,6 @@ article {
 	& hr {
 		margin-top: 3em;
 		margin-bottom: 3em;
-		border-color: hsl(var(--divider));
 	}
 
 	/* List (ordered / numbers) modifier */
@@ -288,22 +173,40 @@ mark {
 	box-shadow: var(--badge-shadow);
 }
 
-/* Danger Modifier */
+/* Contrast modifier */
+mark.danger {
+	color: hsl(var(--contrast-inverse));
+	background: hsl(var(--contrast));
+}
+
+/* Danger modifier */
 mark.danger {
 	color: hsl(var(--danger-inverse));
 	background: hsl(var(--danger));
 }
 
-/* Primary Modifier */
+/* Primary modifier */
 mark.primary {
 	color: hsl(var(--primary-inverse));
 	background: hsl(var(--primary));
 }
 
-/* Secondary Modifier */
+/* Secondary modifier */
 mark.secondary {
 	color: hsl(var(--secondary-inverse));
 	background: hsl(var(--secondary));
+}
+
+
+/*** Body (container preset) ***/
+/* The body is the page container; its direct children should typically be a <header>, <main>, and <footer> */
+body {
+	display: flex;
+	flex-flow: column; /* Stack children; apply inline Tailwind class(es) to modify */
+	justify-content: center;
+	max-width: 100vw;
+	min-height: 100vh;
+	background: hsl(var(--page)); /* Set page colour */
 }
 
 
@@ -339,7 +242,7 @@ button, .button {
 	text-overflow: ellipsis;
 	background: hsl(var(--button));
 	border-radius: var(--button-radius);
-	border: var(--button-border-width) var(--button-border-style) var(--button-border);
+	border: var(--button-border-width) var(--button-border-style) hsl(var(--button-border));
 	box-shadow: var(--button-shadow);
 	cursor: var(--button-cursor);
 	user-select: none;
@@ -348,7 +251,7 @@ button, .button {
 		transform: scale(var(--button-scale-hover));
 		color: hsl(var(--button-inverse-hover));
 		background: hsl(var(--button-hover));
-		border-color: hsl(var(--button-border-hover));
+		border: var(--button-border-width) var(--button-border-style) hsl(var(--button-border-hover));
 
 		& span {
 			color: inherit;
@@ -419,7 +322,7 @@ button, .button {
 	}
 }
 
-/* Contrast Modifier */
+/* Contrast modifier */
 button.contrast, .button.contrast {
 	color: hsl(var(--contrast-inverse));
 	background: hsl(var(--contrast));
@@ -443,7 +346,7 @@ button.contrast, .button.contrast {
 	}
 }
 
-/* Danger Modifier */
+/* Danger modifier */
 button.danger, .button.danger {
 	color: hsl(var(--danger-inverse));
 	background: hsl(var(--danger));
@@ -467,7 +370,7 @@ button.danger, .button.danger {
 	}
 }
 
-/* Dropdown Modifier */
+/* Dropdown modifier */
 button.dropdown, .button.dropdown {
 	appearance: none;
 	justify-content: flex-start;
@@ -496,7 +399,7 @@ button.dropdown, .button.dropdown {
 	}
 }
 
-/* Ghost Modifier */
+/* Ghost modifier */
 button.ghost, .button.ghost {
 	color: hsl(var(--text-soft));
 	background: none;
@@ -510,32 +413,32 @@ button.ghost, .button.ghost {
 	}
 }
 
-/* Outline Modifier */
+/* Outline modifier */
 button.outline, .button.outline {
 	color: hsl(var(--text-soft));
 	background: none;
-	border: 1px solid hsl(var(--button-hover));
+	border: var(--button-border-width) var(--button-border-style) hsl(var(--button-border));
 
 	&:hover {
 		background: hsl(var(--button-hover));
-		border: 1px solid hsl(var(--button-hover));
+		border: var(--button-border-width) var(--button-border-style) hsl(var(--button-border-hover));
 
 		& span {
-			color: inerhit;
+			color: inherit;
 		}
 	}
 
 	&:active {
 		background: hsl(var(--button-focus));
-		border-color: hsl(var(--button-focus));
+		border: var(--button-border-width) var(--button-border-style) hsl(var(--button-border-focus));
 
 		& span {
-			color: inerhit;
+			color: inherit;
 		}
 	}
 }
 
-/* Primary Modifier */
+/* Primary modifier */
 button.primary, .button.primary {
 	color: hsl(var(--primary-inverse));
 	background: hsl(var(--primary));
@@ -559,7 +462,7 @@ button.primary, .button.primary {
 	}
 }
 
-/* Secondary Modifier */
+/* Secondary modifier */
 button.secondary, .button.secondary {
 	color: hsl(var(--secondary-inverse));
 	background: hsl(var(--secondary));
@@ -583,7 +486,7 @@ button.secondary, .button.secondary {
 	}
 }
 
-/* Transparent Modifier */
+/* Transparent modifier */
 button.transparent, .button.transparent {
 	color: hsl(var(--text-faint));
 	background: none;
@@ -667,10 +570,12 @@ button.transparent, .button.transparent {
 
 	/* Override paragraph styles */
 	& p {
+		flex-grow: 1;
 		font-family: inherit;
 		font-weight: inherit;
 		font-style: inherit;
 		font-size: inherit;
+		line-height: inherit;
 		color: inherit;
 	}
 
@@ -679,6 +584,26 @@ button.transparent, .button.transparent {
 		min-width: var(--callout-icon-size);
 		margin-top: 2px;
 		font-size: var(--callout-icon-size);
+	}
+}
+
+/* Contrast modifier */
+.callout.contrast {
+	color: hsl(var(--contrast-inverse));
+	background: hsl(var(--contrast));
+
+	& * {
+		color: hsl(var(--contrast-inverse));
+	}
+}
+
+/* Danger modifier */
+.callout.danger {
+	color: hsl(var(--danger-inverse));
+	background: hsl(var(--danger));
+
+	& * {
+		color: hsl(var(--danger-inverse));
 	}
 }
 
@@ -699,16 +624,6 @@ button.transparent, .button.transparent {
 
 	& * {
 		color: hsl(var(--secondary-inverse));
-	}
-}
-
-/* Danger modifier */
-.callout.danger {
-	color: hsl(var(--danger-inverse));
-	background: hsl(var(--danger));
-
-	& * {
-		color: hsl(var(--danger-inverse));
 	}
 }
 
@@ -820,7 +735,19 @@ input[type="color"] {
 }
 
 
+/*** Cursor (interactive preset) ***/
+a, a span, button span { cursor: pointer; }
+
+
+/* Disabled state */
+:disabled {
+	opacity: var(--disabled-opacity);
+	pointer-events: none;
+}
+
+
 /*** Divider ***/
+/* For vertical lines and lines containing icons and text; for simple horizontal lines see the <hr> element */
 .divider {
 	display: flex;
 	flex-flow: row nowrap;
@@ -828,14 +755,14 @@ input[type="color"] {
 	align-items: center;
 	width: 100%;
 	height: 1px;
-	margin-top: var(--sm);
-	margin-bottom: var(--sm);
+	margin: var(--sm) 0; /* Top/bottom spacing from sibling elements */
 	white-space: nowrap;
 	font-family: var(--sans);
 	font-weight: var(--divider-weight);
 	font-size: var(--divider-size);
 	color: hsl(var(--text-faint));
 
+	/* Lines before and after icons or text in the element */
 	&:before,
 	&:after {
 		content: "";
@@ -850,23 +777,18 @@ input[type="color"] {
 	}
 }
 
-/* Vertical Modifier */
+/* Vertical line modifier */
 .divider.vertical {
 	flex-flow: column nowrap;
 	width: 1px;
-	height: auto;
-	margin-top: 0;
-	margin-bottom: 0;
-	margin-left: var(--sm);
-	margin-right: var(--sm);
+	height: 100%;
+	margin: 0 var(--sm); /* Left/right spacing from sibling elements */
 
 	&:before,
 	&:after {
 		content: "";
-		flex-grow: 1;
 		width: 1px;
 		height: 100%;
-		background: hsl(var(--divider));
 	}
 }
 
@@ -1049,6 +971,35 @@ input[type="color"] {
 }
 
 
+/*** Font smoothing (for iOS and Mac) ***/
+@media (-webkit-min-device-pixel-ratio: 2) {
+	a, blockquote, button, code, figcaption, h1, h2, h3, h4, h5, h6, kbd, li, mark, p, pre, small, span   {
+		-webkit-font-smoothing: antialiased; /* Chrome, Safari */
+		-moz-osx-font-smoothing: grayscale; /* Firefox */
+	}
+}
+
+
+/*** Footer (containe preset) ***/
+/* Apply a single <footer> at end of page for bottom navigation */
+footer {
+	display: flex;
+	justify-content: center;
+	margin-top: auto;
+	padding: var(--page-margin) 0; /* Pad left/right screen edges */
+
+	/* Nested nav container for holding links or link groups */
+	& nav {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between; /* Space out children; use inline Tailwind class(es) to modify */
+		width: var(--page-width); /* Set content width */
+		max-width: 100%;
+		margin: auto; /* Centre horizontally */
+	}
+}
+
+
 /*** Heading 1 (Main Title) ***/
 h1 {
 	margin: 0;
@@ -1132,6 +1083,41 @@ h6 {
 	color: hsl(var(--h6));
 }
 
+
+/*** Header (container preset) ***/
+/* Apply a single <header> at start of page for top navigation */
+header {
+	display: flex;
+	justify-content: center;
+	padding: 0 var(--page-margin); /* Pad left/right screen edges */
+
+	/* Nested nav container for holding links or link groups */
+	& nav {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between; /* Space out children; use inline Tailwind class(es) to modify */
+		width: var(--page-width); /* Set content width */
+		max-width: 100%;
+		margin: auto; /* Centre horizontally */
+	}
+}
+
+
+/*** Horizontal Rule ***/
+hr {
+	width: auto;
+	height: 1px;
+	background: hsl(var(--divider));
+	border: 0 none;
+}
+
+/*** HTML (normalizer) ***/
+html {
+	width: 100vw;
+	max-width: 100vw;
+	overflow-x: hidden;
+	scroll-behavior: smooth; /* Smooth anchor link scrolling */
+}
 
 /*** Image ***/
 img {
@@ -1380,7 +1366,6 @@ label {
 
 
 /*** Link ***/
-
 /* Standalone link */
 a {
 	display: flex;
@@ -1576,6 +1561,17 @@ ul {
 }
 
 
+/*** Main (container preset) ***/
+/* Apply a single <main> on a page between a <header> and <footer>, to hold key content like <section> containers */
+main {
+	display: flex;
+	flex-flow: column nowrap; /* Stack children; apply inline Tailwind class(es) to modify */
+	width: 100%;
+	max-width: 100%;
+	margin: auto; /* Centre horizontally if width modified */
+}
+
+
 /*** Modal ***/
 dialog, [popover] {
 	display: none;
@@ -1686,6 +1682,36 @@ blockquote {
 	border-right: var(--quote-border-right-width) solid hsl(var(--quote-border));
 	border-radius: var(--quote-radius);
 	box-shadow: var(--quote-shadow);
+}
+
+
+/*** Scrollbar removal ***/
+/* Apply this class to scrollable containers that should not display the scrollbar(s) */
+.no-scrollbar {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+
+/*** Section (container presets) ***/
+/* Use sections within a <main> element to */
+section {
+	width: 100%;
+	max-width: 100%;
+	padding: var(--2xl) var(--page-margin);  /* Pad top/bottom for content and left/right screen edges */
+
+	/* Nested content in a centered div container */
+	& > div {
+		display: flex;
+		flex-flow: column nowrap; /* Stack children; apply inline Tailwind class(es) to modify */
+		width: var(--page-width); /* Set content width */
+		max-width: 100%;
+		margin: auto; /* Centre horizontally */
+	}
 }
 
 
@@ -1925,21 +1951,47 @@ table {
 	}
 }
 
-/*** Text Color Modifiers ***/
+
+/*** Text Colour Modifiers ***/
+/* An alternative to 'text-[modifier]' Tailwind class, which also works */
+
+/* Contrast modifier */
+h1.contrast, h2.contrast, h3.contrast, h4.contrast, h5.contrast, h6.contrast, p.contrast, small.contrast, figcaption.contrast, pre.contrast, blockquote.contrast, code.contrast, kbd.contrast, li.contrast {
+	color: hsl(var(--contrast-text));
+}
+
+/* Danger modifier */
+h1.danger, h2.danger, h3.danger, h4.danger, h5.danger, h6.danger, p.danger, small.danger, figcaption.danger, pre.danger, blockquote.danger, code.danger, kbd.danger, li.danger {
+	color: hsl(var(--danger-text));
+}
 
 /* Primary modifier */
-h1.primary, h2.primary, h3.primary, h4.primary, h5.primary, h6.primary, p.primary, small.primary, caption.primary, pre.primary, blockquote.primary, code.primary, kbd.primary, li.primary {
+h1.primary, h2.primary, h3.primary, h4.primary, h5.primary, h6.primary, p.primary, small.primary, figcaption.primary, pre.primary, blockquote.primary, code.primary, kbd.primary, li.primary {
 	color: hsl(var(--primary-text));
 }
 
 /* Secondary modifier */
-h1.secondary, h2.secondary, h3.secondary, h4.secondary, h5.secondary, h6.secondary, p.secondary, small.secondary, caption.secondary, pre.secondary, blockquote.secondary, code.secondary, kbd.secondary, li.secondary {
+h1.secondary, h2.secondary, h3.secondary, h4.secondary, h5.secondary, h6.secondary, p.secondary, small.secondary, figcaption.secondary, pre.secondary, blockquote.secondary, code.secondary, kbd.secondary, li.secondary {
 	color: hsl(var(--secondary-text));
 }
 
-/* Danger modifier */
-h1.danger, h2.danger, h3.danger, h4.danger, h5.danger, h6.danger, p.danger, small.danger, caption.danger, pre.danger, blockquote.danger, code.danger, kbd.danger, li.danger {
-	color: hsl(var(--danger-text));
+
+/*** Transitions ***/
+/* Applies a standard transition to interactive elements and focuses */
+a, button, input, textarea, select {
+	transition: var(--transition);
+
+	&:focus {
+		outline: none;
+	}
+
+	/* Accessibility styling on focus */
+	&:focus-visible {
+		outline-width: var(--focus-outline-width);
+		outline-style: var(--focus-outline-style);
+		outline-color: hsl(var(--focus-outline));
+		outline-offset: var(--focus-outline-offset);
+	}
 }
 
 

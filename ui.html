@@ -1,0 +1,264 @@
+<!--------------------------------------------------------------------------------
+This file provides HTML for copy/paste of UI elements within the Sitrus framework.
+Theme values like colours and spacing variables can be edited in /style/theme.css.
+Element presets and modifier classes are defined in /style/ui.css.
+All HTML elements below can receive style overrides with inline Tailwind classes.
+--------------------------------------------------------------------------------->
+
+
+<!----- BADGE ----->
+<mark>Badge</mark>
+
+<!-- Style modifiers -->
+<mark class="contrast">Contrast</mark>
+<mark class="danger">Danger</mark>
+<mark class="primary">Primary</mark>
+<mark class="secondary">Primary</mark>
+
+<!-- Icon included -->
+<mark><span class="iconify" data-icon="ph:house"></span>Badge with icon</mark>
+
+
+<!------ BUTTON ----->
+<button>Button</button>
+
+<!-- Icon & text -->
+<button>
+  <span class="iconify" data-icon=""ph:house></span>
+  <span>Icon & text</span> <!-- Text must be in a <span>, before or after icon -->
+</button>
+
+<!-- Icon only -->
+<button><span class="iconify" data-icon="ph:house"></span></button>
+
+<!-- Style modifiers -->
+<button class="contrast">Contrast</button>
+<button class="danger">Danger</button>
+<button class="dropdown">Dropdown</button>
+<button class="ghost">Ghost</button>
+<button class="outline">Outline</button>
+<button class="primary">Primary</button>
+<button class="secondary">Secondary</button>
+<button class="transparent">Transparent</button>
+
+<!-- Disabled attribute -->
+<button disabled>Disabled</button>
+
+<!-- Links that have a button appearance -->
+<a href="#" class="button">Button Link</a>
+
+<!-- Set colour theme -->
+<button data-set-them="dark"><span class="iconify" data-icon="ph:moon"></span></button>
+
+<!-- Toggle colour theme -->
+<button data-toggle-theme="dark,light"></button>
+
+<!-- Open modal -->
+<button popovertarget="modalID">Open Modal</button>
+<dialog popover id="modalID">I'm open! See dialog element for modal styles.</dialog>
+
+
+<!----- BUTTON GROUP ----->
+<div class="button-group">
+  <button>A</button>
+  <button>B</button>
+  <button>C</button>
+</div>
+
+<!-- With input -->
+<div class="button-group">
+  <input placeholder="Insert email"/>
+  <button>Subscribe</button>
+</div>
+
+
+<!----- Callout ----->
+<div class="callout">
+  <p>Callouts are useful for highlighting important information.</p>
+</div>
+
+<!-- Icon included -->
+<div class="callout">
+  <span class="iconify" data-icon="ph:house"></span>
+  <p>Icons can be added before or after text.</p>
+</div>
+
+<!-- Appearance modifiers -->
+<div class="callout primary">
+  <p>Callouts are useful for highlighting important information.</p>
+</div>
+
+<div class="callout secondary">
+  <p>Callouts are useful for highlighting important information.</p>
+</div>
+
+<div class="callout danger">
+  <p>Callouts are useful for highlighting important information.</p>
+</div>
+
+<div class="callout contrast">
+  <p>Callouts are useful for highlighting important information.</p>
+</div>
+
+
+<!----- CAPTION ----->
+<figcaption>Caption text is useful for fineprint.</figcaption>
+
+<!-- Appearance modifiers -->
+<figcaption class="primary">Primary caption text.</figcaption>
+<figcaption class="secondary">Secondary caption text.</figcaption>
+<figcaption class="danger">Danger caption text.</figcaption>
+<div class="bg-contrast">
+  <figcaption class="contrast">Contrast caption text.</figcaption>
+</div>
+
+
+
+<!------ DROPDOWN ----->
+<div class="relative" x-data="{ dropdown: false }">
+
+  <!-- Button -->
+  <button class="btn btn-dropdown" @click="dropdown = !dropdown"><span>Dropdown</span><span class="iconify" data-icon="ion:chevron-down"></span></button>
+
+  <!-- Menu -->
+  <ul class="dropdown" x-cloak x-show="dropdown" x-transition @click.away="dropdown = false">
+    <li>
+      <a href="#">
+        <span>Clickthrough Link</span>
+        <span class="iconify" data-icon="ion:arrow-forward-outline"></span>
+      </a>
+    </li>
+    <div class="divider"></div>
+    <li class="title">Group Label</li>
+    <li @click="dropdown = false">
+      Project Settings
+    </li>
+    <li data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
+      Switch Theme
+    </li>
+    <li @click="dropdown = false">
+      <span>Profile</span>
+      <span class="trailingSymbol">K</span>
+    </li>
+  </ul>
+
+</div>
+
+
+<!---- INPUTS ----->
+    
+<!-- Text Field -->
+<div class="flex flex-col gap-sm">
+  <label for="input" class="text-body ml-xs">Label</label>
+  <input type="text" id="input" placeholder="Insert text" value="Value" onclick="select()" />
+</div>
+
+<!-- Text Field with Floating Label -->
+<label for="floatingLabel" class="floating-label">
+  <input type="text" id="floatingLabel" placeholder="Insert text" onclick="select()" />
+  <span>Label</span>
+</label>
+
+<!-- Text Area -->
+<div class="flex flex-col gap-sm">
+  <label for="textarea" class="text-body ml-xs">Label</label>
+<textarea type="text" id="textarea" placeholder="Insert text" onclick="select()"></textarea>
+</div>
+
+<!-- Text Area with Floating Label, and Alpine to Auto-Grow -->
+<label for="autoresize" class="floating-label">
+  <textarea type="text" id="autoresize" placeholder="Type your message here. I will resize based on the height content." x-data x-grow rows="2" onclick="select()"></textarea>
+  <span>Label</span>
+</label>
+
+
+<!------ MEDIA ------>
+
+<!-- Icon -->
+<span class="iconify text-4xl text-soft" data-icon="ion:heart-outline"></span>
+      
+<!-- Image -->
+<img src="https://source.unsplash.com/kzEFwhXPXwo" alt="" />
+
+<!-- Captioned Image -->
+<figure>
+  <img src="https://source.unsplash.com/LiDZooBvzt0" alt="" />
+  <figcaption class="mt-sm text-caption text-center">We looked on from the vantage point.</figcaption>
+</figure>
+
+<!-- Video -->
+<video controls>
+  <source type="video/mp4" src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" poster="https://upload.wikimedia.org/wikipedia/commons/c/ca/Bbb-splash.png"/>
+</video>
+
+<!-- YouTube -->
+<iframe class="video" src="https://www.youtube-nocookie.com/embed/SiL8xnDd134?si=6U3L0uB0go6LE0CT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+<!----- MODAL ----->
+<dialog popover id="modalID" class="modal">
+  Content goes here
+  <button popovertargetaction="hide" class="btn">Close Button Example</button>
+</dialog>
+
+
+<!----- SHAPES ----->
+
+<!-- Divider -->
+<div class="divider"></div>
+
+<!-- Divider with Content -->
+<div class="divider">OR</div>
+
+<!-- Vertical Divider -->
+<div class="divider divider-vertical"></div>
+
+<!-- Vertical Divider with Content -->
+<div class="divider divider-vertical"><span class="iconify" data-icon="ion:heart"></span></div>
+
+<!-- Circle -->
+<div class="flex rounded-full w-[100px] h-[100px] bg-3"></div>
+
+<!-- Square -->
+<div class="flex w-[100px] h-[100px] bg-3"></div>
+
+<!-- Squircle -->
+<div class="flex rounded-md w-[100px] h-[100px] bg-3"></div>
+
+
+<!----- TYPE STYLES ----->
+
+<!-- Main Title -->
+<h1 class="title-main">Main Title. Lorem <a href="#">ipsum dolar</a> sit amet.</h1>
+
+<!-- Section Title -->
+<h2 class="title-section">Section Title. Lorem <a href="#">ipsum dolar</a> sit amet.</h2>
+
+<!-- Minor Title -->
+<h3 class="title-minor">Minor Title. Lorem <a href="#">ipsum dolar</a> sit amet.</h3>
+
+<!-- Body Title -->
+<h4 class="title-body">Body Title. Lorem <a href="#">ipsum dolar</a> sit amet.</h4>
+
+<!-- Body Text -->
+<p class="text-body">Body text. Lorem <a href="#">ipsum dolar</a> sit amet. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<!-- Small Text -->
+<p class="text-small">Small text. Lorem <a href="#">ipsum dolar</a> dolar sit amet. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<!-- Caption Text -->
+<p class="text-caption">Body text. Lorem <a href="#">ipsum dolar</a> dolar sit amet.</p>
+
+<!-- Standalone Link -->
+<a href="#" class="text-link">Standalone Link</a>
+
+<!-- Code Text -->
+<code>Code text. Lorem ipsum dolar dolar sit amet.</code>
+
+<!--- Keyboard Text --->
+<div class="flex flex-row gap-[2px]">
+  <kbd>SHIFT</kbd><kbd>⌘</kbd><kbd>K</kbd>
+</div>
+
+<!-- Quote Text -->
+<blockquote>Blockquote text. Lorem ipsum dolar sit amet.</blockquote>

@@ -46,6 +46,7 @@ tailwind.config = {
 				"contrast-inverse": "hsl(var(--contrast-inverse) / <alpha-value>)",
 				"contrast-inverse-hover": "hsl(var(--contrast-inverse-hover) / <alpha-value>)",
 				"contrast-inverse-focus": "hsl(var(--contrast-inverse-focus) / <alpha-value>)",
+				"contrast-text": "hsl(var(--contrast-text) / <alpha-value>)",
 				"counter": "hsl(var(--counter) / <alpha-value>)",
 				"danger": "hsl(var(--danger) / <alpha-value>)",
 				"danger-hover": "hsl(var(--danger-hover) / <alpha-value>)",

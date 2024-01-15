@@ -51,7 +51,7 @@
 		--button-inline-icon-size: 16px;
 		--button-solo-icon-size: 20px;
 		--button-case: none;
-		--button-border-width: 0;
+		--button-border-width: 1px;
 		--button-border-style: solid;
 		--button-radius: 20px;
 		--button-shadow: none;
@@ -427,15 +427,18 @@
 		--bg2: 240 5.9% 90%; /* zinc-200 */
 		--bg3: 240 4% 87%; /* zinc-250 (custom) */
 		--backdrop: 0 0% 0%; /* black */
+		--badge-text: 240 5.3% 26.1%; /* zinc-700 */
+		--badge-bg: 240 5.9% 90%; /* zinc-200 */
+		--badge-border: 240 5.9% 90%; /* zinc-200 */
 		--button: 240 5.9% 90%; /* zinc-200 */
 		--button-hover: 240 4% 87%; /* zinc-250 (custom) */
 		--button-focus: 240 4.9% 83.9%; /* zinc-300 */
 		--button-inverse: 240 5.3% 26.1%; /* zinc-700 */
 		--button-inverse-hover: 240 5.9% 10%; /* zinc-900 */
 		--button-inverse-focus: 0 0% 0%; /* black */
-		--button-border: transparent;
-		--button-border-hover: transparent;
-		--button-border-focus: transparent;
+		--button-border: 240 5.2% 33.9%; /* zinc-600 */
+		--button-border-hover: 240 5.2% 33.9%; /* zinc-600 */
+		--button-border-focus: 240 5.2% 33.9%; /* zinc-600 */
 		--callout-text: 240 5.9% 10%; /* zinc-900 */
 		--callout-bg: var(--bg1);
 		--callout-border: var(--bg2);
@@ -447,6 +450,7 @@
 		--contrast-inverse: 0 0% 100%; /* white */
 		--contrast-inverse-hover: 0 0% 100%; /* white */
 		--contrast-inverse-focus: 0 0% 100%; /* white */
+		--contrast-text: 0 0% 100%; /* white */
 		--danger: 0 93.5% 81.8%; /* red-300 */
 		--danger-hover: 0 92% 76%; /* red-350 (custom) */
 		--danger-focus: 0 90.6% 70.8%; /* red-400 */
@@ -497,9 +501,9 @@
 		--switch-on: var(--primary);
 		--switch-on-hover: var(--primary-hover);
 		--switch-on-focus: var(--primary-focus);
-		--switch-border: transparent;
-		--switch-border-hover: transparent;
-		--switch-border-focus: transparent;
+		--switch-border: 240 5.9% 90%; /* zinc-200 */
+		--switch-border-hover: 240 5.9% 90%; /* zinc-200 */
+		--switch-border-focus: 240 5.9% 90%; /* zinc-200 */
 		--switch-marker-off: 0 0% 100%; /* white */
 		--switch-marker-off-hover: 0 0% 100%; /* white */
 		--switch-marker-off-focus: 0 0% 100%; /* white */
@@ -567,7 +571,7 @@
 		--pre-border: var(--bg2);
 		--code-bg: var(--bg3);
 		--code-text: 240 5.9% 10%; /* zinc-900 */
-		--code-border: transparent;
+		--code-border: var(--bg3);
 	}
 
 	/* User toggles light theme */
@@ -576,16 +580,18 @@
 		--bg1: 240 4.8% 95.9%; /* zinc-100 */
 		--bg2: 240 5.9% 90%; /* zinc-200 */
 		--bg3: 240 4% 87%; /* zinc-250 (custom) */
-		--backdrop: 0 0% 0%; /* black */
+		--badge-text: 240 5.3% 26.1%; /* zinc-700 */
+		--badge-bg: 240 5.9% 90%; /* zinc-200 */
+		--badge-border: 240 5.9% 90%; /* zinc-200 */
 		--button: 240 5.9% 90%; /* zinc-200 */
 		--button-hover: 240 4% 87%; /* zinc-250 (custom) */
 		--button-focus: 240 4.9% 83.9%; /* zinc-300 */
 		--button-inverse: 240 5.3% 26.1%; /* zinc-700 */
 		--button-inverse-hover: 240 5.9% 10%; /* zinc-900 */
 		--button-inverse-focus: 0 0% 0%; /* black */
-		--button-border: transparent;
-		--button-border-hover: transparent;
-		--button-border-focus: transparent;
+		--button-border: 240 5.2% 33.9%; /* zinc-600 */
+		--button-border-hover: 240 5.2% 33.9%; /* zinc-600 */
+		--button-border-focus: 240 5.2% 33.9%; /* zinc-600 */
 		--callout-text: 240 5.9% 10%; /* zinc-900 */
 		--callout-bg: var(--bg1);
 		--callout-border: var(--bg2);
@@ -597,6 +603,7 @@
 		--contrast-inverse: 0 0% 100%; /* white */
 		--contrast-inverse-hover: 0 0% 100%; /* white */
 		--contrast-inverse-focus: 0 0% 100%; /* white */
+		--contrast-text: 0 0% 100%; /* white */
 		--danger: 0 93.5% 81.8%; /* red-300 */
 		--danger-hover: 0 92% 76%; /* red-350 (custom) */
 		--danger-focus: 0 90.6% 70.8%; /* red-400 */
@@ -647,9 +654,9 @@
 		--switch-on: var(--primary);
 		--switch-on-hover: var(--primary-hover);
 		--switch-on-focus: var(--primary-focus);
-		--switch-border: transparent;
-		--switch-border-hover: transparent;
-		--switch-border-focus: transparent;
+		--switch-border: 240 5.9% 90%; /* zinc-200 */
+		--switch-border-hover: 240 5.9% 90%; /* zinc-200 */
+		--switch-border-focus: 240 5.9% 90%; /* zinc-200 */
 		--switch-marker-off: 0 0% 100%; /* white */
 		--switch-marker-off-hover: 0 0% 100%; /* white */
 		--switch-marker-off-focus: 0 0% 100%; /* white */
@@ -717,7 +724,7 @@
 		--pre-border: var(--bg2);
 		--code-bg: var(--bg3);
 		--code-text: 240 5.9% 10%; /* zinc-900 */
-		--code-border: transparent;
+		--code-border: var(--bg3);
 	}
 
 	/* OS or browser prefers dark theme */
@@ -729,15 +736,18 @@
 			--bg1: 240 5.9% 10%; /* zinc-900 */
 			--bg2: 240 3.7% 15.9%; /* zinc-800 */
 			--bg3: 240 5.3% 26.1%; /* zinc-700 */
+			--badge-text: 0 0% 98%; /* zinc-50 */
+			--badge-bg: 240 5.2% 33.9%; /* zinc-600 */
+			--badge-border: 240 5.2% 33.9%; /* zinc-600 */
 			--button: 240 5.2% 33.9%; /* zinc-600 */
 			--button-hover: 240 4% 40%; /* zinc-550 (custom) */
 			--button-focus: 240 4% 40%; /* zinc-550 (custom) */
 			--button-inverse: 0 0% 98%; /* zinc-50 */
 			--button-inverse-hover: 0 0% 98%; /* zinc-50 */
 			--button-inverse-focus: 0 0% 98%; /* zinc-50 */
-			--button-border: transparent;
-			--button-border-hover: transparent;
-			--button-border-focus: transparent;
+			--button-border: 240 5.2% 33.9%; /* zinc-600 */
+			--button-border-hover: 240 5.2% 33.9%; /* zinc-600 */
+			--button-border-focus: 240 5.2% 33.9%; /* zinc-600 */
 			--chip: 240 3.8% 46.1%; /* zinc-500 */
 			--chip-text: var(--text-soft);
 			--contrast: 0 0% 98%; /* zinc-50 */
@@ -746,6 +756,7 @@
 			--contrast-inverse: 0 0% 0%; /* black */
 			--contrast-inverse-hover: 0 0% 0%; /* black */
 			--contrast-inverse-focus: 0 0% 0%; /* black */
+			--contrast-text: 0 0% 0%; /* black */
 			--callout-text: 240 4.9% 83.9%; /* zinc-300 */
 			--callout-bg: var(--bg1);
 			--callout-border: var(--bg2);
@@ -773,9 +784,9 @@
 			--input-focus: 240 4% 40%; /* zinc-550 (custom) */
 			--input-placeholder: var(--text-faint);
 			--input-value: 0 0% 98%; /* zinc-50 */
-			--input-border: transparent;
-			--input-border-hover: transparent;
-			--input-border-focus: transparent;
+			--input-border: 240 5.2% 33.9%; /* zinc-600 */
+			--input-border-hover: 240 5.2% 33.9%; /* zinc-600 */
+			--input-border-focus: 240 5.2% 33.9%; /* zinc-600 */
 			--modal: 240 5.3% 26.1%; /* zinc-700 */
 			--modal-divider: 240 5.2% 33.9%; /* zinc-600 */
 			--page: 240 10% 3.9%; /* zinc-950 */
@@ -799,9 +810,9 @@
 			--switch-on: var(--primary);
 			--switch-on-hover: var(--primary-hover);
 			--switch-on-focus: var(--primary-focus);
-			--switch-border: transparent;
-			--switch-border-hover: transparent;
-			--switch-border-focus: transparent;
+			--switch-border: 240 5.2% 33.9%; /* zinc-600 */
+			--switch-border-hover: 240 5.2% 33.9%; /* zinc-600 */
+			--switch-border-focus: 240 5.2% 33.9%; /* zinc-600 */
 			--switch-marker-off: 240 5.9% 90%; /* zinc-200 */
 			--switch-marker-off-hover: 240 5.9% 90%; /* zinc-200 */
 			--switch-marker-off-focus: 240 5.9% 90%; /* zinc-200 */
@@ -869,7 +880,7 @@
 			--pre-border: var(--bg2);
 			--code-bg: var(--bg3);
 			--code-text: 0 0% 100%; /* white */
-			--code-border: transparent;
+			--code-border: var(--bg3);
 		}
 	}
 
@@ -879,18 +890,18 @@
 		--bg1: 240 5.9% 10%; /* zinc-900 */
 		--bg2: 240 3.7% 15.9%; /* zinc-800 */
 		--bg3: 240 5.3% 26.1%; /* zinc-700 */
-		--badge-text: var(--button-inverse);
-		--badge-bg: var(--button);
-		--badge-border: transparent;
+		--badge-text: 0 0% 98%; /* zinc-50 */
+		--badge-bg: 240 5.2% 33.9%; /* zinc-600 */
+		--badge-border: 240 5.2% 33.9%; /* zinc-600 */
 		--button: 240 5.2% 33.9%; /* zinc-600 */
 		--button-hover: 240 4% 40%; /* zinc-550 (custom) */
 		--button-focus: 240 4% 40%; /* zinc-550 (custom) */
 		--button-inverse: 0 0% 98%; /* zinc-50 */
 		--button-inverse-hover: 0 0% 98%; /* zinc-50 */
 		--button-inverse-focus: 0 0% 98%; /* zinc-50 */
-		--button-border: transparent;
-		--button-border-hover: transparent;
-		--button-border-focus: transparent;
+		--button-border: 240 5.2% 33.9%; /* zinc-600 */
+		--button-border-hover: 240 5.2% 33.9%; /* zinc-600 */
+		--button-border-focus: 240 5.2% 33.9%; /* zinc-600 */
 		--callout-text: 240 4.9% 83.9%; /* zinc-300 */
 		--callout-bg: var(--bg1);
 		--callout-border: var(--bg2);
@@ -902,6 +913,7 @@
 		--contrast-inverse: 0 0% 0%; /* black */
 		--contrast-inverse-hover: 0 0% 0%; /* black */
 		--contrast-inverse-focus: 0 0% 0%; /* black */
+		--contrast-text: 0 0% 0%; /* black */
 		--danger: 0 93.5% 81.8%; /* red-300 */
 		--danger-hover: 0 92% 76%; /* red-350 (custom) */
 		--danger-focus: 0 90.6% 70.8%; /* red-400 */
@@ -926,9 +938,9 @@
 		--input-focus: 240 4% 40%; /* zinc-550 (custom) */
 		--input-placeholder: var(--text-faint);
 		--input-value: 0 0% 98%; /* zinc-50 */
-		--input-border: transparent;
-		--input-border-hover: transparent;
-		--input-border-focus: transparent;
+		--input-border: 240 5.2% 33.9%; /* zinc-600 */
+		--input-border-hover: 240 5.2% 33.9%; /* zinc-600 */
+		--input-border-focus: 240 5.2% 33.9%; /* zinc-600 */
 		--modal: 240 5.3% 26.1%; /* zinc-700 */
 		--modal-divider: 240 5.2% 33.9%; /* zinc-600 */
 		--page: 240 10% 3.9%; /* zinc-950 */
@@ -952,9 +964,9 @@
 		--switch-on: var(--primary);
 		--switch-on-hover: var(--primary-hover);
 		--switch-on-focus: var(--primary-focus);
-		--switch-border: transparent;
-		--switch-border-hover: transparent;
-		--switch-border-focus: transparent;
+		--switch-border: 240 5.2% 33.9%; /* zinc-600 */
+		--switch-border-hover: 240 5.2% 33.9%; /* zinc-600 */
+		--switch-border-focus: 240 5.2% 33.9%; /* zinc-600 */
 		--switch-marker-off: 240 5.9% 90%; /* zinc-200 */
 		--switch-marker-off-hover: 240 5.9% 90%; /* zinc-200 */
 		--switch-marker-off-focus: 240 5.9% 90%; /* zinc-200 */
@@ -1022,6 +1034,6 @@
 		--pre-border: var(--bg2);
 		--code-bg: var(--bg3);
 		--code-text: 0 0% 100%; /* white */
-		--code-border: transparent;
+		--code-border: var(--bg3);
 	}
 }
