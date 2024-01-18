@@ -51,7 +51,7 @@
 		--button-inline-icon-size: 16px;
 		--button-solo-icon-size: 20px;
 		--button-case: none;
-		--button-border-width: 1px;
+		--button-border-width: 1.5px;
 		--button-border-style: solid;
 		--button-radius: 20px;
 		--button-shadow: none;
@@ -66,7 +66,7 @@
 		--callout-size: 16px;
 		--callout-icon-size: 25px;
 		--callout-leading: 1.6;
-		--callout-border-width: 1px;
+		--callout-border-width: 1.5px;
 		--callout-radius: var(--sm);
 		--callout-shadow: none;
 
@@ -208,7 +208,7 @@
 		--input-icon-size: 16px;
 		--input-leading: 1.4;
 		--input-case: none;
-		--input-border-width: 1px;
+		--input-border-width: 1.5px;
 		--input-border-bottom-width: 1px;
 		--input-border-style: solid;
 		--input-radius: 20px;
@@ -239,6 +239,7 @@
 		--kbd-leading: 1;
 
 		/* Label */
+		--label-offset: var(--xs);
 		--label-font: var(--sans);
 		--label-weight: normal;
 		--label-style: normal;
@@ -250,7 +251,6 @@
 		/* Link (Inline) */
 		--a-weight: bolder;
 		--a-style: normal;
-		--a-size: medium;
 		--a-underline-offset: 5px;
 		--a-decoration: underline;
 		--a-decoration-hover: underline;
@@ -298,6 +298,8 @@
 		--modal-min-height: 200px;
 		--modal-radius: 20px;
 		--modal-shadow: var(--shadow-xl);
+		--modal-header-divider-width: 0;
+		--modal-footer-divider-width: 0;
 
 		/* Page */
 		--page-width: 1000px;
@@ -319,7 +321,7 @@
 		--pre-style: normal;
 		--pre-size: 13px;
 		--pre-leading: 1.8;
-		--pre-border-width: 1px;
+		--pre-border-width: 1.5px;
 		--pre-radius: var(--sm);
 		--pre-shadow: none;
 
@@ -368,12 +370,12 @@
 		--stack-loading: 100;
 
 		/* Switch */
-		--switch-height: 25px;
+		--switch-height: 26px;
 		--switch-padding: 2px;
 		--switch-scale-hover: 100%;
 		--switch-scale-focus: 100%;
 		--switch-radius: 200px;
-		--switch-border-width: 1px;
+		--switch-border-width: 1.5px;
 		--switch-border-style: solid;
 		--switch-shadow: none;
 		--switch-cursor: pointer;
@@ -381,7 +383,7 @@
 		--switch-marker-shadow: var(--shadow);
 
 		/* Table */
-		--table-border-width: 1px;
+		--table-border-width: 1.5px;
 		--table-cell-gap: 4px;
 		--table-cell-padding-x: var(--md);
 		--table-cell-padding-y: var(--sm);
@@ -436,9 +438,9 @@
 		--button-inverse: 240 5.3% 26.1%; /* zinc-700 */
 		--button-inverse-hover: 240 5.9% 10%; /* zinc-900 */
 		--button-inverse-focus: 0 0% 0%; /* black */
-		--button-border: 240 5.2% 33.9%; /* zinc-600 */
-		--button-border-hover: 240 5.2% 33.9%; /* zinc-600 */
-		--button-border-focus: 240 5.2% 33.9%; /* zinc-600 */
+		--button-border: 240 5% 64.9%; /* zinc-400 */
+		--button-border-hover: 240 5% 64.9%; /* zinc-400 */
+		--button-border-focus: 240 5% 64.9%; /* zinc-400 */
 		--callout-text: 240 5.9% 10%; /* zinc-900 */
 		--callout-bg: var(--bg1);
 		--callout-border: var(--bg2);
@@ -459,24 +461,25 @@
 		--danger-inverse-focus: 0 62.8% 30.6%; /* red-900 */
 		--danger-text: 0 72.2% 50.6%; /* red-600 */
 		--divider: 240 5.9% 90%; /* zinc-200 */
+		--divider-text: 240 3.8% 46.1%; /* zinc-500 */
 		--dropdown: 0 0% 100%; /* white */
 		--dropdown-border: 0 0% 100%; /* white */
 		--dropdown-divider: 240 5.9% 90%; /* zinc-200 */
 		--dropdown-option-hover: 240 4.8% 95.9%; /* zinc-100 */
 		--dropdown-option-focus: 240 5.9% 90%; /* zinc-200 */
-		--dropdown-option-group: var(--text-faint);
-		--dropdown-option-text: var(--text-solid);
-		--dropdown-option-text-hover: var(--text-solid-link);
-		--dropdown-option-text-focus: var(--text-solid-link-hover);
-		--dropdown-option-trailing-symbol: var(--text-faint);
+		--dropdown-option-group: 240 3.8% 46.1%; /* zinc-500 */
+		--dropdown-option-text: 240 3.7% 15.9%; /* zinc-800 */
+		--dropdown-option-text-hover: 240 3.7% 15.9%; /* zinc-800 */
+		--dropdown-option-text-focus: 0 0% 0%; /* black */
+		--dropdown-option-trailing-symbol: 240 3.8% 46.1%; /* zinc-500 */
 		--focus-outline: 240 5.9% 90%; /* zinc-200 */
 		--input: 240 5.9% 90%; /* zinc-200 */
 		--input-hover: 240 4% 87%; /* zinc-250 (custom) */
 		--input-focus: 240 4.9% 83.9%; /* zinc-300 */
-		--input-placeholder: var(--text-faint);
-		--input-border: transparent;
-		--input-border-hover: transparent;
-		--input-border-focus: transparent;
+		--input-placeholder: 240 3.8% 46.1%; /* zinc-500 */
+		--input-border: 240 5% 64.9%; /* zinc-400 */
+		--input-border-hover: 240 5% 64.9%; /* zinc-400 */
+		--input-border-focus: 240 5% 64.9%; /* zinc-400 */
 		--input-value: 240 5.3% 26.1%; /* zinc-700 */
 		--modal: 0 0% 98%; /* zinc-50 */
 		--modal-divider: 240 5.9% 90%; /* zinc-200 */
@@ -501,9 +504,9 @@
 		--switch-on: var(--primary);
 		--switch-on-hover: var(--primary-hover);
 		--switch-on-focus: var(--primary-focus);
-		--switch-border: 240 5.9% 90%; /* zinc-200 */
-		--switch-border-hover: 240 5.9% 90%; /* zinc-200 */
-		--switch-border-focus: 240 5.9% 90%; /* zinc-200 */
+		--switch-border: 240 5% 64.9%; /* zinc-400 */
+		--switch-border-hover: 240 5% 64.9%; /* zinc-400 */
+		--switch-border-focus: 240 5% 64.9%; /* zinc-400 */
 		--switch-marker-off: 0 0% 100%; /* white */
 		--switch-marker-off-hover: 0 0% 100%; /* white */
 		--switch-marker-off-focus: 0 0% 100%; /* white */
@@ -589,9 +592,9 @@
 		--button-inverse: 240 5.3% 26.1%; /* zinc-700 */
 		--button-inverse-hover: 240 5.9% 10%; /* zinc-900 */
 		--button-inverse-focus: 0 0% 0%; /* black */
-		--button-border: 240 5.2% 33.9%; /* zinc-600 */
-		--button-border-hover: 240 5.2% 33.9%; /* zinc-600 */
-		--button-border-focus: 240 5.2% 33.9%; /* zinc-600 */
+		--button-border: 240 5% 64.9%; /* zinc-400 */
+		--button-border-hover: 240 5% 64.9%; /* zinc-400 */
+		--button-border-focus: 240 5% 64.9%; /* zinc-400 */
 		--callout-text: 240 5.9% 10%; /* zinc-900 */
 		--callout-bg: var(--bg1);
 		--callout-border: var(--bg2);
@@ -612,24 +615,25 @@
 		--danger-inverse-focus: 0 62.8% 30.6%; /* red-900 */
 		--danger-text: 0 72.2% 50.6%; /* red-600 */
 		--divider: 240 5.9% 90%; /* zinc-200 */
+		--divider-text: 240 3.8% 46.1%; /* zinc-500 */
 		--dropdown: 0 0% 100%; /* white */
 		--dropdown-border: 0 0% 100%; /* white */
 		--dropdown-divider: 240 5.9% 90%; /* zinc-200 */
 		--dropdown-option-hover: 240 4.8% 95.9%; /* zinc-100 */
 		--dropdown-option-focus: 240 5.9% 90%; /* zinc-200 */
-		--dropdown-option-group: var(--text-faint);
-		--dropdown-option-text: var(--text-solid);
-		--dropdown-option-text-hover: var(--text-solid-link);
-		--dropdown-option-text-focus: var(--text-solid-link-hover);
-		--dropdown-option-trailing-symbol: var(--text-faint);
+		--dropdown-option-group: 240 3.8% 46.1%; /* zinc-500 */
+		--dropdown-option-text: 240 3.7% 15.9%; /* zinc-800 */
+		--dropdown-option-text-hover: 240 3.7% 15.9%; /* zinc-800 */
+		--dropdown-option-text-focus: 0 0% 0%; /* black */
+		--dropdown-option-trailing-symbol: 240 3.8% 46.1%; /* zinc-500 */
 		--focus-outline: 240 5.9% 90%; /* zinc-200 */
 		--input: 240 5.9% 90%; /* zinc-200 */
 		--input-hover: 240 4% 87%; /* zinc-250 (custom) */
 		--input-focus: 240 4.9% 83.9%; /* zinc-300 */
-		--input-placeholder: var(--text-faint);
-		--input-border: transparent;
-		--input-border-hover: transparent;
-		--input-border-focus: transparent;
+		--input-placeholder: 240 3.8% 46.1%; /* zinc-500 */
+		--input-border: 240 5% 64.9%; /* zinc-400 */
+		--input-border-hover: 240 5% 64.9%; /* zinc-400 */
+		--input-border-focus: 240 5% 64.9%; /* zinc-400 */
 		--input-value: 240 5.3% 26.1%; /* zinc-700 */
 		--modal: 0 0% 98%; /* zinc-50 */
 		--modal-divider: 240 5.9% 90%; /* zinc-200 */
@@ -654,9 +658,9 @@
 		--switch-on: var(--primary);
 		--switch-on-hover: var(--primary-hover);
 		--switch-on-focus: var(--primary-focus);
-		--switch-border: 240 5.9% 90%; /* zinc-200 */
-		--switch-border-hover: 240 5.9% 90%; /* zinc-200 */
-		--switch-border-focus: 240 5.9% 90%; /* zinc-200 */
+		--switch-border: 240 5% 64.9%; /* zinc-400 */
+		--switch-border-hover: 240 5% 64.9%; /* zinc-400 */
+		--switch-border-focus: 240 5% 64.9%; /* zinc-400 */
 		--switch-marker-off: 0 0% 100%; /* white */
 		--switch-marker-off-hover: 0 0% 100%; /* white */
 		--switch-marker-off-focus: 0 0% 100%; /* white */
@@ -745,9 +749,9 @@
 			--button-inverse: 0 0% 98%; /* zinc-50 */
 			--button-inverse-hover: 0 0% 98%; /* zinc-50 */
 			--button-inverse-focus: 0 0% 98%; /* zinc-50 */
-			--button-border: 240 5.2% 33.9%; /* zinc-600 */
-			--button-border-hover: 240 5.2% 33.9%; /* zinc-600 */
-			--button-border-focus: 240 5.2% 33.9%; /* zinc-600 */
+			--button-border: 240 5% 64.9%; /* zinc-400 */
+			--button-border-hover: 240 5% 64.9%; /* zinc-400 */
+			--button-border-focus: 240 5% 64.9%; /* zinc-400 */
 			--chip: 240 3.8% 46.1%; /* zinc-500 */
 			--chip-text: var(--text-soft);
 			--contrast: 0 0% 98%; /* zinc-50 */
@@ -768,25 +772,26 @@
 			--danger-inverse-focus: 0 62.8% 30.6%; /* red-900 */
 			--danger-text: 0 93.5% 81.8%; /* red-300 */
 			--divider: 240 5.3% 26.1%; /* zinc-700 */
+			--divider-text: 240 5% 64.9%; /* zinc-400 */
 			--dropdown: 240 5.3% 26.1%; /* zinc-700 */
 			--dropdown-border: 240 5.3% 26.1%; /* zinc-700 */
 			--dropdown-divider: 240 3.8% 46.1%; /* zinc-500 */
 			--dropdown-option-hover: 240 5.2% 33.9%; /* zinc-600 */
 			--dropdown-option-focus: 240 3.8% 46.1%; /* zinc-500 */
-			--dropdown-option-group: var(--text-faint);
-			--dropdown-option-text: var(--text-solid);
-			--dropdown-option-text-hover: var(--text-solid-link);
-			--dropdown-option-text-focus: var(--text-solid-link-hover);
-			--dropdown-option-trailing-symbol: var(--text-faint);
+			--dropdown-option-group: 240 5% 64.9%; /* zinc-400 */
+			--dropdown-option-text: 0 0% 98%; /* zinc-50 */
+			--dropdown-option-text-hover: 240 4.9% 83.9%; /* zinc-300 */
+			--dropdown-option-text-focus: 0 0% 100%; /* white */
+			--dropdown-option-trailing-symbol: 240 5% 64.9%; /* zinc-400 */
 			--focus-outline: 240 5% 30%; /* zinc-650 (custom) */
 			--input: 240 5.2% 33.9%; /* zinc-600 */
 			--input-hover: 240 4% 40%; /* zinc-550 (custom) */
 			--input-focus: 240 4% 40%; /* zinc-550 (custom) */
-			--input-placeholder: var(--text-faint);
+			--input-placeholder: 240 5% 64.9%; /* zinc-400 */
 			--input-value: 0 0% 98%; /* zinc-50 */
-			--input-border: 240 5.2% 33.9%; /* zinc-600 */
-			--input-border-hover: 240 5.2% 33.9%; /* zinc-600 */
-			--input-border-focus: 240 5.2% 33.9%; /* zinc-600 */
+			--input-border: 240 5% 64.9%; /* zinc-400 */
+			--input-border-hover: 240 5% 64.9%; /* zinc-400 */
+			--input-border-focus: 240 5% 64.9%; /* zinc-400 */
 			--modal: 240 5.3% 26.1%; /* zinc-700 */
 			--modal-divider: 240 5.2% 33.9%; /* zinc-600 */
 			--page: 240 10% 3.9%; /* zinc-950 */
@@ -810,9 +815,9 @@
 			--switch-on: var(--primary);
 			--switch-on-hover: var(--primary-hover);
 			--switch-on-focus: var(--primary-focus);
-			--switch-border: 240 5.2% 33.9%; /* zinc-600 */
-			--switch-border-hover: 240 5.2% 33.9%; /* zinc-600 */
-			--switch-border-focus: 240 5.2% 33.9%; /* zinc-600 */
+			--switch-border: 240 5% 64.9%; /* zinc-400 */
+			--switch-border-hover: 240 5% 64.9%; /* zinc-400 */
+			--switch-border-focus: 240 5% 64.9%; /* zinc-400 */
 			--switch-marker-off: 240 5.9% 90%; /* zinc-200 */
 			--switch-marker-off-hover: 240 5.9% 90%; /* zinc-200 */
 			--switch-marker-off-focus: 240 5.9% 90%; /* zinc-200 */
@@ -899,9 +904,9 @@
 		--button-inverse: 0 0% 98%; /* zinc-50 */
 		--button-inverse-hover: 0 0% 98%; /* zinc-50 */
 		--button-inverse-focus: 0 0% 98%; /* zinc-50 */
-		--button-border: 240 5.2% 33.9%; /* zinc-600 */
-		--button-border-hover: 240 5.2% 33.9%; /* zinc-600 */
-		--button-border-focus: 240 5.2% 33.9%; /* zinc-600 */
+		--button-border: 240 5% 64.9%; /* zinc-400 */
+		--button-border-hover: 240 5% 64.9%; /* zinc-400 */
+		--button-border-focus: 240 5% 64.9%; /* zinc-400 */
 		--callout-text: 240 4.9% 83.9%; /* zinc-300 */
 		--callout-bg: var(--bg1);
 		--callout-border: var(--bg2);
@@ -922,25 +927,26 @@
 		--danger-inverse-focus: 0 62.8% 30.6%; /* red-900 */
 		--danger-text: 0 93.5% 81.8%; /* red-300 */
 		--divider: 240 5.3% 26.1%; /* zinc-700 */
+		--divider-text: 240 5% 64.9%; /* zinc-400 */
 		--dropdown: 240 5.3% 26.1%; /* zinc-700 */
 		--dropdown-border: 240 5.3% 26.1%; /* zinc-700 */
 		--dropdown-divider: 240 3.8% 46.1%; /* zinc-500 */
 		--dropdown-option-hover: 240 5.2% 33.9%; /* zinc-600 */
 		--dropdown-option-focus: 240 3.8% 46.1%; /* zinc-500 */
-		--dropdown-option-group: var(--text-faint);
-		--dropdown-option-text: var(--text-solid);
-		--dropdown-option-text-hover: var(--text-solid-link);
-		--dropdown-option-text-focus: var(--text-solid-link-hover);
-		--dropdown-option-trailing-symbol: var(--text-faint);
+		--dropdown-option-group: 240 5% 64.9%; /* zinc-400 */
+		--dropdown-option-text: 0 0% 98%; /* zinc-50 */
+		--dropdown-option-text-hover: 240 4.9% 83.9%; /* zinc-300 */
+		--dropdown-option-text-focus: 0 0% 100%; /* white */
+		--dropdown-option-trailing-symbol: 240 5% 64.9%; /* zinc-400 */
 		--focus-outline: 240 5% 30%; /* zinc-650 (custom) */
 		--input: 240 5.2% 33.9%; /* zinc-600 */
 		--input-hover: 240 4% 40%; /* zinc-550 (custom) */
 		--input-focus: 240 4% 40%; /* zinc-550 (custom) */
-		--input-placeholder: var(--text-faint);
+		--input-placeholder: 240 5% 64.9%; /* zinc-400 */
 		--input-value: 0 0% 98%; /* zinc-50 */
-		--input-border: 240 5.2% 33.9%; /* zinc-600 */
-		--input-border-hover: 240 5.2% 33.9%; /* zinc-600 */
-		--input-border-focus: 240 5.2% 33.9%; /* zinc-600 */
+		--input-border: 240 5% 64.9%; /* zinc-400 */
+		--input-border-hover: 240 5% 64.9%; /* zinc-400 */
+		--input-border-focus: 240 5% 64.9%; /* zinc-400 */
 		--modal: 240 5.3% 26.1%; /* zinc-700 */
 		--modal-divider: 240 5.2% 33.9%; /* zinc-600 */
 		--page: 240 10% 3.9%; /* zinc-950 */
@@ -964,9 +970,9 @@
 		--switch-on: var(--primary);
 		--switch-on-hover: var(--primary-hover);
 		--switch-on-focus: var(--primary-focus);
-		--switch-border: 240 5.2% 33.9%; /* zinc-600 */
-		--switch-border-hover: 240 5.2% 33.9%; /* zinc-600 */
-		--switch-border-focus: 240 5.2% 33.9%; /* zinc-600 */
+		--switch-border: 240 5% 64.9%; /* zinc-400 */
+		--switch-border-hover: 240 5% 64.9%; /* zinc-400 */
+		--switch-border-focus: 240 5% 64.9%; /* zinc-400 */
 		--switch-marker-off: 240 5.9% 90%; /* zinc-200 */
 		--switch-marker-off-hover: 240 5.9% 90%; /* zinc-200 */
 		--switch-marker-off-focus: 240 5.9% 90%; /* zinc-200 */

@@ -172,19 +172,6 @@ mark {
 	border-radius: var(--badge-radius);
 	box-shadow: var(--badge-shadow);
 }
-
-/* Contrast modifier */
-mark.danger {
-	color: hsl(var(--contrast-inverse));
-	background: hsl(var(--contrast));
-}
-
-/* Danger modifier */
-mark.danger {
-	color: hsl(var(--danger-inverse));
-	background: hsl(var(--danger));
-}
-
 /* Primary modifier */
 mark.primary {
 	color: hsl(var(--primary-inverse));
@@ -195,6 +182,18 @@ mark.primary {
 mark.secondary {
 	color: hsl(var(--secondary-inverse));
 	background: hsl(var(--secondary));
+}
+
+/* Danger modifier */
+mark.danger {
+	color: hsl(var(--danger-inverse));
+	background: hsl(var(--danger));
+}
+
+/* Contrast modifier */
+mark.contrast {
+	color: hsl(var(--contrast-inverse));
+	background: hsl(var(--contrast));
 }
 
 
@@ -242,8 +241,6 @@ button, .button {
 	text-overflow: ellipsis;
 	background: hsl(var(--button));
 	border-radius: var(--button-radius);
-	border: var(--button-border-width) var(--button-border-style) hsl(var(--button-border));
-	box-shadow: var(--button-shadow);
 	cursor: var(--button-cursor);
 	user-select: none;
 
@@ -251,7 +248,6 @@ button, .button {
 		transform: scale(var(--button-scale-hover));
 		color: hsl(var(--button-inverse-hover));
 		background: hsl(var(--button-hover));
-		border: var(--button-border-width) var(--button-border-style) hsl(var(--button-border-hover));
 
 		& span {
 			color: inherit;
@@ -262,7 +258,6 @@ button, .button {
 		transform: scale(var(--button-scale-focus));
 		color: hsl(var(--button-inverse-focus));
 		background: hsl(var(--button-focus));
-		border-color: hsl(var(--button-border-focus));
 
 		& span {
 			color: inherit;
@@ -306,12 +301,6 @@ button, .button {
 		padding: 0;
 	}
 
-	/* Disabled */
-	&:disabled {
-		opacity: 0.65;
-		pointer-events: none;
-	}
-
 	/* Mobile appearance */
 	@media (hover: none),
 	(hover: on-demand) {
@@ -319,195 +308,6 @@ button, .button {
 		height: var(--button-height-mobile);
 		min-height: var(--button-height-mobile);
 		max-height: var(--button-height-mobile);
-	}
-}
-
-/* Contrast modifier */
-button.contrast, .button.contrast {
-	color: hsl(var(--contrast-inverse));
-	background: hsl(var(--contrast));
-
-	&:hover {
-		color: hsl(var(--contrast-inverse-hover));
-		background: hsl(var(--contrast-hover));
-
-		& span {
-			color: inherit;
-		}
-	}
-
-	&:active {
-		color: hsl(var(--contrast-inverse-focus));
-		background: hsl(var(--contrast-focus));
-
-		& span {
-			color: inherit;
-		}
-	}
-}
-
-/* Danger modifier */
-button.danger, .button.danger {
-	color: hsl(var(--danger-inverse));
-	background: hsl(var(--danger));
-
-	&:hover {
-		color: hsl(var(--danger-inverse-hover));
-		background: hsl(var(--danger-hover));
-
-		& span {
-			color: inherit;
-		}
-	}
-
-	&:active {
-		color: hsl(var(--danger-inverse-focus));
-		background: hsl(var(--danger-focus));
-
-		& span {
-			color: inherit;
-		}
-	}
-}
-
-/* Dropdown modifier */
-button.dropdown, .button.dropdown {
-	appearance: none;
-	justify-content: flex-start;
-	gap: var(--xs);
-
-	&:hover {
-		background: hsl(var(--button-hover));
-	}
-
-	&:active {
-		background: hsl(var(--button-focus));
-	}
-
-	&:focus {
-		background: hsl(var(--button));
-	}
-
-	/* Push chevron to right */
-	& > *:last-child:not(:only-child) {
-		margin-left: auto;
-	}
-
-	/* Center standalone icon */
-	&:has(.iconify:only-child) {
-		justify-content: center;
-	}
-}
-
-/* Ghost modifier */
-button.ghost, .button.ghost {
-	color: hsl(var(--text-soft));
-	background: none;
-
-	&:hover {
-		background: hsl(var(--button));
-	}
-
-	&:active {
-		background: hsl(var(--button-hover));
-	}
-}
-
-/* Outline modifier */
-button.outline, .button.outline {
-	color: hsl(var(--text-soft));
-	background: none;
-	border: var(--button-border-width) var(--button-border-style) hsl(var(--button-border));
-
-	&:hover {
-		background: hsl(var(--button-hover));
-		border: var(--button-border-width) var(--button-border-style) hsl(var(--button-border-hover));
-
-		& span {
-			color: inherit;
-		}
-	}
-
-	&:active {
-		background: hsl(var(--button-focus));
-		border: var(--button-border-width) var(--button-border-style) hsl(var(--button-border-focus));
-
-		& span {
-			color: inherit;
-		}
-	}
-}
-
-/* Primary modifier */
-button.primary, .button.primary {
-	color: hsl(var(--primary-inverse));
-	background: hsl(var(--primary));
-
-	&:hover {
-		color: hsl(var(--primary-inverse-hover));
-		background: hsl(var(--primary-hover));
-
-		& span {
-			color: inherit;
-		}
-	}
-
-	&:active {
-		color: hsl(var(--primary-inverse-focus));
-		background: hsl(var(--primary-focus));
-
-		& span {
-			color: inherit;
-		}
-	}
-}
-
-/* Secondary modifier */
-button.secondary, .button.secondary {
-	color: hsl(var(--secondary-inverse));
-	background: hsl(var(--secondary));
-
-	&:hover {
-		color: hsl(var(--secondary-inverse-hover));
-		background: hsl(var(--secondary-hover));
-
-		& span {
-			color: inherit;
-		}
-	}
-
-	&:active {
-		color: hsl(var(--secondary-inverse-focus));
-		background: hsl(var(--secondary-focus));
-
-		& span {
-			color: inherit;
-		}
-	}
-}
-
-/* Transparent modifier */
-button.transparent, .button.transparent {
-	color: hsl(var(--text-faint));
-	background: none;
-	border: none;
-
-	&:hover {
-		background: none;
-		color: hsl(var(--text-faint-link));
-
-		& span {
-			color: inherit;
-		}
-	}
-
-	&:active {
-		background: none;
-		color: hsl(var(--text-faint-link-hover));
-
-		& span {
-			color: inherit;
-		}
 	}
 }
 
@@ -639,14 +439,11 @@ figcaption {
 	text-align: var(--caption-align);
 }
 
-/* Figure modifier */
-figure figcaption {
-	margin-top: var(--caption-spacing);
-}
-
 
 /*** Code Text (Inline Code Snippet) ***/
 code {
+	display: inline;
+	width: fit-content;
 	padding: var(--code-padding-y) var(--code-padding-x);
 	font-family: var(--code-font);
 	font-weight: var(--code-weight);
@@ -747,7 +544,7 @@ a, a span, button span { cursor: pointer; }
 
 
 /*** Divider ***/
-/* For vertical lines and lines containing icons and text; for simple horizontal lines see the <hr> element */
+/* Apply to a <div> for vertical lines and lines containing icons and text; for simple horizontal lines see the <hr> element */
 .divider {
 	display: flex;
 	flex-flow: row nowrap;
@@ -790,10 +587,22 @@ a, a span, button span { cursor: pointer; }
 		width: 1px;
 		height: 100%;
 	}
+
+	& .iconify {
+		min-height: var(--divider-size);
+		font-size: var(--divider-size);
+		color: hsl(var(--divider-text));
+	}
 }
 
 
 /*** Dropdown Menu ***/
+/* Parent container */
+div:has(.dropdown-menu) {
+	position: relative;
+	width: fit-content;
+}
+
 .dropdown-menu {
 	position: absolute;
 	top: calc(100% + var(--dropdown-offset));
@@ -802,6 +611,7 @@ a, a span, button span { cursor: pointer; }
 	flex-flow: column nowrap;
 	width: fit-content;
 	min-width: var(--dropdown-min-width);
+	max-width: calc(100vw - var(--page-margin) * 2);
 	height: fit-content;
 	max-height: 100vh;
 	margin: 0;
@@ -826,18 +636,31 @@ a, a span, button span { cursor: pointer; }
 		margin: auto;
 	}
 
+	/* Line */
+	& hr {
+		width: 100%;
+		margin: var(--dropdown-divider-space) auto;
+		background: hsl(var(--dropdown-divider));
+	}
+
+	/* Line with icons or text inside */
 	.divider {
 		margin: var(--dropdown-divider-space) auto;
-
+		
 		&:before,
 		&:after {
 			background: hsl(var(--dropdown-divider));
 		}
 	}
 
-	.title {
-		width: 100%;
-		padding: var(--dropdown-option-gap) var(--dropdown-option-padding);
+	/* Option group title */
+	& li.title {
+		height: fit-content;
+		padding-top: var(--dropdown-option-gap);
+		padding-bottom: 0;
+		padding-left: var(--dropdown-option-padding);
+		padding-right: calc(var(--dropdown-option-padding) + var(--dropdown-option-gap));
+		line-height: 1;
 		color: hsl(var(--dropdown-option-group));
 		pointer-events: none;
 
@@ -850,46 +673,38 @@ a, a span, button span { cursor: pointer; }
 	}
 
 	/* Dropdown option */
-	& li {
-		display: flex;
-		flex-flow: row nowrap;
-		justify-content: flex-start;
-		align-items: center;
-		gap: var(--dropdown-option-gap);
+	& li, & a {
+
+		/* Inline-block supports text-overflow: ellipses */
+		display: inline-block;
 		width: 100%;
+		max-width: 100%;
 		height: var(--dropdown-option-height);
 		min-height: var(--dropdown-option-height);
 		padding: 0 var(--dropdown-option-padding);
-		overflow: hidden;
+		padding-right: calc(var(--dropdown-option-padding) + var(--dropdown-option-gap)); /* Add right-side spacing */ 
 		font-family: var(--dropdown-option-font);
 		font-weight: var(--dropdown-option-weight);
 		font-style: var(--dropdown-option-style);
 		font-size: var(--dropdown-option-size);
+		line-height: var(--dropdown-option-height);
+		text-decoration: none;
 		text-transform: var(--dropdown-option-case);
 		color: hsl(var(--dropdown-option-text));
 		text-align: start;
+		text-overflow: ellipsis;
+		overflow: hidden;
 		white-space: nowrap;
 		background: none;
 		border-radius: var(--dropdown-option-radius);
 		cursor: var(--dropdown-option-cursor);
 		user-select: none;
 
-		/* Link within an option */
-		& a {
-			display: flex;
-			flex-flow: row nowrap;
-			justify-content: flex-start;
-			align-items: center;
-			gap: var(--dropdown-option-gap);
-			width: 100%;
-			padding-right: var(--dropdown-option-padding);
-			user-select: none;
-		}
-
 		&:hover {
-			background: hsl(var(--dropdown-option-hover));
 			color: hsl(var(--dropdown-option-text-hover));
-
+			text-decoration: none;
+			background: hsl(var(--dropdown-option-hover));
+			
 			& span {
 				color: hsl(var(--dropdown-option-text-hover));
 			}
@@ -904,15 +719,90 @@ a, a span, button span { cursor: pointer; }
 			}
 		}
 
-		/* Inline icon & text */
-		& span {
-			font-family: var(--dropdown-option-font);
-			font-weight: var(--dropdown-option-weight);
-			font-style: var(--dropdown-option-style);
+		/* If the list item has children, switch to flex for their layout */
+		&:has(*) {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: flex-start;
+			align-items: center;
+			padding-right: var(--dropdown-option-padding); /* Reset right-side spacing so children can take care of it  */
+			overflow: visible /* For focus outlines to appear on nested elements */
+		}
+
+		/* Nested text or icons within an option */
+		& > * {
+			display: inline-block;
+			width: fit-content;
+			max-width: inherit;
+			font-size: inherit;
+			font-weight: inherit;
+			font-style: inherit;
+			line-height: inherit;
+			color: inherit;
+			text-decoration: inherit;
+			overflow: inherit;
+			white-space: inherit;
+			text-overflow: inherit;
+			user-select: inherit;
+
+			&:hover {
+				text-decoration: none;
+			}
+
+			/* Add right spacing to non-trailing text */
+			&:where(span):not(.trailing) {
+				margin-right: var(--dropdown-option-gap);
+			}
+		}
+
+		/* Icons */
+		& .iconify {
+			min-width: var(--dropdown-option-size);
+			height: var(--dropdown-option-size);
 			font-size: var(--dropdown-option-size);
-			text-transform: var(--dropdown-option-case);
-			color: hsl(var(--dropdown-option-text));
-			user-select: none;
+
+			/* Leading icon */
+			&:first-child {
+				margin-right: var(--xs);
+			}
+		}
+
+		/* Prevent text inputs from overflowing */
+		& input:not([role="switch"]), & fieldset input:not([role="switch"]) {
+			width: inherit;
+		}
+
+		
+
+		/* Trailing text or icon */
+		.trailing {
+			margin-left: auto;
+			color: hsl(var(--dropdown-option-trailing-symbol));
+
+			@media (hover: none),
+			(hover: on-demand) {
+				margin-right: var(--md);
+			}
+		}
+
+		/* Interactive elements */
+		&:has(button,input,textarea,select) {
+			height: fit-content;
+			padding: var(--dropdown-option-padding);
+
+			&:hover {
+				background: transparent;
+				cursor: default;
+			}
+
+			& button {
+				width: 100%;
+			}
+		}
+
+		/* Remove double padding between interactive elements */
+		&:has(button,input,textarea,select) ~ li:has(button,input,textarea,select) {
+			padding-top: 0;
 		}
 
 		/* Mobile view modifier */
@@ -931,26 +821,78 @@ a, a span, button span { cursor: pointer; }
 			}
 		}
 	}
+}
 
-	/* Danger option modifier */
-	.danger {
-		color: hsl(var(--danger-text));
-	}
+/* Anchor position modifiers */
+.top {
+	top: calc(100% + var(--dropdown-offset));
+	left: 50%;
+	transform: translateX(-50%) !important;
+}
 
-	/* Trailing text or icon */
-	.trailingSymbol {
-		margin-left: auto;
-		color: hsl(var(--dropdown-option-trailing-symbol));
+.top-end {
+	top: calc(100% + var(--dropdown-offset));
+	left: auto;
+	right: 0;
+}
 
-		@media (hover: none),
-		(hover: on-demand) {
-			margin-right: var(--md);
-		}
-	}
+.bottom-start {
+	top: calc(-1 * var(--dropdown-offset));
+	left: 0;
+	transform: translateY(-100%) !important;
+}
+
+.bottom {
+	top: calc(-1 * var(--dropdown-offset));
+	left: 50%;
+	transform: translateX(-50%) translateY(-100%) !important;
+}
+
+.bottom-end {
+	top: calc(-1 * var(--dropdown-offset));
+	left: auto;
+	right: 0;
+	transform: translateY(-100%) !important;
+}
+
+.left-start {
+	top: 0;
+	left: calc(-1 * var(--dropdown-offset));
+	transform: translateX(-100%) !important;
+}
+
+.left {
+	top: 50%;
+	left: calc(-1 * var(--dropdown-offset));
+	transform: translateX(-100%) translateY(-50%) !important;
+}
+
+.left-end {
+	top: 100%;
+	left: calc(-1 * var(--dropdown-offset));
+	transform: translateX(-100%) translateY(-100%) !important;
+}
+
+.right-start {
+	top: 0;
+	left: calc(100% + var(--dropdown-offset));
+}
+
+.right {
+	top: 50%;
+	left: calc(100% + var(--dropdown-offset));
+	transform: translateY(-50%) !important;
+}
+
+.right-end {
+	top: 100%;
+	left: calc(100% + var(--dropdown-offset));
+	transform: translateY(-100%) !important;
 }
 
 
-/* Error Message (form field validation) */
+/*** Error Message ***/
+/* Can be applied independently, but named for and auto-applied with form field validation */
 .error-msg[hidden] {
 	opacity: 0;
 	height: 0px;
@@ -980,7 +922,7 @@ a, a span, button span { cursor: pointer; }
 }
 
 
-/*** Footer (containe preset) ***/
+/*** Footer (contain preset) ***/
 /* Apply a single <footer> at end of page for bottom navigation */
 footer {
 	display: flex;
@@ -1111,6 +1053,7 @@ hr {
 	border: 0 none;
 }
 
+
 /*** HTML (normalizer) ***/
 html {
 	width: 100vw;
@@ -1118,6 +1061,7 @@ html {
 	overflow-x: hidden;
 	scroll-behavior: smooth; /* Smooth anchor link scrolling */
 }
+
 
 /*** Image ***/
 img {
@@ -1145,15 +1089,18 @@ fieldset {
 /* Row modifier */
 fieldset.row {
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 	justify-content: space-between;
 	align-items: center;
 	gap: var(--lg) var(--md);
 	width: 100%;
 	max-width: 100%;
 
-	& > input {
-		flex-grow: 1;
+	& label {
+		margin-left: var(--label-offset);
+	}
+
+	& input {
 		width: auto;
 		max-width: 100%;
 	}
@@ -1164,6 +1111,12 @@ fieldset.row {
 figure {
 	width: 100%;
 	max-width: 100%;
+
+	/* Centre the caption */
+	& figcaption {
+		margin-top: var(--caption-spacing);
+		text-align: center;
+	}
 }
 
 
@@ -1175,10 +1128,14 @@ form {
 	gap: var(--lg);
 	width: 100%;
 	max-width: 100%;
+	
+	& label {
+		margin-left: var(--label-offset);
+	}
 }
 
 
-/*** Input ***/
+/*** Input Fields ***/
 input, textarea, label.floating {
 	width: 100%;
 	min-width: var(--input-height);
@@ -1193,10 +1150,6 @@ input, textarea, label.floating {
 	text-transform: var(--input-case);
 	background: hsl(var(--input));
 	border-radius: var(--input-radius);
-	border-width: var(--input-border-width);
-	border-style: var(--input-border-style);
-	border-color: hsl(var(--input-border));
-	border-bottom-width: var(--input-border-bottom-width);
 	box-shadow: var(--input-shadow);
 	cursor: var(--input-cursor);
 
@@ -1231,8 +1184,6 @@ input, textarea, label.floating {
 /* Text Input */
 input {
 	height: var(--input-height);
-	min-height: var(--input-height);
-	max-height: var(--input-height);
 	padding: 0 var(--input-padding);
 }
 
@@ -1243,7 +1194,7 @@ textarea {
 	padding: var(--input-padding);
 }
 
-/* Floating Label */
+/* Floating Label (WIP) */
 label.floating {
 	position: relative;
 	display: flex;
@@ -1362,6 +1313,7 @@ label {
 	font-size: var(--label-size);
 	line-height: var(--label-leading);
 	color: hsl(var(--label));
+	user-select: none;
 }
 
 
@@ -1392,6 +1344,8 @@ a {
 
 /* Inline link */
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, li a, blockquote a, pre code a, code a, kbd a, span a, mark a {
+	display: inline;
+	font-size: inherit;
 	font-weight: var(--a-weight);
 	font-style: var(--a-style);
 	color: hsl(var(--a));
@@ -1604,8 +1558,33 @@ dialog, [popover] {
 		z-index: var(--stack-backdrop);
 	}
 
-	.divider {
+	& header {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		align-items: center;
+		gap: var(--sm);
+		padding: var(--sm) var(--lg);
+		border-bottom: var(--modal-header-divider-width) solid hsl(var(--modal-divider));
+	}
 
+	& > div {
+		padding: var(--lg);
+	}
+
+	& footer {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: end;
+		align-items: center;
+		gap: var(--sm);
+		padding: var(--md) var(--lg);
+		border-top: var(--modal-footer-divider-width) solid hsl(var(--modal-divider));
+	}
+
+	hr { background: hsl(var(--modal-divider)); }
+
+	.divider {
 		&:before,
 		&:after {
 			background: hsl(var(--modal-divider));
@@ -1775,17 +1754,17 @@ small {
 
 
 /*** Switch ***/
-input:where([type="checkbox"][role="switch"]) {
+input[role="switch"] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
 	position: relative;
+	min-width: calc(var(--switch-height) * 2);
 	width: calc(var(--switch-height) * 2);
 	height: var(--switch-height);
-	min-height: var(--switch-height);
-	max-height: var(--switch-height);
+	padding: 0;
+	box-sizing: content-box;
 	background: hsl(var(--switch-off));
-	border: var(--switch-border-width) var(--switch-border-style) hsl(var(--switch-border));
 	border-radius: var(--switch-height);
 	box-shadow: var(--switch-shadow);
 	cursor: pointer;
@@ -1808,7 +1787,7 @@ input:where([type="checkbox"][role="switch"]) {
 	&:hover {
 		transform: scale(var(--switch-scale-hover));
 		background: hsl(var(--switch-off-hover));
-		border: var(--switch-border-width) var(--switch-border-style) hsl(var(--switch-border-hover));
+		border-color: hsl(var(--switch-border-hover));
 		transition: var(--transition);
 
 		&::before {
@@ -1819,7 +1798,7 @@ input:where([type="checkbox"][role="switch"]) {
 	&:active {
 		transform: scale(var(--switch-scale-focus));
 		background: hsl(var(--switch-off-focus));
-		border: var(--switch-border-width) var(--switch-border-style) hsl(var(--switch-border-focus));
+		border-color: hsl(var(--switch-border-focus));
 		transition: var(--transition);
 
 		&::before {
@@ -1862,7 +1841,7 @@ table {
 	max-width: 100%;
 	overflow: hidden;
 	background: hsl(var(--table));
-	outline: var(--table-border-width) solid hsl(var(--table-border));
+	border: var(--table-border-width) solid hsl(var(--table-border));
 	border-collapse: collapse;
 	border-radius: var(--table-radius);
 	box-shadow: var(--table-shadow);
@@ -1952,33 +1931,9 @@ table {
 }
 
 
-/*** Text Colour Modifiers ***/
-/* An alternative to 'text-[modifier]' Tailwind class, which also works */
-
-/* Contrast modifier */
-h1.contrast, h2.contrast, h3.contrast, h4.contrast, h5.contrast, h6.contrast, p.contrast, small.contrast, figcaption.contrast, pre.contrast, blockquote.contrast, code.contrast, kbd.contrast, li.contrast {
-	color: hsl(var(--contrast-text));
-}
-
-/* Danger modifier */
-h1.danger, h2.danger, h3.danger, h4.danger, h5.danger, h6.danger, p.danger, small.danger, figcaption.danger, pre.danger, blockquote.danger, code.danger, kbd.danger, li.danger {
-	color: hsl(var(--danger-text));
-}
-
-/* Primary modifier */
-h1.primary, h2.primary, h3.primary, h4.primary, h5.primary, h6.primary, p.primary, small.primary, figcaption.primary, pre.primary, blockquote.primary, code.primary, kbd.primary, li.primary {
-	color: hsl(var(--primary-text));
-}
-
-/* Secondary modifier */
-h1.secondary, h2.secondary, h3.secondary, h4.secondary, h5.secondary, h6.secondary, p.secondary, small.secondary, figcaption.secondary, pre.secondary, blockquote.secondary, code.secondary, kbd.secondary, li.secondary {
-	color: hsl(var(--secondary-text));
-}
-
-
 /*** Transitions ***/
 /* Applies a standard transition to interactive elements and focuses */
-a, button, input, textarea, select {
+a, button, input, textarea, select, li {
 	transition: var(--transition);
 
 	&:focus {
@@ -1994,9 +1949,371 @@ a, button, input, textarea, select {
 	}
 }
 
+/* Hides the focus outline */
+.no-outline {
+	&:focus-visible { outline: none; }
+}
+
 
 /*** Video ***/
-video {
+video, .video {
 	border-radius: var(--video-radius);
 	box-shadow: var(--video-shadow);
+}
+
+
+/*----------------------------------------------------------------------*/
+
+
+/*** Text Colour Modifiers ***/
+/* An alternative to the 'text-[modifier]' Tailwind class, which also works */
+
+/* Contrast modifier */
+h1.contrast, h2.contrast, h3.contrast, h4.contrast, h5.contrast, h6.contrast, p.contrast, small.contrast, figcaption.contrast, pre.contrast, blockquote.contrast, code.contrast, kbd.contrast, li.contrast, .divider.contrast {
+	color: hsl(var(--contrast-text));
+}
+
+/* Danger modifier */
+h1.danger, h2.danger, h3.danger, h4.danger, h5.danger, h6.danger, p.danger, small.danger, figcaption.danger, pre.danger, blockquote.danger, code.danger, kbd.danger, li.danger, .divider.danger {
+	color: hsl(var(--danger-text));
+}
+
+/* Primary modifier */
+h1.primary, h2.primary, h3.primary, h4.primary, h5.primary, h6.primary, p.primary, small.primary, figcaption.primary, pre.primary, blockquote.primary, code.primary, kbd.primary, li.primary, .divider.primary {
+	color: hsl(var(--primary-text));
+}
+
+/* Secondary modifier */
+h1.secondary, h2.secondary, h3.secondary, h4.secondary, h5.secondary, h6.secondary, p.secondary, small.secondary, figcaption.secondary, pre.secondary, blockquote.secondary, code.secondary, kbd.secondary, li.secondary, .divider.secondary {
+	color: hsl(var(--secondary-text));
+}
+
+/*** Interactive Element Style Modifiers ***/
+
+/* Ghost modifier */
+button.ghost, .button.ghost, input.ghost, textarea.ghost, label.floating.ghost {
+	background: none;
+}
+
+/* Outlined modifier (Button) */
+button.outlined, .button.outlined {
+	border: var(--button-border-width) var(--button-border-style) hsl(var(--button-border));
+	&:hover { border-color: hsl(var(--button-border-hover)); }
+	&:focus { border-color: hsl(var(--button-border-focus)); }
+}
+
+
+/* Outlined modifier (Input) */
+input.outlined:not([role="switch"]), textarea.outlined, label.floating.outlined {
+	border: var(--input-border-width) var(--input-border-style) hsl(var(--input-border));
+	&:hover { border-color: hsl(var(--input-border-hover)); }
+	&:focus { border-color: hsl(var(--input-border-focus)); }
+}
+
+/* Outlined modifier (Switch) */
+input.outlined[role="switch"] {
+	border: var(--switch-border-width) var(--switch-border-style) hsl(var(--switch-border));
+	&:hover { border-color: hsl(var(--switch-border-hover)); }
+	&:focus { border-color: hsl(var(--switch-border-focus)); }
+}
+
+/* Outlined only modifier (Switch) */
+input[role="switch"].outlined.transparent {
+	background: transparent; 
+	&::before { background: hsl(var(--switch-off)); }
+	&:checked {
+		&::before { background: hsl(var(--switch-on)); }
+	}
+	&:hover {
+		&::before { background: hsl(var(--switch-off-hover)); }
+		&:checked {
+			&::before {
+				background: hsl(var(--switch-on-hover));
+			}
+		}
+	}
+	&:active {
+		&::before { background: hsl(var(--switch-off-focus)); }
+		&:checked {
+			&::before {
+				background: hsl(var(--switch-on-focus));
+			}
+		}
+	}
+}
+
+/* Transparent modifier */
+button.transparent, .button.transparent, input.transparent, textarea.transparent, label.floating.transparent {
+	background: transparent;
+	&:hover { background: transparent; }
+	&:focus { background: transparent; }
+}
+
+/* Underlined modifier (Input) */
+input.underlined:not([role="switch"]), textarea.outlined, label.floating.outlined {
+	border-bottom-width: var(--input-border-bottom-width);
+	border-style: var(--input-border-style);
+	border-color: hsl(var(--input-border));
+
+	&:hover { border-color: hsl(var(--input-border-hover)); }
+	&:focus { border-color: hsl(var(--input-border-focus)); }
+}
+
+/* Primary modifier */
+button.primary, .button.primary, input.primary, textarea.primary, label.floating.primary {
+	background: hsl(var(--primary));
+	color: hsl(var(--primary-inverse));
+
+	&:hover {
+		background: hsl(var(--primary-hover));
+		color: hsl(var(--primary-inverse-hover));
+	}
+
+	&:focus {
+		background: hsl(var(--primary-focus));
+		color: hsl(var(--primary-inverse-focus));
+		outline-color: hsl(var(--primary-focus));
+	}
+
+	&::placeholder { color: hsla(var(--primary-inverse) / 80%); }
+}
+
+/* Primary outlined modifier */
+button.primary.outlined, .button.primary.outlined, input.primary.outlined, textarea.primary.outlined, label.floating.primary.outlined {
+	color: hsl(var(--button-inverse));
+	background: hsla(var(--primary) / 60%);
+	border-color: hsl(var(--primary));
+
+	&:hover {
+		color: hsl(var(--button-inverse-hover));
+		background: hsla(var(--primary-hover) / 60%);
+		border-color: hsl(var(--primary-hover));
+	}
+
+	&:focus {
+		color: hsl(var(--button-inverse-focus));
+		background: hsla(var(--primary-focus) / 60%);
+		border-color: hsl(var(--primary-focus));
+		outline-color: hsl(var(--primary-focus));
+	}
+}
+
+/* Primary outlined only modifier; input roles are for specificity */
+button.border-primary, input:not([role="switch"]).border-primary, input[role="switch"].border-primary, textarea.border-primary, label.floating.border-primary {
+	border-color: hsl(var(--primary));
+	outline-color: hsl(var(--primary));
+	&:hover { border-color: hsl(var(--primary-hover)); }
+	&:focus { border-color: hsl(var(--primary-focus)); }
+}
+
+@media (prefers-color-scheme:dark), [data-theme="dark"] {
+	button.secondary.outlined, .button.secondary.outlined, input.secondary.outlined, textarea.secondary.outlined, label.floating.secondary.outlined {
+		color: hsl(var(--primary));
+	}
+}
+
+/* Primary outlined only modifier (Switch) */
+input[role="switch"].outlined.transparent {
+	&::before { background: hsl(var(--primary)); }
+	&:checked { &::before { background: hsl(var(--primary)); }}
+	&:hover {
+		&::before { background: hsl(var(--primary-hover)); }
+		&:checked { &::before { background: hsl(var(--primary-hover)); }}
+	}
+	&:active {
+		&::before { background: hsl(var(--primary-focus)); }
+		&:checked { &::before { background: hsl(var(--primary-focus)); }}
+	}
+}
+
+/* Secondary modifier */
+button.secondary, .button.secondary, input.secondary, textarea.secondary, label.floating.secondary {
+	background: hsl(var(--secondary));
+	color: hsl(var(--secondary-inverse));
+
+	&:hover {
+		background: hsl(var(--secondary-hover));
+		color: hsl(var(--secondary-inverse-hover));
+	}
+
+	&:focus {
+		background: hsl(var(--secondary-focus));
+		color: hsl(var(--secondary-inverse-focus));
+		outline-color: hsl(var(--secondary-focus));
+	}
+
+	&::placeholder { color: hsla(var(--secondary-inverse) / 80%); }
+}
+
+/* Secondary outlined modifier */
+button.secondary.outlined, .button.secondary.outlined, input.secondary.outlined, textarea.secondary.outlined, label.floating.secondary.outlined {
+	color: hsl(var(--secondary-inverse));
+	background: hsla(var(--secondary) / 50%);
+	border-color: hsl(var(--secondary));
+
+	&:hover {
+		color: hsl(var(--button-inverse-hover));
+		background: hsla(var(--secondary-hover) / 50%);
+		border-color: hsl(var(--secondary-hover));
+	}
+
+	&:focus {
+		color: hsl(var(--button-inverse-focus));
+		background: hsla(var(--secondary-focus) / 50%);
+		border-color: hsl(var(--secondary-focus));
+		outline-color: hsl(var(--secondary-focus));
+	}
+
+	&::placeholder { color: hsla(var(--button-inverse) / 80%); }
+}
+
+@media (prefers-color-scheme:dark), [data-theme="dark"] {
+	button.secondary.outlined, .button.secondary.outlined, input.secondary.outlined, textarea.secondary.outlined, label.floating.secondary.outlined {
+		color: hsl(var(--secondary));
+	}
+}
+
+/* Secondary outlined only modifier; input roles are for specifity */
+button.border-secondary, .button.border-secondary, input:not([role="switch"]).border-secondary, input[role="switch"].border-secondary, textarea.border-secondary, label.floating.border-secondary {
+	border-color: hsl(var(--secondary));
+	outline-color: hsl(var(--secondary));
+	&:hover { border-color: hsl(var(--secondary-hover)); }
+	&:focus { border-color: hsl(var(--secondary-focus)); }
+}
+
+/* Secondary outlined only modifier (Switch) */
+input[role="switch"].outlined.transparent.border-secondary {
+					
+	&::before { background: hsl(var(--secondary)); }
+	&:checked { &::before { background: hsl(var(--danger)); }}
+	&:hover {
+		&::before { background: hsl(var(--secondary-hover)); }
+		&:checked { &::before { background: hsl(var(--secondary-hover)); }}
+	}
+	&:active {
+		&::before { background: hsl(var(--secondary-focus)); }
+		&:checked { &::before { background: hsl(var(--secondary-focus)); }}
+	}
+}
+
+/* Danger modifier */
+button.danger, .button.danger, input.danger, textarea.danger, label.floating.danger {
+	color: hsl(var(--danger-inverse));
+	background: hsl(var(--danger));
+
+	&:hover {
+		color: hsl(var(--danger-inverse-hover));
+		background: hsl(var(--danger-hover));
+	}
+
+	&:focus {
+		color: hsl(var(--danger-inverse-focus));
+		background: hsl(var(--danger-focus));
+		outline-color: hsl(var(--danger-focus));
+	}
+
+	&::placeholder { color: hsla(var(--danger-inverse) / 80%); }
+}
+
+/* Danger outlined modifier */
+button.danger.outlined, .button.danger.outlined, input.danger.outlined, textarea.danger.outlined, label.floating.danger.outlined {
+	color: hsl(var(--danger-inverse));
+	background: hsla(var(--danger) / 65%);
+	border-color: hsl(var(--danger));
+
+	&:hover {
+		color: hsl(var(--button-inverse-hover));
+		background: hsla(var(--danger-hover) / 60%);
+		border-color: hsl(var(--danger-hover));
+	}
+
+	&:focus {
+		color: hsl(var(--button-inverse-focus));
+		background: hsla(var(--danger-focus) / 60%);
+		border-color: hsl(var(--danger-focus));
+		outline-color: hsl(var(--danger-focus));
+	}
+}
+
+@media (prefers-color-scheme:dark), [data-theme="dark"] {
+	button.secondary.outlined, .button.secondary.outlined, input.secondary.outlined, textarea.secondary.outlined, label.floating.secondary.outlined {
+		color: hsl(var(--danger));
+	}
+}
+
+/* Danger outlined only modifier; input roles are for specificity */
+button.border-danger, .button.border-danger, input:not([role="switch"]).border-danger, input[role="switch"].border-danger, textarea.border-danger, label.floating.border-danger {
+	border-color: hsl(var(--danger));
+	outline-color: hsl(var(--danger));
+	&:hover { border-color: hsl(var(--danger-hover)); }
+	&:focus { border-color: hsl(var(--danger-focus)); }
+}
+
+/* Danger outlined only modifier (Switch) */
+input[role="switch"].outlined.transparent.border-danger {
+	border-color: hsl(var(--danger));
+	outline-color: hsl(var(--danger));
+	&::before { background: hsl(var(--danger)); }
+	&:checked { &::before { background: hsl(var(--danger)); }}
+	&:hover {
+		&::before { background: hsl(var(--danger-hover)); }
+		&:checked { &::before { background: hsl(var(--danger-hover)); }}
+	}
+	&:active {
+		&::before { background: hsl(var(--danger-focus)); }
+		&:checked { &::before { background: hsl(var(--danger-focus)); }}
+	}
+}
+
+/* Contrast modifier */
+button.contrast, .button.contrast, input.contrast, textarea.contrast, label.floating.contrast {
+	color: hsl(var(--contrast-inverse));
+	background: hsl(var(--contrast));
+
+	&:hover {
+		color: hsl(var(--contrast-inverse-hover));
+		background: hsl(var(--contrast-hover));
+	}
+
+	&:active, &:focus {
+		background: hsl(var(--contrast-focus));
+		color: hsl(var(--contrast-inverse-focus));
+		outline-color: hsl(var(--contrast-focus));
+	}
+
+	&::placeholder { color: hsla(var(--contrast-inverse) / 80%); }
+}
+
+/* Contrast modifier (Switch) */
+input[role="switch"].contrast {
+	&::before { background: hsl(var(--contrast-inverse)); }
+	&:checked { &::before { background: hsl(var(--contrast-inverse)); }}
+	&:hover {
+		&::before { background: hsl(var(--contrast-inverse-hover)); }
+		&:checked { &::before { background: hsl(var(--contrast-inverse-hover)); }}
+	}
+	&:active {
+		&::before { background: hsl(var(--contrast-inverse-focus)); }
+		&:checked { &::before { background: hsl(var(--contrast-inverse-focus)); }}
+	}
+}
+
+/* Contrast outlined modifier */
+button.contrast.outlined, .button.contrast.outlined, input.contrast.outlined, textarea.contrast.outlined, label.floating.contrast.outlined {
+	color: hsl(var(--contrast-inverse));
+	background: hsla(var(--contrast) / 60%);
+	border-color: hsl(var(--contrast));
+
+	&:hover {
+		color: hsl(var(--contrast-inverse-hover));
+		background: hsla(var(--contrast-hover) / 60%);
+		border-color: hsl(var(--contrast-hover));
+	}
+
+	&:focus {
+		color: hsl(var(--contrast-inverse-focus));
+		background: hsla(var(--contrast-focus) / 60%);
+		border-color: hsl(var(--contrast-focus));
+		outline-color: hsl(var(--contrast-focus));
+	}
 }

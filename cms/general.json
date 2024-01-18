@@ -1,4 +1,10 @@
 {
+    "logoImage": "",
+    "logoSVG": true,
+    "logoIcon": "lucide:citrus",
+    "logoIconStyle": "-scale-x-100 mr-[1px] text-yellow-500",
+    "logoName": "SITRUS",
+    "logoNameStyle": "",
     "organization": "Universal Exports Ltd.",
     "website": "https://universalexports.com",
     "email": "contact@universalexports.com"

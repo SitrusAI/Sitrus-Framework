@@ -56,6 +56,7 @@ tailwind.config = {
 				"danger-inverse-focus": "hsl(var(--danger-inverse-focus) / <alpha-value>)",
 				"danger-text": "hsl(var(--danger-text) / <alpha-value>)",
 				"divider": "hsl(var(--divider) / <alpha-value>)",
+				"divider-text": "hsl(var(--divider-text) / <alpha-value>)",
 				"dropdown": "hsl(var(--dropdown) / <alpha-value>)",
 				"dropdown-border": "hsl(var(--dropdown-border) / <alpha-value>)",
 				"dropdown-divider": "hsl(var(--dropdown-divider) / <alpha-value>)",
@@ -163,6 +164,7 @@ tailwind.config = {
 				"xl": "var(--xl)",
 				"2xl": "var(--2xl)",
 				"dropdown-offset": "var(---dropdown-offset)",
+				"label-offset": "var(---label-offset)",
 			},
 			gap: {
 				"badge": "var(--badge-gap)",
@@ -366,7 +368,6 @@ tailwind.config = {
 				"tooltip": "var(--tooltip-style)",
 			},
 			fontSize: {
-				"a": "var(--a-size)",
 				"badge": "var(--badge-size)",
 				"button": "var(--button-size)",
 				"button-inline-icon": "var(--button-inline-icon-size)",

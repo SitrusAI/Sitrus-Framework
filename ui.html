@@ -1,8 +1,8 @@
 <!--------------------------------------------------------------------------------
-This file provides HTML for copy/paste of UI elements within the Sitrus framework.
-Theme values like colours and spacing variables can be edited in /style/theme.css.
-Element presets and modifier classes are defined in /style/ui.css.
-All HTML elements below can receive style overrides with inline Tailwind classes.
+This file provides HTML for copy/pasting UI elements within the Sitrus framework.
+Theme values like colors and spacing variables can be edited in /style/theme.css.
+Style presets and modifier classes are defined in /style/ui.css.
+All HTML elements can receive style overrides with inline Tailwind classes.
 --------------------------------------------------------------------------------->
 
 
@@ -28,18 +28,27 @@ All HTML elements below can receive style overrides with inline Tailwind classes
   <span>Icon & text</span> <!-- Text must be in a <span>, before or after icon -->
 </button>
 
-<!-- Icon only -->
-<button><span class="iconify" data-icon="ph:house"></span></button>
+<!-- Icon only; inlude aria-label for accessibility -->
+<button><span class="iconify" data-icon="ph:house" aria-label="Home button"></span></button>
+
+<!-- Dropdown -->
+<button class="dropdown">Dropdown</button>
 
 <!-- Style modifiers -->
-<button class="contrast">Contrast</button>
-<button class="danger">Danger</button>
-<button class="dropdown">Dropdown</button>
 <button class="ghost">Ghost</button>
-<button class="outline">Outline</button>
-<button class="primary">Primary</button>
-<button class="secondary">Secondary</button>
+<button class="outlined">Outlined</button>
 <button class="transparent">Transparent</button>
+<button class="primary">Primary</button>
+<button class="primary outlined">Primary Outlined</button>
+<button class="outlined transparent border-primary">Primary Outlined Only</button>
+<button class="secondary">Secondary</button>
+<button class="secondary outlined">Secondary Outlined</button>
+<button class="outlined transparent border-secondary">Secondary Outlined Only</button>
+<button class="danger">Danger</button>
+<button class="danger outlined">Danger Outlined</button>
+<button class="outlined transparent border-danger">Danger Outlined Only</button>
+<button class="contrast">Contrast</button>
+<button class="contrast outlined">Contrast Outlined</button>
 
 <!-- Disabled attribute -->
 <button disabled>Disabled</button>
@@ -47,11 +56,21 @@ All HTML elements below can receive style overrides with inline Tailwind classes
 <!-- Links that have a button appearance -->
 <a href="#" class="button">Button Link</a>
 
-<!-- Set colour theme -->
-<button data-set-them="dark"><span class="iconify" data-icon="ph:moon"></span></button>
+<!-- Set color theme -->
+<button data-set-them="dark">
+  <span class="iconify" data-icon="ph:sun"></span>
+  <span>Light</span>
+</button>
 
-<!-- Toggle colour theme -->
-<button data-toggle-theme="dark,light"></button>
+<button data-set-them="dark">
+  <span class="iconify" data-icon="ph:moon"></span>
+  <span>Dark</span>
+</button>
+
+<!-- Toggle color theme -->
+<button aria-label="Color Theme" data-toggle-theme="dark,light" x-data="{ theme: localStorage.getItem('theme') || 'light' }" x-init="theme = localStorage.getItem('theme') || 'light'; $watch('theme', value => localStorage.setItem('theme', value)); window.addEventListener('theme-change', () => theme = localStorage.getItem('theme'))" @click="theme = theme === 'light' ? 'dark' : 'light'; window.dispatchEvent(new CustomEvent('theme-change'))">
+	<span class="iconify" :data-icon="theme === 'light' ? 'ph:sun' : 'ph:moon'"></span>
+</button>
 
 <!-- Open modal -->
 <button popovertarget="modalID">Open Modal</button>
@@ -72,7 +91,7 @@ All HTML elements below can receive style overrides with inline Tailwind classes
 </div>
 
 
-<!----- Callout ----->
+<!----- CALLOUT ----->
 <div class="callout">
   <p>Callouts are useful for highlighting important information.</p>
 </div>
@@ -83,7 +102,7 @@ All HTML elements below can receive style overrides with inline Tailwind classes
   <p>Icons can be added before or after text.</p>
 </div>
 
-<!-- Appearance modifiers -->
+<!-- Style modifiers -->
 <div class="callout primary">
   <p>Callouts are useful for highlighting important information.</p>
 </div>
@@ -104,7 +123,7 @@ All HTML elements below can receive style overrides with inline Tailwind classes
 <!----- CAPTION ----->
 <figcaption>Caption text is useful for fineprint.</figcaption>
 
-<!-- Appearance modifiers -->
+<!-- Style modifiers -->
 <figcaption class="primary">Primary caption text.</figcaption>
 <figcaption class="secondary">Secondary caption text.</figcaption>
 <figcaption class="danger">Danger caption text.</figcaption>
@@ -113,152 +132,458 @@ All HTML elements below can receive style overrides with inline Tailwind classes
 </div>
 
 
+<!----- COLOUR THEME SWITCHERS ----->
+<!-- Set light theme -->
+<button data-set-theme="light">
+  <span class="iconify" data-icon="ph:sun"></span>
+  <span>Light</span>
+</button>
 
-<!------ DROPDOWN ----->
-<div class="relative" x-data="{ dropdown: false }">
+<!-- Set dark theme -->
+<button data-set-theme="dark">
+  <span class="iconify" data-icon="ph:moon"></span>
+  <span>Dark</span>
+</button>
+
+<!-- Set system theme -->
+<button data-set-theme="">
+	<span class="iconify" data-icon="tabler:sun-moon"></span>
+	<span>System</span>
+</button>
+
+<!-- Toggle light/dark theme -->
+<button aria-label="Color theme toggle" data-toggle-theme="dark,light" x-data="{ theme: localStorage.getItem('theme') || 'light' }" x-init="theme = localStorage.getItem('theme') || 'light'; $watch('theme', value => localStorage.setItem('theme', value)); window.addEventListener('theme-change', () => theme = localStorage.getItem('theme'))" @click="theme = theme === 'light' ? 'dark' : 'light'; window.dispatchEvent(new CustomEvent('theme-change'))">
+  <span class="iconify" :data-icon="theme === 'light' ? 'ph:sun' : 'ph:moon'"></span>
+</button>
+
+<!-- Set theme from dropdown -->
+<div x-data="{ dropdown: false, theme: 'light' }" x-init="theme = localStorage.getItem('theme') || 'light'; $watch('theme', value => { localStorage.setItem('theme', value); window.dispatchEvent(new CustomEvent('theme-change')); }); window.addEventListener('theme-change', () => theme = localStorage.getItem('theme'))">
 
   <!-- Button -->
-  <button class="btn btn-dropdown" @click="dropdown = !dropdown"><span>Dropdown</span><span class="iconify" data-icon="ion:chevron-down"></span></button>
+  <button aria-label="Color theme dropdown" class="transparent" @click="dropdown = !dropdown">
+      <span class="iconify" :data-icon="theme === 'light' ? 'ph:sun' : theme === 'dark' ? 'ph:moon' : 'tabler:sun-moon'"></span>
+  </button>
 
   <!-- Menu -->
-  <ul class="dropdown" x-cloak x-show="dropdown" x-transition @click.away="dropdown = false">
-    <li>
-      <a href="#">
-        <span>Clickthrough Link</span>
-        <span class="iconify" data-icon="ion:arrow-forward-outline"></span>
-      </a>
-    </li>
-    <div class="divider"></div>
-    <li class="title">Group Label</li>
-    <li @click="dropdown = false">
-      Project Settings
-    </li>
-    <li data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
-      Switch Theme
-    </li>
-    <li @click="dropdown = false">
-      <span>Profile</span>
-      <span class="trailingSymbol">K</span>
-    </li>
+  <ul class="dropdown-menu left-auto right-0" x-cloak x-show="dropdown" x-transition @click.away="dropdown = false">
+      <li data-set-theme="light" @click="theme = 'light'; $store.colors.refresh()"><span class="iconify" data-icon="ph:sun"></span> Light</li>
+      <li data-set-theme="dark" @click="theme = 'dark'; $store.colors.refresh()"><span class="iconify" data-icon="ph:moon"></span> Dark</li>
+      <li data-set-theme="" class="js-theme-remove" @click="theme = ''; $store.colors.refresh()"><span class="iconify" data-icon="tabler:sun-moon"></span> System</li>
   </ul>
 
 </div>
 
 
-<!---- INPUTS ----->
-    
-<!-- Text Field -->
-<div class="flex flex-col gap-sm">
-  <label for="input" class="text-body ml-xs">Label</label>
-  <input type="text" id="input" placeholder="Insert text" value="Value" onclick="select()" />
+<!--- DIVIDER ----->
+<!-- Horizontal divider; <hr> element offers the same output with less code -->
+<div class="divider"></div>
+
+<!-- With text -->
+<div class="divider">With Text</div>
+
+<!-- With an icon -->
+<div class="divider"><span class="iconify" data-icon="ph:house"></span></div>
+
+<div class="flex flex-row justify-around w-full h-2xl">
+
+  <!-- Vertical modifier; must be in a parent with a known height -->
+  <div class="divider vertical"></div>
+  <div class="divider vertical">OR</div>
+  <div class="divider vertical"><span class="iconify" data-icon="ph:diamond-fill"></span></div>
+
 </div>
 
-<!-- Text Field with Floating Label -->
-<label for="floatingLabel" class="floating-label">
-  <input type="text" id="floatingLabel" placeholder="Insert text" onclick="select()" />
-  <span>Label</span>
-</label>
 
-<!-- Text Area -->
-<div class="flex flex-col gap-sm">
-  <label for="textarea" class="text-body ml-xs">Label</label>
-<textarea type="text" id="textarea" placeholder="Insert text" onclick="select()"></textarea>
+<!------ DROPDOWN ----->
+<div x-data="{ dropdown: false }">
+
+  <!-- Button -->
+  <button class="dropdown" @click="dropdown = !dropdown">
+    <span>Dropdown</span>
+    <span class="iconify" data-icon="ion:chevron-down"></span>
+  </button>
+
+  <!-- Menu -->
+  <!-- List items without interactive elements have tabindex="0" for accessibility -->
+  <ul class="dropdown-menu" x-cloak x-show="dropdown" x-transition @click.away="dropdown = false">
+		<li class="title">Title</li>
+		<li @click="dropdown = false" tabindex="0">Close menu</li>
+		<li tabindex="0">Don't close menu</li>
+		<a href="https://sitrus.ai" target="_blank">Link</a>
+		<li tabindex="0">
+			<span class="iconify" data-icon="ph:house"></span>
+			<span>Leading icon</span>
+		</li>
+		<li @click="dropdown = false" tabindex="0">
+			<span>Trailing icon</span>
+			<span class="iconify trailing" data-icon="ph:house"></span>
+		</li>
+		<li @click="dropdown = false" tabindex="0">
+			<span>Trailing text</span>
+			<span class="trailing">⌘K</span>
+		</li>
+		<hr>
+		<li class="title" tabindex="0">Color modifiers</li>
+	  	<li class="primary" tabindex="0">Primary</li>
+	  	<li class="secondary" tabindex="0">Secondary</li>
+	  	<li class="danger" tabindex="0">Danger</li>
+	  	<hr>
+		<li class="title">Interactive elements</li>
+		<li>
+			<fieldset class="row">
+				<label for="toggle">Switch</label>
+				<input id="toggle" type="checkbox" role="switch"></input>
+			</fieldset>
+	  	</li>
+		<li>
+			<fieldset class="row">
+				<label for="input">Input</label>
+				<input id="input" type="text" placeholder="Insert text">
+			</fieldset>
+		</li>
+	  <li><button @click="dropdown = false" @keydown.tab="dropdown = false">Button</button></li>
+    <!-- The final focusable element has the @keydown.tab attribute to close the dropdown when tabbing out -->
+	</ul>
+  
 </div>
 
-<!-- Text Area with Floating Label, and Alpine to Auto-Grow -->
-<label for="autoresize" class="floating-label">
-  <textarea type="text" id="autoresize" placeholder="Type your message here. I will resize based on the height content." x-data x-grow rows="2" onclick="select()"></textarea>
-  <span>Label</span>
-</label>
+
+<!----- FIELDSET ----->
+<!-- Container for stacking a label with its input, inside or outside a <form> -->
+<fieldset>
+  <label for="email">Email</label>
+  <input id="email" type="email" placeholder="Insert email" onclick="select()">
+</fieldset>
+
+<!-- Row modifier -->
+<fieldset class="row">
+  <label for="name">Name</label>
+  <input id="name" type="text" placeholder="Insert name" onclick="select()">
+</fieldset>
+
+<!-- Inputs like switches and checkboxes work too -->
+<fieldset class="row">
+  <label for="toggle">Toggle</label>
+  <input id="toggle" type="checkbox" role="switch" x-model="getHome" :disabled="homeLocked" @click="switchHomepage()"></input>
+</fieldset>
 
 
-<!------ MEDIA ------>
-
-<!-- Icon -->
-<span class="iconify text-4xl text-soft" data-icon="ion:heart-outline"></span>
-      
-<!-- Image -->
-<img src="https://source.unsplash.com/kzEFwhXPXwo" alt="" />
-
-<!-- Captioned Image -->
+<!----- FIGURE ----->
+<!-- Semantically correct way to present a graphic with caption -->
 <figure>
-  <img src="https://source.unsplash.com/LiDZooBvzt0" alt="" />
-  <figcaption class="mt-sm text-caption text-center">We looked on from the vantage point.</figcaption>
+  <img src="https://source.unsplash.com/eyXHWe7OcFw" alt="Arri Alexa Mini Rigged up in the Filmstudio Darkhall">
+  <figcaption>Arri Alexa Mini Rigged up in the Filmstudio Darkhall</figcaption>
 </figure>
 
-<!-- Video -->
+
+<!----- FORM ----->
+<!-- Validation and functionality need to be added -->
+<form>
+
+  <!-- Input Row -->
+  <fieldset class="row">
+
+    <!-- First Name -->
+    <fieldset class="min-w-[200px]">
+      <label for="firstName">First Name*</label>
+      <input type="text" id="firstName" name="First Name" placeholder="Jane" onclick="select()" x-validate.required />
+    </fieldset>
+
+    <!-- Last Name -->
+    <fieldset class="min-w-[200px]">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="Last Name" placeholder="Doe" onclick="select()" />
+    </fieldset>
+
+  </fieldset>
+
+  <!-- Email Input -->
+  <fieldset>
+    <label for="email">Email*</label>
+    <input type="email" id="email" name="Email" placeholder="email@example.com" onclick="select()" x-validate.required />
+  </fieldset>
+
+  <!-- Message Input -->
+  <fieldset>
+    <label for="message">Message*</label>
+    <textarea type="text" id="message" name="Message" class="min-h-[100px]" placeholder="Insert text..." onclick="select()" x-validate.required></textarea>
+  </fieldset>
+
+  <!-- Newsletter Switch -->
+  <fieldset class="row">
+    <label for="newsletter">Subscribe to newsletter</label>
+    <input id="newsletter" type="checkbox" role="switch""></input>
+  </fieldset>
+
+  <!-- Submit Button -->
+  <button type="submit" class="primary">Send Message</button>
+
+</form>
+
+
+<!----- HORIZONTAL RULE ----->
+<!-- For vertical lines or lines with icons or text inside, see .divider -->
+<hr>
+
+
+<!----- ICON ----->
+<span class="iconify" data-icon="ph:house"></span>
+
+<!-- Set font size -->
+<span class="iconify text-4xl" data-icon="ph:house"></span>
+
+
+<!----- IMAGE ----->
+<!-- Image from assets folder -->
+<img src="/assets/logo.png" alt="Univex logo">
+
+<!-- Unsplash image; after choosing an image at unplash.com, copy the trailing alphanumeric slug in its URL and paste it on the one here -->
+<img src="https://source.unsplash.com/TBXft9F2T88" alt="Retro jeep with canoe on roof">
+
+<!-- Unsplash random image; after the '?' apply comma-separated topics to generate a random image from every time the page loads -->
+<img src="https://source.unsplash.com/random/?city,night" alt="City at night">
+
+
+<!----- INPUT FIELD ----->
+<!-- Text input -->
+<input id="replace" name="replace" type="text" placeholder="Insert text" value="Jane Doe" onclick="select()">
+
+<!-- Email input -->
+<input id="replace" name="replace" type="email" placeholder="Insert email" value="chunkylover53@aol.com"  onclick="select()">
+
+<!-- Phone input -->
+<input id="replace" name="replace" type="tel" placeholder="Insert phone" value="519-123-4567"  onclick="select()">
+
+<!-- URL input -->
+<input id="replace" name="replace" type="url" placeholder="Insert URL" value="sitrus.ai"  onclick="select()">
+
+<!-- Number input -->
+<input id="replace" name="replace" type="number" placeholder="Insert number" value="7" min="-3" max="100"  onclick="select()">
+
+<!-- Style modifiers -->
+<input id="" class="ghost" name="" type="text" placeholder="Insert text" value="Ghost" onclick="select()">
+<input id="" class="outlined" name="" type="text" placeholder="Insert text" value="Outlined" onclick="select()">
+<input id="" class="transparent" name="" type="text" placeholder="Insert text" value="Transparent" onclick="select()">
+<input id="" class="underlined" name="" type="text" placeholder="Insert text" value="Underlined" onclick="select()">
+<input id="" class="primary " name="" type="text" placeholder="Insert text" value="Primary" onclick="select()">
+<input id="" class="primary outlined" name="" type="text" placeholder="Insert text" value="Primary Outlined" onclick="select()">
+<input id="" class="outlined transparent border-primary" name="" type="text" placeholder="Insert text" value="Primary Outlined Only" onclick="select()">
+<input id="" class="secondary" name="" type="text" placeholder="Insert text" value="Secondary" onclick="select()">
+<input id="" class="secondary outlined" name="" type="text" placeholder="Insert text" value="Secondary Outlined" onclick="select()">
+<input id="" class="outlined transparent border-secondary" name="" type="text" placeholder="Insert text" value="Secondary Outlined Only" onclick="select()">
+<input id="" class="danger" name="" type="text" placeholder="Insert text" value="Danger" onclick="select()">
+<input id="" class="danger outlined" name="" type="text" placeholder="Insert text" value="Danger Outlined" onclick="select()">
+<input id="" class="outlined transparent border-danger" name="" type="text" placeholder="Insert text" value="Danger Outlined Only" onclick="select()">
+<input id="" class="contrast" name="" type="text" placeholder="Insert text" value="Contrast" onclick="select()">
+<input id="" class="contrast outlined" name="" type="text" placeholder="Insert text" value="Contrast Outlined" onclick="select()">
+
+<!-- Disabled attribute -->
+<input id="replace" name="replace" type="text" placeholder="Insert text" value="Disabled" onclick="select()" disabled>
+
+
+<!----- MODAL ----->
+<button popovertarget="modalID">Open Modal</button>
+
+<dialog popover id="modalID">
+  <header>
+    <h3>Title</h3>
+    <button popovertarget="modalID" popoveraction="hide" class="transparent"><span class="iconify" data-icon="ph:x"></span></button>
+  </header>
+  <div>
+    <p>You can also click outside or press ESC to close.</p>
+  </div>
+  <footer>
+    <button popovertarget="modalID" popoveraction="hide">Cancel</button>
+    <button popovertarget="modalID" popoveraction="hide" class="primary">Done</button>
+  </footer>
+</dialog>
+
+
+<!----- SWITCH ----->
+<fieldset class="row">
+  <label for="toggle">Beast mode</label>
+  <input id="toggle" type="checkbox" role="switch"></input>
+</fieldset>
+
+<!-- Style modifiers -->
+<input type="checkbox" role="switch" class="outlined">
+<input type="checkbox" role="switch" class="outlined transparent">
+<input type="checkbox" role="switch" class="primary">
+<input type="checkbox" role="switch" class="primary outlined">
+<input type="checkbox" role="switch" class="outlined transparent border-primary">
+<input type="checkbox" role="switch" class="secondary">
+<input type="checkbox" role="switch" class="secondary outlined">
+<input type="checkbox" role="switch" class="outlined transparent border-secondary">
+<input type="checkbox" role="switch" class="danger">
+<input type="checkbox" role="switch" class="danger outlined">
+<input type="checkbox" role="switch" class="outlined transparent border-danger">
+<input type="checkbox" role="switch" class="contrast">
+<input type="checkbox" role="switch" class="contrast outlined">
+
+<!-- Checked attribute -->
+<input id="toggle" type="checkbox" role="switch" checked></input>
+
+<!-- Disabled attribute -->
+<input id="toggle" type="checkbox" role="switch" disabled></input>
+<input id="toggle" type="checkbox" role="switch" checked disabled></input>
+
+
+<!----- TABLE ----->
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Homeworld</th>
+    <th>Weapon</th>
+    <th>Status</th>
+  </thead>
+  <tbody class="[&>tr>td:first-child]:font-bold">
+    <tr>
+    <td>Fred 104</td>
+    <td>Ballast</td>
+    <td>M395B Designated Marksman Rifle</td>
+    <td><mark class="secondary">MIA</mark></td>
+    </tr>
+    <tr>
+    <td>John 117</td>
+    <td>Eridanus II</td>
+    <td>Everything</td>
+    <td><mark class="contrast">REDACTED</mark></td>
+    </tr>
+    <tr>
+    <td>Kelly 087</td>
+    <td>Imber</td>
+    <td>MA5B Assault Rifle</td>
+    <td><mark class="secondary">MIA</mark></td>
+    </tr>
+    <tr>
+    <td>Kurt 051</td>
+    <td>Circumstance</td>
+    <td>BR55 Service Rifle</td>
+    <td><mark class="danger">KIA</mark></td>
+    </tr>
+    <tr>
+    <td>Linda 058</td>
+    <td>Verent</td>
+    <td>SRS 99-S5 Sniper Rifle</td>
+    <td><mark class="secondary">MIA</mark></td>
+    </tr>
+    <tr>
+    <td>Sam 034</td>
+    <td>Harvest</td>
+    <td>BR85HB Battle Rifle</td>
+    <td><mark class="danger">KIA</mark></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!----- TEXTAREA ----->
+<!-- Textarea has all the same style modifiers as Input -->
+<textarea></textarea>
+
+<!-- Auto-resize with typing -->
+<!-- Add <script src="https://unpkg.com/alpinejs-textarea-grow@latest/dist/grow.min.js"></script> to the index.html <head> under the Custom comment -->
+<!-- Adjust the rows value to set the default number of text lines -->
+<textarea
+  type="text"
+  class="resize-none"
+  placeholder="Insert message" 
+  rows="2"
+	x-model="desc"
+	x-grow
+	@blur="updateDesc()"
+	onclick="select()">
+</textarea>
+
+
+<!----- VIDEO ----->
 <video controls>
   <source type="video/mp4" src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" poster="https://upload.wikimedia.org/wikipedia/commons/c/ca/Bbb-splash.png"/>
 </video>
 
-<!-- YouTube -->
+
+<!----- YOUTUBE ----->
 <iframe class="video" src="https://www.youtube-nocookie.com/embed/SiL8xnDd134?si=6U3L0uB0go6LE0CT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-
-<!----- MODAL ----->
-<dialog popover id="modalID" class="modal">
-  Content goes here
-  <button popovertargetaction="hide" class="btn">Close Button Example</button>
-</dialog>
-
-
-<!----- SHAPES ----->
-
-<!-- Divider -->
-<div class="divider"></div>
-
-<!-- Divider with Content -->
-<div class="divider">OR</div>
-
-<!-- Vertical Divider -->
-<div class="divider divider-vertical"></div>
-
-<!-- Vertical Divider with Content -->
-<div class="divider divider-vertical"><span class="iconify" data-icon="ion:heart"></span></div>
-
-<!-- Circle -->
-<div class="flex rounded-full w-[100px] h-[100px] bg-3"></div>
-
-<!-- Square -->
-<div class="flex w-[100px] h-[100px] bg-3"></div>
-
-<!-- Squircle -->
-<div class="flex rounded-md w-[100px] h-[100px] bg-3"></div>
 
 
 <!----- TYPE STYLES ----->
 
-<!-- Main Title -->
-<h1 class="title-main">Main Title. Lorem <a href="#">ipsum dolar</a> sit amet.</h1>
+<!--- Heading 1 (Main Title) -->
+<h1>Main Title. Lorem <a href="#">ipsum dolar</a> sit amet.</h1>
 
-<!-- Section Title -->
-<h2 class="title-section">Section Title. Lorem <a href="#">ipsum dolar</a> sit amet.</h2>
+<!-- Heading 2 (Section Title) -->
+<h2>Section Title. Lorem <a href="#">ipsum dolar</a> sit amet.</h2>
 
-<!-- Minor Title -->
-<h3 class="title-minor">Minor Title. Lorem <a href="#">ipsum dolar</a> sit amet.</h3>
+<!-- Heading 3 (Subsection Title) -->
+<h3>Minor Title. Lorem <a href="#">ipsum dolar</a> sit amet.</h3>
 
-<!-- Body Title -->
-<h4 class="title-body">Body Title. Lorem <a href="#">ipsum dolar</a> sit amet.</h4>
+<!-- Heading 4 (Body Title) -->
+<h4>Body Title. Lorem <a href="#">ipsum dolar</a> sit amet.</h4>
+
+<!-- Heading 5 (Byline Title) -->
+<h5>Byline Title. Lorem <a href="#">ipsum dolar</a> sit amet.</h5>
+
+<!-- Heading 6 (Lead-In Title) -->
+<h6>Lead-In Title. Lorem <a href="#">ipsum dolar</a> sit amet.</h6>
 
 <!-- Body Text -->
-<p class="text-body">Body text. Lorem <a href="#">ipsum dolar</a> sit amet. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Body text. Lorem <a href="#">ipsum dolar</a> sit amet. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
 <!-- Small Text -->
-<p class="text-small">Small text. Lorem <a href="#">ipsum dolar</a> dolar sit amet. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<small>Small text. Lorem <a href="#">ipsum dolar</a> dolar sit amet. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</small>
 
 <!-- Caption Text -->
-<p class="text-caption">Body text. Lorem <a href="#">ipsum dolar</a> dolar sit amet.</p>
+<figcaption>Body text. Lorem <a href="#">ipsum dolar</a> dolar sit amet.</figcaption>
 
 <!-- Standalone Link -->
-<a href="#" class="text-link">Standalone Link</a>
+<a href="#">Standalone Link</a>
 
-<!-- Code Text -->
-<code>Code text. Lorem ipsum dolar dolar sit amet.</code>
+<!-- Header Link -->
+<header class="p-0 justify-start">
+	<a href="#">Header Link</a>
+</header>
+
+<!-- Footer Link -->
+<footer class="p-0 justify-start">
+	<a href="#">Footer Link</a>
+</footer>
+
+<!-- Label -->
+<label for="">Label</label>
+
+<!-- Bullet List -->
+<ol>
+	<li>Monday</li>
+	<li>Tuesday</li>
+	<li>Thursday</li>
+	<li>Wednesday</li>
+</ol>
+
+<!-- Ordered List -->
+<ul>
+	<li>Boba Fett</li>
+	<li>IG-88</li>
+	<li>Bossk</li>
+	<li>Dengar</li>
+	<li>Zuckus & 4-LOM</li>
+</ul>
 
 <!--- Keyboard Text --->
 <div class="flex flex-row gap-[2px]">
-  <kbd>SHIFT</kbd><kbd>⌘</kbd><kbd>K</kbd>
+	<kbd>SHIFT</kbd><kbd>⌘</kbd><kbd>K</kbd>
 </div>
 
 <!-- Quote Text -->
 <blockquote>Blockquote text. Lorem ipsum dolar sit amet.</blockquote>
+
+<!-- Code Text -->
+<code>Code text. Lorem ipsum dolar dolar sit amet.</code>
+
+<!-- Preformatted Text -->
+<!-- The <pre> tag formats text based on the HTML formatting; line breaks, indents, and whitespace written here will appear in the element. -->
+<!-- Parsing is required to display various code symbols; see https://www.bloggerspice.com/p/pre-code-parser.html -->
+<pre><code>&lt;div&gt;
+	&lt;p&gt;&quot;There&#039;s the right way, the wrong way, and the Max Powers way.&quot;&lt;/p&gt;
+	&lt;p&gt;&quot;Isn&#039;t that the wrong way?&quot;&lt;/p&gt;
+	&lt;p&gt;&quot;Yeah, but faster.&quot;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
