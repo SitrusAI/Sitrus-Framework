@@ -1,0 +1,13 @@
+<template x-component.unwrap="socials">
+
+    <div class="flex flex-row flex-wrap items-center gap-sm">
+
+        <template x-data="cms.general" x-for="social in social">
+            <a :href="social.url" target="_blank" class="flex items-center space-x-2">
+                <span class="iconify" :data-icon="social.icon"></span>
+            </a>
+        </template>
+
+    </div>
+
+</template>

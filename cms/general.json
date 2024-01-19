@@ -1,11 +1,51 @@
 {
-    "logoImage": "",
-    "logoSVG": true,
-    "logoIcon": "lucide:citrus",
-    "logoIconStyle": "-scale-x-100 mr-[1px] text-yellow-500",
-    "logoName": "SITRUS",
-    "logoNameStyle": "",
-    "organization": "Universal Exports Ltd.",
-    "website": "https://universalexports.com",
-    "email": "contact@universalexports.com"
+    "logo": {
+        "image": "",
+        "imageStyle": "",
+        "svg": true,
+        "svgStyle": "text-yellow-500",
+        "icon": "",
+        "iconStyle": "",
+        "text": "SITRUS",
+        "textStyle": "font-extrabold",
+        "tagline": "Smarter ways to import/export."
+    },
+    "legal": {
+        "organization": "Universal Exports Ltd.",
+        "address": "London, United Kingdom",
+        "website": "https://universalexports.com",
+        "contactEmail": "contact@universalexports.com",
+        "jurisdiction": "United Kingdom",
+        "copyright": "© Universal Exports Ltd. All rights reserved."
+    },
+    "social": [
+        {
+            "name": "Instagram",
+            "icon": "simple-icons:instagram",
+            "url": "/home"
+        },
+        {
+            "name": "Threads",
+            "icon": "simple-icons:threads",
+            "url": "/home"
+        },
+        {
+            "name": "LinkedIn",
+            "icon": "simple-icons:linkedin",
+            "url": "/home"
+        },
+        {
+            "name": "YouTube",
+            "icon": "simple-icons:youtube",
+            "url": "/home"
+        }
+    ],
+    "theme": {
+        "colors": {
+
+        },
+        "size": {
+            
+        }
+    }  
 }

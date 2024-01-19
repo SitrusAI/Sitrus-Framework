@@ -20,9 +20,7 @@ For the purposes of these Terms of Use:
 
 *   **Affiliate** means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.
 
-*   **Country** refers to: Hong Kong SAR China
-
-*   **Company** (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Votion Ltd., Hong Kong.
+*   **Company** (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to <span x-text="cms.general.legal.organization"></span>, <span x-text="cms.general.legal.address"></span>.
 
 *   **Device** means any device that can access the Service such as a computer, a cellphone or a digital tablet.
 
@@ -32,7 +30,7 @@ For the purposes of these Terms of Use:
 
 *   **Third-party Social Media Service** means any services or content (including data, information, products or services) provided by a third-party that may be displayed, included or made available by the Service.
 
-*   **Website** refers to Votion, accessible from [https://votion.io](https://votion.io)
+*   **Website** refers to Votion, accessible from <span x-text="cms.general.legal.website"></span>.
 
 *   **You** means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.
 
@@ -92,7 +90,7 @@ Some jurisdictions do not allow the exclusion of certain types of warranties or 
 
 ## Governing Law
 
-The laws of the Country, excluding its conflicts of law rules, shall govern this Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.
+The laws of <span x-text="cms.general.legal.jurisdiction"></span>, excluding its conflicts of law rules, shall govern this Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.
 
 ---
 
@@ -142,6 +140,4 @@ By continuing to access or use Our Service after those revisions become effectiv
 
 ## Contact Us
 
-If you have any questions about these Terms of Use, You can contact us:
-
-*   By email: support@votion.io
+If you have any questions about these Terms of Use, You can contact us by email at <span x-text="cms.general.legal.contactEmail"></span>.

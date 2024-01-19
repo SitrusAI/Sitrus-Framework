@@ -302,8 +302,9 @@
 		--modal-footer-divider-width: 0;
 
 		/* Page */
-		--page-width: 1000px;
 		--page-margin: 40px;
+		--page-section-padding: 100px;
+		--page-width: 1000px;
 
 		/* Paragraph Text (Body Text) */
 		--p-font: var(--sans);

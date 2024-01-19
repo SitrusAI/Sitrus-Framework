@@ -10,11 +10,11 @@
 
                 <!-- Logo -->
                 <a href="/" target="_top" class="flex items-center gap-sm !font-extrabold text-solid" aria-label="Home">
-                    <x-logo class="h-lg fill-primary-text hover:fill-solid-link-hover"></x-logo>
+                    <x-logo class="h-md [&>*]:h-md text-base leading-none text-solid [&>.iconify]:text-solid hover:text-primary-hover [&>.iconify]:hover:text-primary-hover transition"></x-logo>
                 </a>
 
                 <!-- Description -->
-                <small>Smarter ways to import/export.</small>
+                <small x-text="cms.general.logo.tagline"></small>
 
             </div>
             <!-- End Left Side -->
@@ -53,22 +53,18 @@
         <nav class="flex flex-wrap justify-between gap-xl w-page max-w-full m-auto py-md border-t border-divider">
 
             <!-- Copyright -->
-            <figcaption>&copy; Universal Exports Ltd. All rights reserved.</figcaption>
+            <figcaption x-text="cms.general.legal.copyright"></figcaption>
 
-            <!-- Legal -->
-            <figcaption class="flex flex-wrap gap-sm">
-                <a href="terms">Terms</a>
-                <a href="privacy">Privacy</a>
-                <a href="#_"><span class="iconify" data-icon="ph:github-logo-fill"></span></a>
-                <a href="#_"><span class="iconify" data-icon="ph:youtube-logo-fill"></span></a>
-                <a href="#_"><span class="iconify" data-icon="ph:instagram-logo-fill"></span></a>
-                <a href="#_"><span class="iconify" data-icon="ph:discord-logo"></span></a>
-            </figcaption>
+            <!-- Legal & Social -->
+            <div class="flex flex-wrap gap-sm">
+                <a class="caption" href="/terms">Terms</a>
+                <a class="caption" href="/privacy">Privacy</a>
+                <x-socials></x-socials>
+            </div>
 
         </nav>
         <!-- End Lower Content -->
 
     </footer>
-    <!-- Gridded Footer -->
 
 </template>

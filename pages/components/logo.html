@@ -1,18 +1,31 @@
+<!-- This component applies your logo content to headers, footers, and various templates. -->
+<!-- Define logo content in /cms/general.json > logo. -->
+<!-- Alternatively, replace the nested template tags below with a fixed logo. -->
+
 <template x-component.unwrap="logo">
 
-<a href="/" aria-label="Home" class="flex items-center space-x-2">
-    <template x-if="cms.general.logoImage">
-        <img :src="cms.general.logoImage" alt="Logo" class="h-lg">
-    </template>
-    <template x-if="cms.general.logoSVG">
-        <x-logo-svg class="h-lg fill-link"></x-logo-svg>
-    </template>
-    <template x-if="cms.general.logoIcon">
-        <span class="iconify text-xl" :class="cms.general.logoIconStyle" :data-icon="cms.general.logoIcon"></span>
-    </template>
-    <template x-if="cms.general.logoName">
-        <span class="text-solid text-xl font-black" :class="cms.general.logoNameStyle" x-text="cms.general.logoName"></span>
-    </template>
-</a>
+    <div class="flex flex-row flex-nowrap items-center gap-xs">
+
+        <!-- Logo Image -->
+        <template x-if="cms.general.logo.image && cms.general.logo.image !== ''">
+            <img :class="cms.general.logo.imageStyle" :src="cms.general.logo.image" :alt="cms.general.logo.text + ' logo'">
+        </template>    
+
+        <!-- Logo SVG -->
+        <template x-if="cms.general.logo.svg">
+            <x-logo-svg :class="cms.general.logo.svgStyle" ></x-logo-svg>
+        </template>
+
+        <!-- Logo Icon -->
+        <template x-if="cms.general.logo.icon">
+            <span class="iconify" :class="cms.general.logo.iconStyle" :data-icon="cms.general.logo.icon"></span>
+        </template>
+
+        <!-- Logo Text -->
+        <template x-if="cms.general.logo.text">
+            <span :class="cms.general.logo.textStyle" x-text="cms.general.logo.text"></span>
+        </template>
+
+    </div>
 
 </template>

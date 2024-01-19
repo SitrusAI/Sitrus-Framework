@@ -9,7 +9,7 @@
 	<meta name="author" content="">
 </head>
 
-<body x-data="$store.app" x-cloak x-import="logo,logo-svg,header,footer">
+<body x-data="$store.app" x-cloak x-import="logo,logo-svg,header,footer,socials">
 
 	<!-- Header -->
 	<x-header></x-header>
@@ -19,14 +19,32 @@
 
 		<!-- Instructions -->
 		<section>
-	
-			<!-- Content -->
-			<div class="gap-lg text-center">
-				<h1 class="dark:text-primary" x-text="$store.app.cms.general.organization">Sitrus Starter Project</h1>
-				<h5>A straightforward template for websites and apps.</h5>
-				<a class="primary m-auto" href="https://github.com/SitrusAI/Sitrus-Starter-Project" target="_blank">Go to GitHub <span class="iconify" data-icon="ph:arrow-right"></span></a>
-			</div>
 			
+			<div class="gap-lg">
+				<h1 class="dark:text-primary">Sitrus Starter Project</h1>
+				<h5>A straightforward template for websites and apps.</h5>
+				<div class="flex flex-wrap gap-sm">
+					<a class="button" href="https://github.com/SitrusAI/Sitrus-Starter-Project" target="_blank"><span>Go to GitHub</span> <span class="iconify" data-icon="ph:arrow-right"></span></a>
+					<a class="button primary" href="#" target="_blank"><span>Docs</span> <span class="iconify" data-icon="ph:arrow-right"></span></a>
+				</div>
+			</div>
+
+		</section>
+
+		<!-- To-do list -->
+		<section class="bg-1">
+			<div>
+				<h2>Starter Suggestions</h2>
+				<ol class="text-left">
+					<li><b>Base Content:</b> Set logo and boilerplate info in <code>cms/general.json</code></li>
+					<li><b>New Pages:</b> Duplicate and rename <code>/pages/page-template.html</code>, and enable its navigation in <code>app.json</code></li>
+					<li><b>Theme:</b> Modify theme values in <code>styles/theme.css</code></li>
+					<li><b>Header/Footer:</b> Tweak or replace <code>pages/components/header.html</code> and <code>footer.html</code></li>
+					
+					<li><b>Favicon:</b> In the root folder, overwrite <code>favicon.ico</code> with your own for browser tabs.</li>
+					<li>Replace this home page code.</li>
+				</ol>
+			</div>
 		</section>
 
 	</main>

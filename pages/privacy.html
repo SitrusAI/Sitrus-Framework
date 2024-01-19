@@ -13,7 +13,7 @@
 	
 </head>
 
-<body x-data="$store.app" x-cloak x-import="footer,header,logo">
+<body x-data="$store.app" x-cloak x-import="logo,logo-svg,header,footer,socials">
 
 	<!-- Header -->
 	<x-header></x-header>
@@ -30,7 +30,7 @@
 	<!-- Footer -->
 	<x-footer></x-footer>
 
-	<!-- Markdown Fetching -->
+	<!-- Fetch Markdown -->
 	<script>
 	fetch( '/cms/privacy.md' )
 	.then( response => response.text() )

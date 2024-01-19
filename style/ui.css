@@ -1681,7 +1681,7 @@ blockquote {
 section {
 	width: 100%;
 	max-width: 100%;
-	padding: var(--2xl) var(--page-margin);  /* Pad top/bottom for content and left/right screen edges */
+	padding: var(--page-section-padding) var(--page-margin);  /* Pad top/bottom for content spacing, and left/right for screen edges */
 
 	/* Nested content in a centered div container */
 	& > div {
