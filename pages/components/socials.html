@@ -2,9 +2,9 @@
 
     <div class="flex flex-row flex-wrap items-center gap-sm">
 
-        <template x-for="social in cms.general.social">
-            <a :href="cms.general.social.url" target="_blank" class="flex items-center space-x-2">
-                <span class="iconify" :data-icon="cms.general.social.icon"></span>
+        <template x-for="link in $store.app.cms.general.social">
+            <a :href="link.url" target="_blank" class="flex items-center space-x-2">
+                <span class="iconify" :data-icon="link.icon"></span>
             </a>
         </template>
 
