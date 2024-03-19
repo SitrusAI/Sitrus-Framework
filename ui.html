@@ -13,7 +13,7 @@ All HTML elements can receive style overrides with inline Tailwind classes.
 <mark class="contrast">Contrast</mark>
 <mark class="danger">Danger</mark>
 <mark class="primary">Primary</mark>
-<mark class="secondary">Primary</mark>
+<mark class="secondary">Secondary</mark>
 
 <!-- Icon included -->
 <mark><span class="iconify" data-icon="ph:house"></span>Badge with icon</mark>
@@ -24,7 +24,7 @@ All HTML elements can receive style overrides with inline Tailwind classes.
 
 <!-- Icon & text -->
 <button>
-  <span class="iconify" data-icon=""ph:house></span>
+  <span class="iconify" data-icon="" ph:house></span>
   <span>Icon & text</span> <!-- Text must be in a <span>, before or after icon -->
 </button>
 
@@ -56,22 +56,6 @@ All HTML elements can receive style overrides with inline Tailwind classes.
 <!-- Links that have a button appearance -->
 <a href="#" class="button">Button Link</a>
 
-<!-- Set color theme -->
-<button data-set-them="dark">
-  <span class="iconify" data-icon="ph:sun"></span>
-  <span>Light</span>
-</button>
-
-<button data-set-them="dark">
-  <span class="iconify" data-icon="ph:moon"></span>
-  <span>Dark</span>
-</button>
-
-<!-- Toggle color theme -->
-<button aria-label="Color Theme" data-toggle-theme="dark,light" x-data="{ theme: localStorage.getItem('theme') || 'light' }" x-init="theme = localStorage.getItem('theme') || 'light'; $watch('theme', value => localStorage.setItem('theme', value)); window.addEventListener('theme-change', () => theme = localStorage.getItem('theme'))" @click="theme = theme === 'light' ? 'dark' : 'light'; window.dispatchEvent(new CustomEvent('theme-change'))">
-	<span class="iconify" :data-icon="theme === 'light' ? 'ph:sun' : 'ph:moon'"></span>
-</button>
-
 <!-- Open modal -->
 <button popovertarget="modalID">Open Modal</button>
 <dialog popover id="modalID">I'm open! See dialog element for modal styles.</dialog>
@@ -86,7 +70,7 @@ All HTML elements can receive style overrides with inline Tailwind classes.
 
 <!-- With input -->
 <div class="button-group">
-  <input placeholder="Insert email"/>
+  <input placeholder="Insert email" />
   <button>Subscribe</button>
 </div>
 
@@ -134,41 +118,41 @@ All HTML elements can receive style overrides with inline Tailwind classes.
 
 <!----- COLOUR THEME SWITCHERS ----->
 <!-- Set light theme -->
-<button data-set-theme="light">
+<button @click="$store.theme.set('light')">
   <span class="iconify" data-icon="ph:sun"></span>
-  <span>Light</span>
+  <span>Light</span></button>
 </button>
 
 <!-- Set dark theme -->
-<button data-set-theme="dark">
+<button @click="$store.theme.set('dark')">
   <span class="iconify" data-icon="ph:moon"></span>
   <span>Dark</span>
 </button>
 
 <!-- Set system theme -->
-<button data-set-theme="">
-	<span class="iconify" data-icon="tabler:sun-moon"></span>
-	<span>System</span>
+<button @click="$store.theme.set('system')">
+  <span class="iconify" data-icon="tabler:sun-moon"></span>
+  <span>System</span>
 </button>
 
 <!-- Toggle light/dark theme -->
-<button aria-label="Color theme toggle" data-toggle-theme="dark,light" x-data="{ theme: localStorage.getItem('theme') || 'light' }" x-init="theme = localStorage.getItem('theme') || 'light'; $watch('theme', value => localStorage.setItem('theme', value)); window.addEventListener('theme-change', () => theme = localStorage.getItem('theme'))" @click="theme = theme === 'light' ? 'dark' : 'light'; window.dispatchEvent(new CustomEvent('theme-change'))">
-  <span class="iconify" :data-icon="theme === 'light' ? 'ph:sun' : 'ph:moon'"></span>
+<button @click="$store.theme.toggle()" aria-label="Toggle color theme">
+  <span x-data class="iconify" :data-icon="$store.theme.dark() ? 'ph:sun' : 'ph:moon'"></span>
 </button>
 
 <!-- Set theme from dropdown -->
-<div x-data="{ dropdown: false, theme: 'light' }" x-init="theme = localStorage.getItem('theme') || 'light'; $watch('theme', value => { localStorage.setItem('theme', value); window.dispatchEvent(new CustomEvent('theme-change')); }); window.addEventListener('theme-change', () => theme = localStorage.getItem('theme'))">
+<div x-data="{ dropdown: false }" @click.away="dropdown = false">
 
   <!-- Button -->
   <button aria-label="Color theme dropdown" class="transparent" @click="dropdown = !dropdown">
-      <span class="iconify" :data-icon="theme === 'light' ? 'ph:sun' : theme === 'dark' ? 'ph:moon' : 'tabler:sun-moon'"></span>
+    <span class="iconify" :data-icon="$store.theme.current === 'light' ? 'ph:sun' : $store.theme.current === 'dark' ? 'ph:moon' : 'tabler:sun-moon'"></span>
   </button>
 
   <!-- Menu -->
-  <ul class="dropdown-menu left-auto right-0" x-cloak x-show="dropdown" x-transition @click.away="dropdown = false">
-      <li data-set-theme="light" @click="theme = 'light'; $store.colors.refresh()"><span class="iconify" data-icon="ph:sun"></span> Light</li>
-      <li data-set-theme="dark" @click="theme = 'dark'; $store.colors.refresh()"><span class="iconify" data-icon="ph:moon"></span> Dark</li>
-      <li data-set-theme="" class="js-theme-remove" @click="theme = ''; $store.colors.refresh()"><span class="iconify" data-icon="tabler:sun-moon"></span> System</li>
+  <ul class="dropdown-menu left-auto right-0" x-cloak x-show="dropdown" x-transition>
+    <li @click="$store.theme.set('light')"><span class="iconify" data-icon="ph:sun"></span><span>Light</span></li>
+    <li @click="$store.theme.set('dark')"><span class="iconify" data-icon="ph:moon"></span><span>Dark</span></li>
+    <li @click="$store.theme.set('system')"><span class="iconify" data-icon="tabler:sun-moon"></span><span>System</span></li>
   </ul>
 
 </div>
@@ -184,7 +168,7 @@ All HTML elements can receive style overrides with inline Tailwind classes.
 <!-- With an icon -->
 <div class="divider"><span class="iconify" data-icon="ph:house"></span></div>
 
-<div class="flex flex-row justify-around w-full h-2xl">
+<div class="row justify-around w-full h-2xl">
 
   <!-- Vertical modifier; must be in a parent with a known height -->
   <div class="divider vertical"></div>
@@ -195,7 +179,7 @@ All HTML elements can receive style overrides with inline Tailwind classes.
 
 
 <!------ DROPDOWN ----->
-<div x-data="{ dropdown: false }">
+<div x-data="{ dropdown: false }" @click.away="dropdown = false" @keydown.escape.window="dropdown = false">
 
   <!-- Button -->
   <button class="dropdown" @click="dropdown = !dropdown">
@@ -205,46 +189,46 @@ All HTML elements can receive style overrides with inline Tailwind classes.
 
   <!-- Menu -->
   <!-- List items without interactive elements have tabindex="0" for accessibility -->
-  <ul class="dropdown-menu" x-cloak x-show="dropdown" x-transition @click.away="dropdown = false">
-		<li class="title">Title</li>
-		<li @click="dropdown = false" tabindex="0">Close menu</li>
-		<li tabindex="0">Don't close menu</li>
-		<a href="https://sitrus.ai" target="_blank">Link</a>
-		<li tabindex="0">
-			<span class="iconify" data-icon="ph:house"></span>
-			<span>Leading icon</span>
-		</li>
-		<li @click="dropdown = false" tabindex="0">
-			<span>Trailing icon</span>
-			<span class="iconify trailing" data-icon="ph:house"></span>
-		</li>
-		<li @click="dropdown = false" tabindex="0">
-			<span>Trailing text</span>
-			<span class="trailing">⌘K</span>
-		</li>
-		<hr>
-		<li class="title" tabindex="0">Color modifiers</li>
-	  	<li class="primary" tabindex="0">Primary</li>
-	  	<li class="secondary" tabindex="0">Secondary</li>
-	  	<li class="danger" tabindex="0">Danger</li>
-	  	<hr>
-		<li class="title">Interactive elements</li>
-		<li>
-			<fieldset class="row">
-				<label for="toggle">Switch</label>
-				<input id="toggle" type="checkbox" role="switch"></input>
-			</fieldset>
-	  	</li>
-		<li>
-			<fieldset class="row">
-				<label for="input">Input</label>
-				<input id="input" type="text" placeholder="Insert text">
-			</fieldset>
-		</li>
-	  <li><button @click="dropdown = false" @keydown.tab="dropdown = false">Button</button></li>
+  <ul class="dropdown-menu" x-cloak x-show="dropdown" x-transition.origin.top.left @click.away="dropdown = false" tabindex="-1">
+    <li class="title">Title</li>
+    <li @click="dropdown = false" tabindex="0">Close menu</li>
+    <li tabindex="0">Don't close menu</li>
+    <a href="https://sitrus.ai" target="_blank">Link</a>
+    <li tabindex="0">
+      <span class="iconify" data-icon="ph:house"></span>
+      <span>Leading icon</span>
+    </li>
+    <li @click="dropdown = false" tabindex="0">
+      <span>Trailing icon</span>
+      <span class="iconify trailing" data-icon="ph:house"></span>
+    </li>
+    <li @click="dropdown = false" tabindex="0">
+      <span>Trailing text</span>
+      <span class="trailing">⌘K</span>
+    </li>
+    <hr>
+    <li class="title" tabindex="0">Color modifiers</li>
+    <li class="primary" tabindex="0">Primary</li>
+    <li class="secondary" tabindex="0">Secondary</li>
+    <li class="danger" tabindex="0">Danger</li>
+    <hr>
+    <li class="title">Interactive elements</li>
+    <li>
+      <fieldset class="row">
+        <label for="toggle">Switch</label>
+        <input id="toggle" type="checkbox" role="switch"></input>
+      </fieldset>
+    </li>
+    <li>
+      <fieldset class="row">
+        <label for="input">Input</label>
+        <input id="input" type="text" placeholder="Insert text">
+      </fieldset>
+    </li>
+    <li><button @click="dropdown = false" @keydown.tab="dropdown = false">Button</button></li>
     <!-- The final focusable element has the @keydown.tab attribute to close the dropdown when tabbing out -->
-	</ul>
-  
+  </ul>
+
 </div>
 
 
@@ -316,7 +300,7 @@ All HTML elements can receive style overrides with inline Tailwind classes.
   </fieldset>
 
   <!-- Submit Button -->
-  <button type="submit" class="primary">Send Message</button>
+  <button type=" submit" class="primary">Send Message</button>
 
 </form>
 
@@ -330,7 +314,7 @@ All HTML elements can receive style overrides with inline Tailwind classes.
 <span class="iconify" data-icon="ph:house"></span>
 
 <!-- Set font size -->
-<span class="iconify text-4xl" data-icon="ph:house"></span>
+<span class="iconify text-2xl" data-icon="ph:house"></span>
 
 
 <!----- IMAGE ----->
@@ -349,16 +333,16 @@ All HTML elements can receive style overrides with inline Tailwind classes.
 <input id="replace" name="replace" type="text" placeholder="Insert text" value="Jane Doe" onclick="select()">
 
 <!-- Email input -->
-<input id="replace" name="replace" type="email" placeholder="Insert email" value="chunkylover53@aol.com"  onclick="select()">
+<input id="replace" name="replace" type="email" placeholder="Insert email" value="chunkylover53@aol.com" onclick="select()">
 
 <!-- Phone input -->
-<input id="replace" name="replace" type="tel" placeholder="Insert phone" value="519-123-4567"  onclick="select()">
+<input id="replace" name="replace" type="tel" placeholder="Insert phone" value="519-123-4567" onclick="select()">
 
 <!-- URL input -->
-<input id="replace" name="replace" type="url" placeholder="Insert URL" value="sitrus.ai"  onclick="select()">
+<input id="replace" name="replace" type="url" placeholder="Insert URL" value="sitrus.ai" onclick="select()">
 
 <!-- Number input -->
-<input id="replace" name="replace" type="number" placeholder="Insert number" value="7" min="-3" max="100"  onclick="select()">
+<input id="replace" name="replace" type="number" placeholder="Insert number" value="7" min="-3" max="100" onclick="select()">
 
 <!-- Style modifiers -->
 <input id="" class="ghost" name="" type="text" placeholder="Insert text" value="Ghost" onclick="select()">
@@ -438,40 +422,40 @@ All HTML elements can receive style overrides with inline Tailwind classes.
   </thead>
   <tbody class="[&>tr>td:first-child]:font-bold">
     <tr>
-    <td>Fred 104</td>
-    <td>Ballast</td>
-    <td>M395B Designated Marksman Rifle</td>
-    <td><mark class="secondary">MIA</mark></td>
+      <td>Fred 104</td>
+      <td>Ballast</td>
+      <td>M395B Designated Marksman Rifle</td>
+      <td><mark class="secondary">MIA</mark></td>
     </tr>
     <tr>
-    <td>John 117</td>
-    <td>Eridanus II</td>
-    <td>Everything</td>
-    <td><mark class="contrast">REDACTED</mark></td>
+      <td>John 117</td>
+      <td>Eridanus II</td>
+      <td>Everything</td>
+      <td><mark class="contrast">REDACTED</mark></td>
     </tr>
     <tr>
-    <td>Kelly 087</td>
-    <td>Imber</td>
-    <td>MA5B Assault Rifle</td>
-    <td><mark class="secondary">MIA</mark></td>
+      <td>Kelly 087</td>
+      <td>Imber</td>
+      <td>MA5B Assault Rifle</td>
+      <td><mark class="secondary">MIA</mark></td>
     </tr>
     <tr>
-    <td>Kurt 051</td>
-    <td>Circumstance</td>
-    <td>BR55 Service Rifle</td>
-    <td><mark class="danger">KIA</mark></td>
+      <td>Kurt 051</td>
+      <td>Circumstance</td>
+      <td>BR55 Service Rifle</td>
+      <td><mark class="danger">KIA</mark></td>
     </tr>
     <tr>
-    <td>Linda 058</td>
-    <td>Verent</td>
-    <td>SRS 99-S5 Sniper Rifle</td>
-    <td><mark class="secondary">MIA</mark></td>
+      <td>Linda 058</td>
+      <td>Verent</td>
+      <td>SRS 99-S5 Sniper Rifle</td>
+      <td><mark class="secondary">MIA</mark></td>
     </tr>
     <tr>
-    <td>Sam 034</td>
-    <td>Harvest</td>
-    <td>BR85HB Battle Rifle</td>
-    <td><mark class="danger">KIA</mark></td>
+      <td>Sam 034</td>
+      <td>Harvest</td>
+      <td>BR85HB Battle Rifle</td>
+      <td><mark class="danger">KIA</mark></td>
     </tr>
   </tbody>
 </table>
@@ -484,21 +468,13 @@ All HTML elements can receive style overrides with inline Tailwind classes.
 <!-- Auto-resize with typing -->
 <!-- Add <script src="https://unpkg.com/alpinejs-textarea-grow@latest/dist/grow.min.js"></script> to the index.html <head> under the Custom comment -->
 <!-- Adjust the rows value to set the default number of text lines -->
-<textarea
-  type="text"
-  class="resize-none"
-  placeholder="Insert message" 
-  rows="2"
-	x-model="desc"
-	x-grow
-	@blur="updateDesc()"
-	onclick="select()">
+<textarea type="text" class="resize-none" placeholder="Insert message" rows="2" x-model="desc" x-grow @blur="updateDesc()" onclick="select()">
 </textarea>
 
 
 <!----- VIDEO ----->
 <video controls>
-  <source type="video/mp4" src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" poster="https://upload.wikimedia.org/wikipedia/commons/c/ca/Bbb-splash.png"/>
+  <source type="video/mp4" src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" poster="https://upload.wikimedia.org/wikipedia/commons/c/ca/Bbb-splash.png" />
 </video>
 
 
@@ -540,12 +516,12 @@ All HTML elements can receive style overrides with inline Tailwind classes.
 
 <!-- Header Link -->
 <header class="p-0 justify-start">
-	<a href="#">Header Link</a>
+  <a href="#">Header Link</a>
 </header>
 
 <!-- Footer Link -->
 <footer class="p-0 justify-start">
-	<a href="#">Footer Link</a>
+  <a href="#">Footer Link</a>
 </footer>
 
 <!-- Label -->
@@ -553,24 +529,24 @@ All HTML elements can receive style overrides with inline Tailwind classes.
 
 <!-- Bullet List -->
 <ol>
-	<li>Monday</li>
-	<li>Tuesday</li>
-	<li>Thursday</li>
-	<li>Wednesday</li>
+  <li>Monday</li>
+  <li>Tuesday</li>
+  <li>Thursday</li>
+  <li>Wednesday</li>
 </ol>
 
 <!-- Ordered List -->
 <ul>
-	<li>Boba Fett</li>
-	<li>IG-88</li>
-	<li>Bossk</li>
-	<li>Dengar</li>
-	<li>Zuckus & 4-LOM</li>
+  <li>Boba Fett</li>
+  <li>IG-88</li>
+  <li>Bossk</li>
+  <li>Dengar</li>
+  <li>Zuckus & 4-LOM</li>
 </ul>
 
 <!--- Keyboard Text --->
-<div class="flex flex-row gap-[2px]">
-	<kbd>SHIFT</kbd><kbd>⌘</kbd><kbd>K</kbd>
+<div class="row gap-[2px]">
+  <kbd>SHIFT</kbd><kbd>⌘</kbd><kbd>K</kbd>
 </div>
 
 <!-- Quote Text -->

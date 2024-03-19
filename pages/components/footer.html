@@ -1,15 +1,15 @@
 <template x-component.unwrap="footer">
 
-    <footer class="px-page border-t border-divider">
+    <footer class="border-t border-divider">
 
         <!-- Upper Content -->
-        <nav class="flex flex-wrap justify-between w-page max-w-full m-auto page:border-x border-divider">
+        <nav class="page:border-x border-divider">
 
             <!-- Left Side -->
-            <div class="flex flex-col gap-lg max-w-full">
+            <div class="col gap-lg max-w-full">
 
                 <!-- Logo -->
-                <a href="/" target="_top" class="flex items-center gap-sm !font-extrabold text-solid" aria-label="Home">
+                <a href="/" target="_top" class="row items-center gap-sm !font-extrabold text-solid" aria-label="Home">
                     <x-logo class="h-md [&>*]:h-md text-base leading-none text-solid [&>.iconify]:text-solid hover:text-primary-hover [&>.iconify]:hover:text-primary-hover transition"></x-logo>
                 </a>
 
@@ -20,23 +20,23 @@
             <!-- End Left Side -->
 
             <!-- Right Side -->
-            <div class="flex gap-xl max-w-full pb-xl">
+            <div class="row gap-xl max-w-full pb-xl">
 
-                <div class="flex flex-col gap-xs">
+                <div class="col gap-xs">
                     <h4>Product</h4>
                     <a href="#_">Product</a>
                     <a href="#_">Pricing</a>
                     <a href="#_">Features</a>
                 </div>
 
-                <div class="flex flex-col gap-xs">
+                <div class="col gap-xs">
                     <h4>Resources</h4>
                     <a href="#_">Docs</a>
                     <a href="#_">Videos</a>
                     <a href="#_">Support</a>
                 </div>
 
-                <div class="flex flex-col gap-xs">
+                <div class="col gap-xs">
                     <h4>Company</h4>
                     <a href="#_">About</a>
                     <a href="#_">Jobs</a>
@@ -50,15 +50,16 @@
         <!-- End Upper Content -->
 
         <!-- Lower Content -->
-        <nav class="flex flex-wrap justify-between gap-xl w-page max-w-full m-auto py-md border-t border-divider">
+        <nav class="row-wrap justify-between gap-xl w-page max-w-full m-auto py-md border-t border-divider">
 
             <!-- Copyright -->
             <figcaption x-text="cms.general.legal.copyright"></figcaption>
 
             <!-- Legal & Social -->
-            <div class="flex flex-wrap gap-sm">
+            <div class="row-wrap gap-sm">
                 <a class="caption" href="/terms">Terms</a>
                 <a class="caption" href="/privacy">Privacy</a>
+                <div class="divider vertical h-sm"></div>
                 <x-socials></x-socials>
             </div>
 

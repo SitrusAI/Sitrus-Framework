@@ -1,81 +1,47 @@
 <template x-component.unwrap="header">
 
-<header class="border-b border-divider">
+    <header>
 
-    <!-- Content -->
-    <nav class="flex justify-between items-center gap-lg w-page max-w-full py-lg">
-        
-        <!-- Left Side -->
-        <div class="grow">
+        <nav class="grid grid-cols-2 sm:grid-cols-4">
 
-            <!-- Logo -->
-            <a href="/" aria-label="Home" class="flex items-center space-x-2">
-                <x-logo class="h-lg [&>*]:h-lg text-xl text-solid leading-none hover:text-primary-hover [&_svg]:hover:text-primary-hover [&_.iconify]:hover:text-primary-hover transition"></x-logo>
-            </a>
+            <a class="logo" href="/home"><span class="iconify" data-icon="ph:globe"></span> Univex.</a>
 
-        </div>
-
-        <!-- Center -->
-        <div x-data="{ currentPage: window.location.pathname }" class="grow hidden sm:flex flex-row justify-center items-center gap-sm">
-			<a :class="{ 'text-blue-500 font-bold': currentPage === '/' }" href="/">Home</a>
-			<a :class="{ 'text-blue-500 font-bold': currentPage === '/terms' }" href="/terms">Features</a>
-			<a :class="{ 'text-blue-500 font-bold': currentPage === '/privacy' }" href="/privacy">Pricing</a>
-		</div>
-
-        <!-- Right Side -->
-        <div class="grow flex flex-row justify-end items-center gap-sm">
-
-            <x-socials class="hidden sm:flex [&_.iconify]:text-xl"></x-socials>
-
-            <!-- Color Theme Switcher -->
-            <div class="hidden sm:flex" x-data="{ dropdown: false, theme: 'light' }" x-init="theme = localStorage.getItem('theme') || 'light'; $watch('theme', value => { localStorage.setItem('theme', value); window.dispatchEvent(new CustomEvent('theme-change')); }); window.addEventListener('theme-change', () => theme = localStorage.getItem('theme'))">
-
-                <!-- Button -->
-                <button class="transparent" @click="dropdown = !dropdown" aria-label="Color theme dropdown">
-                    <span class="iconify" :data-icon="theme === 'light' ? 'ph:sun' : theme === 'dark' ? 'ph:moon' : 'tabler:sun-moon'"></span>
-                </button>
-            
-                <!-- Menu -->
-                <ul class="dropdown-menu left-auto right-0" x-cloak x-show="dropdown" x-transition @click.away="dropdown = false">
-                    <li data-set-theme="light" @click="theme = 'light'; $store.colors.refresh()"><span class="iconify" data-icon="ph:sun"></span> Light</li>
-                    <li data-set-theme="dark" @click="theme = 'dark'; $store.colors.refresh()"><span class="iconify" data-icon="ph:moon"></span> Dark</li>
-                    <li data-set-theme="" class="js-theme-remove" @click="theme = ''; $store.colors.refresh()"><span class="iconify" data-icon="tabler:sun-moon"></span> System</li>
-                </ul>
-            
+            <div class="col-span-2 hidden sm:flex row justify-center gap-xl">
+                <a href="#_">Features</a>
+                <a href="#_">Pricing</a>
+                <a href="#_">Docs</a>
             </div>
 
-            <!-- Mobile Button -->
-            <button class="transparent flex sm:hidden" popovertarget="mobile">
-                <span class="iconify" data-icon="ph:list"></span>
-            </button>
+            <div class="row justify-end items-center gap-xl">
 
-            <!-- Mobile Menu -->
-            <dialog popover id="mobile" class="side-menu-right left-auto gap-md w-[85vw] h-screen m-0 px-xl pt-xl pb-2xl rounded-none no-scrollbar" aria-label="Mobile Navigation Menu">
+                <a class="hidden sm:flex transparent" @click="$store.theme.toggle()" aria-label="Toggle color theme">
+                    <span x-data class="iconify text-xl" :data-icon="$store.theme.dark() ? 'ph:sun' : 'ph:moon'"></span>
+                </a>
 
-                <figcaption>Title</figcaption>
-                
+                <button class="transparent sm:hidden" popovertarget="mobile">
+                    <span class="iconify" data-icon="ph:list"></span>
+                </button>
 
-                <figcaption class="mt-xl">Title</figcaption>
+                <dialog popover id="mobile" class="side-menu-right left-auto gap-md w-[85vw] h-screen m-0 px-xl pt-xl pb-2xl rounded-none no-scrollbar" aria-label="Mobile navigation menu" x-data="{ currentPage: window.location.pathname }">
+
+                    <figcaption class="mt-xl">Pages</figcaption>
+                    <a href="#_">Home</a>
+                    <a href="#_">Features</a>
+                    <a href="#_">Pricing</a>
+                    <a href="#_">Docs</a>
+
+                    <figcaption class="mt-xl">Colors</figcaption>
+                    <a @click="$store.theme.set('light')"><span class="iconify" data-icon="ph:sun"></span> Light</a>
+                    <a @click="$store.theme.set('dark')"><span class="iconify" data-icon="ph:moon"></span> Dark</a>
+
+                    <x-socials class="hidden sm:flex [&_.iconify]:text-xl"></x-socials>
+
+                </dialog>
 
 
-                <!-- Static Links -->
-                <figcaption class="mt-xl">Resources</figcaption>
-                <a href="/about" class="text-2xl font-bold">About</a>
-                <a href="/support" class="text-2xl font-bold">Support</a>
+            </div>
 
-                <!-- Color Themes -->
-                <figcaption class="mt-xl">Colors</figcaption>
-                <a class="text-2xl font-bold" data-set-theme="light" x-data x-init="$store.colors.refresh()"><span class="iconify" data-icon="ph:sun"></span> Light</a>
-                <a class="text-2xl font-bold" data-set-theme="dark" x-data x-init="$store.colors.refresh()"><span class="iconify" data-icon="ph:moon"></span> Dark</a>
-                <a class="text-2xl font-bold" data-set-theme="" x-data x-init="$store.colors.refresh()"><span class="iconify" data-icon="tabler:sun-moon"></span> System</a>
-            
-            </dialog>
-            <!-- End Mobile Menu -->
-
-        </div>
-
-    </nav>
-
-</header>
+        </nav>
+    </header>
 
 </template>

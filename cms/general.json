@@ -8,15 +8,27 @@
         "iconStyle": "",
         "text": "SITRUS",
         "textStyle": "font-extrabold",
-        "tagline": "Smarter ways to import/export."
+        "tagline": "Apps and websites in an instant."
     },
     "legal": {
-        "organization": "Universal Exports Ltd.",
-        "address": "London, United Kingdom",
-        "website": "https://universalexports.com",
-        "contactEmail": "contact@universalexports.com",
-        "jurisdiction": "United Kingdom",
-        "copyright": "© Universal Exports Ltd. All rights reserved."
+        "organization": "Sitrus Labs Inc.",
+        "address": "Ontario, Canada",
+        "website": "https://sitrus.ai",
+        "contactEmail": "contact@sitrus.ai",
+        "jurisdiction": "Waterloo Region, Ontario, Canada",
+        "copyright": "© Sitrus Labs Inc. All rights reserved."
+    },
+    "seo": {
+        "title": "Sitrus",
+        "author": "Sitrus",
+        "description": "AI-generated apps and websites.",
+        "pages": [
+            {
+                "title": "",
+                "author": "",
+                "description": ""
+            }
+        ]
     },
     "social": [
         {
@@ -39,13 +51,5 @@
             "icon": "simple-icons:youtube",
             "url": "/home"
         }
-    ],
-    "theme": {
-        "colors": {
-
-        },
-        "size": {
-            
-        }
-    }  
+    ]
 }

@@ -1,1 +1,40 @@
-function themeToggle(){var toggleEl=document.querySelector("[data-toggle-theme]");(function(theme=localStorage.getItem("theme")){if(localStorage.getItem("theme")){document.documentElement.setAttribute("data-theme",theme);if(toggleEl){[...document.querySelectorAll("[data-toggle-theme]")].forEach(el=>{el.classList.add(toggleEl.getAttribute("data-act-class"))})}}})();if(toggleEl){[...document.querySelectorAll("[data-toggle-theme]")].forEach(el=>{el.addEventListener("click",function(){var themesList=el.getAttribute("data-toggle-theme");if(themesList){var themesArray=themesList.split(",");if(document.documentElement.getAttribute("data-theme")==themesArray[0]){if(themesArray.length==1){document.documentElement.removeAttribute("data-theme");localStorage.removeItem("theme")}else{document.documentElement.setAttribute("data-theme",themesArray[1]);localStorage.setItem("theme",themesArray[1])}}else{document.documentElement.setAttribute("data-theme",themesArray[0]);localStorage.setItem("theme",themesArray[0])}}[...document.querySelectorAll("[data-toggle-theme]")].forEach(el=>{el.classList.toggle(this.getAttribute("data-act-class"))})})})}}function themeBtn(){(function(theme=localStorage.getItem("theme")){if(theme!=undefined&&theme!=""){if(localStorage.getItem("theme")&&localStorage.getItem("theme")!=""){document.documentElement.setAttribute("data-theme",theme);var btnEl=document.querySelector("[data-set-theme='"+theme.toString()+"']");if(btnEl){[...document.querySelectorAll("[data-set-theme]")].forEach(el=>{el.classList.remove(el.getAttribute("data-act-class"))});if(btnEl.getAttribute("data-act-class")){btnEl.classList.add(btnEl.getAttribute("data-act-class"))}}}else{var btnEl=document.querySelector("[data-set-theme='']");if(btnEl.getAttribute("data-act-class")){btnEl.classList.add(btnEl.getAttribute("data-act-class"))}}}})();[...document.querySelectorAll("[data-set-theme]")].forEach(el=>{el.addEventListener("click",function(){document.documentElement.setAttribute("data-theme",this.getAttribute("data-set-theme"));localStorage.setItem("theme",document.documentElement.getAttribute("data-theme"));[...document.querySelectorAll("[data-set-theme]")].forEach(el=>{el.classList.remove(el.getAttribute("data-act-class"))});if(el.getAttribute("data-act-class")){el.classList.add(el.getAttribute("data-act-class"))}})})}function themeSelect(){(function(theme=localStorage.getItem("theme")){if(localStorage.getItem("theme")){document.documentElement.setAttribute("data-theme",theme);var optionToggler=document.querySelector("select[data-choose-theme] [value='"+theme.toString()+"']");if(optionToggler){[...document.querySelectorAll("select[data-choose-theme] [value='"+theme.toString()+"']")].forEach(el=>{el.selected=true})}}})();if(document.querySelector("select[data-choose-theme]")){[...document.querySelectorAll("select[data-choose-theme]")].forEach(el=>{el.addEventListener("change",function(){document.documentElement.setAttribute("data-theme",this.value);localStorage.setItem("theme",document.documentElement.getAttribute("data-theme"));[...document.querySelectorAll("select[data-choose-theme] [value='"+localStorage.getItem("theme")+"']")].forEach(el=>{el.selected=true})})})}}function themeChange(attach=true){if(attach===true){document.addEventListener("DOMContentLoaded",function(event){themeToggle();themeSelect();themeBtn()})}else{themeToggle();themeSelect();themeBtn()}}if(typeof exports!="undefined"){module.exports={themeChange:themeChange}}else{themeChange()}
+document.addEventListener('alpine:init', () => {
+    Alpine.store('theme', {
+        // Tracks the current theme explicitly, including 'system'
+        current: localStorage.getItem('theme') || 'system',
+
+        // Determines if the theme is dark for applying styles
+        dark() {
+            return this.current === 'dark' || (this.current === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        },
+
+        // Updates the theme, handling 'system' as a dynamic state
+        set(theme) {
+            this.current = theme;
+            localStorage.setItem('theme', theme);
+            if (theme === 'system') {
+                // Remove the theme from localStorage to follow the system theme
+                localStorage.removeItem('theme');
+                // Apply dark or light class based on system preference
+                document.documentElement.classList.toggle('dark', window.matchMedia('(prefers-color-scheme: dark)').matches);
+            } else {
+                // Apply theme directly
+                document.documentElement.classList.toggle('dark', theme === 'dark');
+            }
+            // Notify the application of the theme change
+            window.dispatchEvent(new CustomEvent('theme-changed', { detail: { theme: this.current } }));
+        },
+
+        // Toggles the theme between dark and light, not affecting the 'system' setting
+        toggle() {
+            this.set(this.dark() ? 'light' : 'dark');
+        },
+    });
+
+    // Respond to system theme changes if 'system' is selected
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        if (Alpine.store('theme').current === 'system') {
+            document.documentElement.classList.toggle('dark', event.matches);
+        }
+    });
+});

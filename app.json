@@ -13,6 +13,15 @@
     "index": "home",
     "notfound": "home",
     "active": {
+      "blog": {
+        "file": "/pages/blog.html",
+        "cms": [],
+        "routes": [
+          {
+            "path": "blog"
+          }
+        ]
+      },
       "home": {
         "file": "/pages/home.html",
         "cms": [],

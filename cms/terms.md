@@ -30,7 +30,7 @@ For the purposes of these Terms of Use:
 
 *   **Third-party Social Media Service** means any services or content (including data, information, products or services) provided by a third-party that may be displayed, included or made available by the Service.
 
-*   **Website** refers to Votion, accessible from <span x-text="cms.general.legal.website"></span>.
+*   **Website** refers to the website accessible from <span x-text="cms.general.legal.website"></span>.
 
 *   **You** means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.
 

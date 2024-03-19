@@ -4,16 +4,16 @@
 
 <template x-component.unwrap="logo">
 
-    <div class="flex flex-row flex-nowrap items-center gap-xs">
+    <div class="row items-center gap-xs">
 
         <!-- Logo Image -->
         <template x-if="cms.general.logo.image && cms.general.logo.image !== ''">
             <img :class="cms.general.logo.imageStyle" :src="cms.general.logo.image" :alt="cms.general.logo.text + ' logo'">
-        </template>    
+        </template>
 
         <!-- Logo SVG -->
         <template x-if="cms.general.logo.svg">
-            <x-logo-svg :class="cms.general.logo.svgStyle" ></x-logo-svg>
+            <x-logo-svg :class="cms.general.logo.svgStyle"></x-logo-svg>
         </template>
 
         <!-- Logo Icon -->

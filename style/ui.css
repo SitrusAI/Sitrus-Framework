@@ -1,18 +1,27 @@
 /*** Alpine cloaking ***/
 /* Prevent Alpine-invoked elements from flickering on page load */
-[x-cloak] { display: none !important; }
+[x-cloak] {
+	display: none !important;
+}
 
+/*** Article ***/
+/* Layout container akin to the larger .page */
+.article {
+	width: var(--article-width);
+	max-width: 100%;
+	margin: auto;
+}
 
-/*** Article (container preset) ***/
-/* A formatting container for text articles and blogs */
+/* Pre-formatted selector container for text articles and blogs */
 article {
 	width: var(--article-width);
 	max-width: 100%;
 	margin: auto;
-	padding: var(--article-padding);
 
 	/* Callout modifier */
-	& .callout { margin-top: 1.4em; }
+	.callout {
+		margin-top: 1.4em;
+	}
 
 	/* Caption modifier */
 	& figcaption {
@@ -23,10 +32,13 @@ article {
 	}
 
 	/* Figure modifier */
-	& figure { margin: 1.4em 0 0 0;
+	& figure {
+		margin: 1.4em 0 0 0;
 
 		/* Remove nested image margin */
-		& img { margin: 0; }
+		& img {
+			margin: 0;
+		}
 	}
 
 	/* Line modifier */
@@ -36,10 +48,14 @@ article {
 	}
 
 	/* List (ordered / numbers) modifier */
-	& ol { margin-top: 1em; }
-	
+	& ol {
+		margin-top: 1em;
+	}
+
 	/* List (unordered / bullets) modifier */
-	& ul { margin-top: 1em; }
+	& ul {
+		margin-top: 1em;
+	}
 
 	/* List (nested) modifier to remove margin */
 	& ul ul, & ul ol, & ol ul, & ol ol {
@@ -60,13 +76,20 @@ article {
 	}
 
 	/* Heading 4 text modifier */
-	& h4 { margin-top: 2em; }
+	& h4 {
+		margin-top: 2em;
+	}
 
 	/* Heading 5/6 text modifier */
-	& h5, h6 { margin-top: 2em; }
+	& h5,
+	h6 {
+		margin-top: 2em;
+	}
 
 	/* Image modifier */
-	& img { margin-top: 1.4em; }
+	& img {
+		margin-top: 1.4em;
+	}
 
 	/* Link (standalone) modifier */
 	& a:not(h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, li a, blockquote a, pre code a, code a, kbd a, span a, mark a, .button) {
@@ -74,14 +97,17 @@ article {
 	}
 
 	/* Quote modifier */
-	& blockquote { margin-top: 2em;
+	& blockquote {
+		margin-top: 2em;
 
 		& p {
 			margin: 0;
-			color: hsl(var(--quote));
+			color: var(--quote);
 		}
 
-		& code { font-style: inherit; }
+		& code {
+			font-style: inherit;
+		}
 	}
 
 	/* Paragraph text modifier */
@@ -92,7 +118,8 @@ article {
 	}
 
 	/* Preformatted text modifier */
-	& pre { margin-top: 2em;
+	& pre {
+		margin-top: 2em;
 
 		& code {
 			font-size: inherit;
@@ -123,10 +150,10 @@ article {
 	height: 30px;
 	font-size: 0;
 	font-weight: 700;
-	color: hsl(var(--input-value));
+	color: var(--input-value);
 	text-align: center;
 	text-transform: uppercase;
-	background: hsl(var(--button));
+	background: var(--button);
 	/*	outline: 2px solid var(--color-Primary);*/
 	border-radius: 50%;
 	overflow: hidden;
@@ -137,7 +164,7 @@ article {
 	}
 
 	&:hover {
-		background: hsl(var(--button-hover));
+		background: var(--button-hover);
 		transform: scale(1.1);
 		transition: var(--transition);
 	}
@@ -166,34 +193,36 @@ mark {
 	font-weight: var(--badge-weight);
 	font-style: var(--badge-style);
 	line-height: var(--badge-leading);
-	color: hsl(var(--badge-text));
-	background: hsl(var(--badge-bg));
+	text-transform: var(--badge-case);
+	color: var(--badge-text);
+	background: var(--badge-bg);
 	border: var(--badge-border-width) var(--badge-border-style) var(--badge-border);
 	border-radius: var(--badge-radius);
 	box-shadow: var(--badge-shadow);
 }
+
 /* Primary modifier */
 mark.primary {
-	color: hsl(var(--primary-inverse));
-	background: hsl(var(--primary));
+	color: var(--primary-inverse);
+	background: var(--primary);
 }
 
 /* Secondary modifier */
 mark.secondary {
-	color: hsl(var(--secondary-inverse));
-	background: hsl(var(--secondary));
+	color: var(--secondary-inverse);
+	background: var(--secondary);
 }
 
 /* Danger modifier */
 mark.danger {
-	color: hsl(var(--danger-inverse));
-	background: hsl(var(--danger));
+	color: var(--danger-inverse);
+	background: var(--danger);
 }
 
 /* Contrast modifier */
 mark.contrast {
-	color: hsl(var(--contrast-inverse));
-	background: hsl(var(--contrast));
+	color: var(--contrast-inverse);
+	background: var(--contrast);
 }
 
 
@@ -201,17 +230,20 @@ mark.contrast {
 /* The body is the page container; its direct children should typically be a <header>, <main>, and <footer> */
 body {
 	display: flex;
-	flex-flow: column; /* Stack children; apply inline Tailwind class(es) to modify */
-	justify-content: center;
+	flex-flow: column;
+	/* Stack children; apply inline Tailwind class(es) to modify */
+	align-items: center;
 	max-width: 100vw;
 	min-height: 100vh;
-	background: hsl(var(--page)); /* Set page colour */
+	background: var(--page);
+	/* Set page color */
 }
 
 
 /*** Bold Text */
-b, strong {
-	color: hsl(var(--bold));
+b,
+strong {
+	color: var(--bold);
 	font-weight: bolder;
 }
 
@@ -223,11 +255,10 @@ button, .button {
 	justify-content: center;
 	align-items: center;
 	gap: var(--button-gap);
+	width: fit-content;
 	min-width: var(--button-height);
 	max-width: 100%;
 	height: var(--button-height);
-	min-height: var(--button-height);
-	max-height: var(--button-height);
 	padding: 0 var(--button-padding);
 	overflow: hidden;
 	font-family: var(--button-font);
@@ -235,19 +266,19 @@ button, .button {
 	font-style: var(--button-style);
 	font-size: var(--button-size);
 	line-height: var(--button-height);
-	color: hsl(var(--button-inverse));
+	color: var(--button-inverse);
 	text-transform: var(--button-case);
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	background: hsl(var(--button));
+	background: var(--button);
 	border-radius: var(--button-radius);
 	cursor: var(--button-cursor);
 	user-select: none;
 
 	&:hover {
 		transform: scale(var(--button-scale-hover));
-		color: hsl(var(--button-inverse-hover));
-		background: hsl(var(--button-hover));
+		color: var(--button-inverse-hover);
+		background: var(--button-hover);
 
 		& span {
 			color: inherit;
@@ -256,8 +287,8 @@ button, .button {
 
 	&:active {
 		transform: scale(var(--button-scale-focus));
-		color: hsl(var(--button-inverse-focus));
-		background: hsl(var(--button-focus));
+		color: var(--button-inverse-focus);
+		background: var(--button-focus);
 
 		& span {
 			color: inherit;
@@ -281,9 +312,6 @@ button, .button {
 		text-overflow: inherit;
 	}
 
-	/* Text only */
-	& span:not(:has(.iconify)) {}
-
 	/* Inline icons */
 	.iconify {
 		font-size: var(--button-inline-icon-size);
@@ -295,9 +323,8 @@ button, .button {
 		font-size: var(--button-solo-icon-size);
 	}
 
-	/* Standlone icon button */
+	/* Standalone icon button */
 	&:has(.iconify:only-child) {
-		width: var(--button-height);
 		padding: 0;
 	}
 
@@ -308,6 +335,16 @@ button, .button {
 		height: var(--button-height-mobile);
 		min-height: var(--button-height-mobile);
 		max-height: var(--button-height-mobile);
+	}
+}
+
+/* Dropdown modifier */
+button.dropdown {
+	justify-content: space-between;
+	font-weight: var(--input-weight);
+
+	& span {
+		font-weight: inherit;
 	}
 }
 
@@ -349,10 +386,10 @@ button, .button {
 	font-weight: var(--callout-weight);
 	font-style: var(--callout-style);
 	font-size: var(--callout-size);
-	color: hsl(var(--callout-text));
+	color: var(--callout-text);
 	line-height: var(--callout-leading);
-	border: var(--callout-border-width) solid hsl(var(--callout-border));
-	background: hsl(var(--callout-bg));
+	border: var(--callout-border-width) solid var(--callout-border);
+	background: var(--callout-bg);
 	border-radius: var(--callout-radius);
 	box-shadow: var(--callout-shadow);
 
@@ -389,41 +426,41 @@ button, .button {
 
 /* Contrast modifier */
 .callout.contrast {
-	color: hsl(var(--contrast-inverse));
-	background: hsl(var(--contrast));
+	color: var(--contrast-inverse);
+	background: var(--contrast);
 
 	& * {
-		color: hsl(var(--contrast-inverse));
+		color: var(--contrast-inverse);
 	}
 }
 
 /* Danger modifier */
 .callout.danger {
-	color: hsl(var(--danger-inverse));
-	background: hsl(var(--danger));
+	color: var(--danger-inverse);
+	background: var(--danger);
 
 	& * {
-		color: hsl(var(--danger-inverse));
+		color: var(--danger-inverse);
 	}
 }
 
 /* Primary modifier */
 .callout.primary {
-	color: hsl(var(--primary-inverse));
-	background: hsl(var(--primary));
+	color: var(--primary-inverse);
+	background: var(--primary);
 
 	& * {
-		color: hsl(var(--primary-inverse));
+		color: var(--primary-inverse);
 	}
 }
 
 /* Secondary modifier */
 .callout.secondary {
-	color: hsl(var(--secondary-inverse));
-	background: hsl(var(--secondary));
+	color: var(--secondary-inverse);
+	background: var(--secondary);
 
 	& * {
-		color: hsl(var(--secondary-inverse));
+		color: var(--secondary-inverse);
 	}
 }
 
@@ -435,8 +472,46 @@ figcaption {
 	font-style: var(--caption-style);
 	font-size: var(--caption-size);
 	line-height: var(--caption-leading);
-	color: hsl(var(--caption));
+	color: var(--caption);
 	text-align: var(--caption-align);
+}
+
+
+/*** Card ***/
+.card {
+	gap: 0;
+	max-width: 100%;
+	padding: var(--card-padding);
+	background: var(--card-bg);
+	border-radius: var(--card-radius);
+	border: var(--card-border-width) solid var(--card-border);
+	box-shadow: var(--card-shadow);
+	overflow: hidden;
+
+	/* Reset image */
+	& img {
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	/* Card with image */
+	&:has(> img) {
+		padding: 0;
+
+		& > div {
+			padding: var(--card-padding);
+		}
+	}
+}
+
+/* Remove underline for clickthrough cards */
+a.card {
+	align-items: flex-start;
+	text-decoration: none !important;
+
+	&:hover {
+		transform: scale(var(--card-scale-hover));
+	}
 }
 
 
@@ -449,10 +524,10 @@ code {
 	font-weight: var(--code-weight);
 	font-style: var(--code-style);
 	font-size: var(--code-size);
-	color: hsl(var(--code-text));
+	color: var(--code-text);
 	line-height: var(--code-leading);
-	background: hsl(var(--code-bg));
-	border: var(--code-border-width) solid hsl(var(--code-border));
+	background: var(--code-bg);
+	border: var(--code-border-width) solid var(--code-border);
 	border-radius: var(--code-radius);
 	box-shadow: var(--code-shadow);
 }
@@ -469,18 +544,18 @@ input[type="color"] {
 	height: 30px;
 	max-height: 30px;
 	padding: 0;
-	border: 1px solid hsl(var(--button));
+	border: 1px solid var(--button);
 	border-radius: 100%;
 	box-shadow: var(-shadow);
 	cursor: pointer;
 
 	&:hover {
-		border: 1px solid hsl(var(--button-hover));
+		border: 1px solid var(--button-hover);
 		box-shadow: var(-shadow-lg)
 	}
 
 	&:active {
-		border: 1px solid hsl(var(--button-focus));
+		border: 1px solid var(--button-focus);
 	}
 
 	&::-webkit-color-swatch-wrapper {
@@ -500,7 +575,8 @@ input[type="color"] {
 		-webkit-mask-repeat: no-repeat;
 		background: #808080BF;
 		position: absolute;
-		top: 4px; left: 4px;
+		top: 4px;
+		left: 4px;
 		width: 100%;
 		height: 100%;
 		opacity: 0;
@@ -518,7 +594,8 @@ input[type="color"] {
 		-webkit-mask-repeat: no-repeat;
 		background: #808080BF;
 		position: absolute;
-		top: 4px; left: 4px;
+		top: 4px;
+		left: 4px;
 		width: 100%;
 		height: 100%;
 		opacity: 0;
@@ -531,13 +608,64 @@ input[type="color"] {
 	}
 }
 
+/* Caption modifier */
+.caption {
+	font-size: var(--caption-size);
+	font-weight: var(--caption-weight);
+}
+
+
+/*** Content Container ***/
+.page {
+	width: var(--page-width);
+	max-width: 100%;
+	margin: auto;
+}
+
+.article {
+	width: var(--article-width);
+	max-width: 100%;
+	margin: auto;
+}
+
+/* Flex layout modifiers */
+.row {
+	display: flex;
+	flex-flow: row nowrap;
+	max-width: 100%;
+}
+
+.col {
+	display: flex;
+	flex-flow: column nowrap;
+	max-width: 100%;
+}
+
+.row-wrap {
+	display: flex;
+	flex-flow: row wrap;
+	max-width: 100%;
+}
+
+.col-wrap {
+	flex-flow: column wrap;
+	max-width: 100%;
+}
+
+.center {
+	justify-content: center;
+	align-items: center;
+}
+
 
 /*** Cursor (interactive preset) ***/
-a, a span, button span { cursor: pointer; }
+a, a span, button span {
+	cursor: pointer;
+}
 
 
 /* Disabled state */
-:disabled {
+[disabled], :disabled.disabled {
 	opacity: var(--disabled-opacity);
 	pointer-events: none;
 }
@@ -552,12 +680,13 @@ a, a span, button span { cursor: pointer; }
 	align-items: center;
 	width: 100%;
 	height: 1px;
-	margin: var(--sm) 0; /* Top/bottom spacing from sibling elements */
+	margin: var(--sm) 0;
+	/* Top/bottom spacing from sibling elements */
 	white-space: nowrap;
 	font-family: var(--sans);
 	font-weight: var(--divider-weight);
 	font-size: var(--divider-size);
-	color: hsl(var(--text-faint));
+	color: var(--text-faint);
 
 	/* Lines before and after icons or text in the element */
 	&:before,
@@ -566,7 +695,7 @@ a, a span, button span { cursor: pointer; }
 		flex-grow: 1;
 		width: auto;
 		height: 1px;
-		background: hsl(var(--divider));
+		background: var(--divider);
 	}
 
 	&:not(:empty) {
@@ -577,9 +706,10 @@ a, a span, button span { cursor: pointer; }
 /* Vertical line modifier */
 .divider.vertical {
 	flex-flow: column nowrap;
-	width: 1px;
+	width: fit-content;
 	height: 100%;
-	margin: 0 var(--sm); /* Left/right spacing from sibling elements */
+	margin: 0 var(--sm);
+	/* Left/right spacing from sibling elements */
 
 	&:before,
 	&:after {
@@ -591,14 +721,27 @@ a, a span, button span { cursor: pointer; }
 	& .iconify {
 		min-height: var(--divider-size);
 		font-size: var(--divider-size);
-		color: hsl(var(--divider-text));
+		color: var(--divider-text);
+	}
+}
+
+/* Content alignment modifiers */
+.divider.start {
+	&:before {
+		display: none;
+	}
+}
+
+.divider.end {
+	&:after {
+		display: none;
 	}
 }
 
 
 /*** Dropdown Menu ***/
 /* Parent container */
-div:has(.dropdown-menu) {
+div:has(>.dropdown-menu) {
 	position: relative;
 	width: fit-content;
 }
@@ -609,20 +752,19 @@ div:has(.dropdown-menu) {
 	left: 0;
 	display: flex;
 	flex-flow: column nowrap;
+	gap: 0;
 	width: fit-content;
 	min-width: var(--dropdown-min-width);
 	max-width: calc(100vw - var(--page-margin) * 2);
 	height: fit-content;
 	max-height: 100vh;
 	margin: 0;
-	padding: var(--dropdown-padding);
-	overflow-x: hidden;
-	overflow-y: auto;
+	padding: var(--dropdown-padding-y) var(--dropdown-padding-x);
 	z-index: var(--stack-dropdown);
-	background: hsl(var(--dropdown));
+	background: var(--dropdown);
 	border-radius: var(--dropdown-radius);
 	box-shadow: var(--dropdown-shadow);
-	border: var(--dropdown-border-width) solid hsl(var(--dropdown-border));
+	border: var(--dropdown-border-width) solid var(--dropdown-border);
 
 	/* Mobile view modifier */
 	@media (hover:none),
@@ -638,19 +780,22 @@ div:has(.dropdown-menu) {
 
 	/* Line */
 	& hr {
-		width: 100%;
-		margin: var(--dropdown-divider-space) auto;
-		background: hsl(var(--dropdown-divider));
+		background: var(--dropdown-divider);
 	}
 
 	/* Line with icons or text inside */
 	.divider {
-		margin: var(--dropdown-divider-space) auto;
-		
-		&:before,
-		&:after {
-			background: hsl(var(--dropdown-divider));
+		&:before, &:after {
+			background: var(--dropdown-divider);
 		}
+	}
+
+	/* Line spacing; ignore dropdown padding */
+	& hr,
+	.divider {
+		margin: var(--dropdown-divider-space) auto;
+		margin-left: calc(var(--dropdown-padding-x) * -1);
+		width: calc(100% + var(--dropdown-padding-x) * 2);
 	}
 
 	/* Option group title */
@@ -660,8 +805,9 @@ div:has(.dropdown-menu) {
 		padding-bottom: 0;
 		padding-left: var(--dropdown-option-padding);
 		padding-right: calc(var(--dropdown-option-padding) + var(--dropdown-option-gap));
+		font-size: var(--dropdown-title-size);
 		line-height: 1;
-		color: hsl(var(--dropdown-option-group));
+		color: var(--dropdown-title);
 		pointer-events: none;
 
 		@media (hover:none),
@@ -673,7 +819,7 @@ div:has(.dropdown-menu) {
 	}
 
 	/* Dropdown option */
-	& li, & a {
+	& li, & a, & > button {
 
 		/* Inline-block supports text-overflow: ellipses */
 		display: inline-block;
@@ -682,7 +828,8 @@ div:has(.dropdown-menu) {
 		height: var(--dropdown-option-height);
 		min-height: var(--dropdown-option-height);
 		padding: 0 var(--dropdown-option-padding);
-		padding-right: calc(var(--dropdown-option-padding) + var(--dropdown-option-gap)); /* Add right-side spacing */ 
+		padding-right: calc(var(--dropdown-option-padding) + var(--dropdown-option-gap));
+		/* Add right-side spacing */
 		font-family: var(--dropdown-option-font);
 		font-weight: var(--dropdown-option-weight);
 		font-style: var(--dropdown-option-style);
@@ -690,7 +837,8 @@ div:has(.dropdown-menu) {
 		line-height: var(--dropdown-option-height);
 		text-decoration: none;
 		text-transform: var(--dropdown-option-case);
-		color: hsl(var(--dropdown-option-text));
+		text-indent: 0;
+		color: var(--dropdown-option-text);
 		text-align: start;
 		text-overflow: ellipsis;
 		overflow: hidden;
@@ -701,21 +849,23 @@ div:has(.dropdown-menu) {
 		user-select: none;
 
 		&:hover {
-			color: hsl(var(--dropdown-option-text-hover));
+			color: var(--dropdown-option-text-hover);
 			text-decoration: none;
-			background: hsl(var(--dropdown-option-hover));
-			
+			background: var(--dropdown-option-hover);
+			transform: none;
+
 			& span {
-				color: hsl(var(--dropdown-option-text-hover));
+				color: var(--dropdown-option-text-hover);
 			}
 		}
 
 		&:active {
-			background: hsl(var(--dropdown-option-focus));
-			color: hsl(var(--dropdown-option-text-focus));
+			background: var(--dropdown-option-focus);
+			color: var(--dropdown-option-text-focus);
+			transform: none;
 
 			& span {
-				color: hsl(var(--dropdown-option-text-focus));
+				color: var(--dropdown-option-text-focus);
 			}
 		}
 
@@ -725,12 +875,15 @@ div:has(.dropdown-menu) {
 			flex-flow: row nowrap;
 			justify-content: flex-start;
 			align-items: center;
-			padding-right: var(--dropdown-option-padding); /* Reset right-side spacing so children can take care of it  */
-			overflow: visible /* For focus outlines to appear on nested elements */
+			gap: 0;
+			padding-right: var(--dropdown-option-padding);
+			/* Reset right-side spacing so children can take care of it  */
+			overflow: visible
+				/* For focus outlines to appear on nested elements */
 		}
 
 		/* Nested text or icons within an option */
-		& > * {
+		& > span {
 			display: inline-block;
 			width: fit-content;
 			max-width: inherit;
@@ -740,7 +893,7 @@ div:has(.dropdown-menu) {
 			line-height: inherit;
 			color: inherit;
 			text-decoration: inherit;
-			overflow: inherit;
+			overflow: hidden;
 			white-space: inherit;
 			text-overflow: inherit;
 			user-select: inherit;
@@ -762,9 +915,14 @@ div:has(.dropdown-menu) {
 			font-size: var(--dropdown-option-size);
 
 			/* Leading icon */
-			&:first-child {
+			&:first-child:not(:only-child) {
 				margin-right: var(--xs);
 			}
+		}
+
+		/* Prevent label from inheriting gap */
+		& fieldset label {
+			gap: 0;
 		}
 
 		/* Prevent text inputs from overflowing */
@@ -772,23 +930,30 @@ div:has(.dropdown-menu) {
 			width: inherit;
 		}
 
-		
-
 		/* Trailing text or icon */
 		.trailing {
 			margin-left: auto;
-			color: hsl(var(--dropdown-option-trailing-symbol));
+			font-size: var(--dropdown-option-trailing-size);
+			color: var(--dropdown-option-trailing-symbol);
 
-			@media (hover: none),
-			(hover: on-demand) {
+			@media (hover: none), (hover: on-demand) {
 				margin-right: var(--md);
 			}
 		}
 
+		/* Submenu button */
+		.submenu {
+			height: 100%;
+
+			.iconify {
+				margin-right: 0;
+			}
+		}
+
 		/* Interactive elements */
-		&:has(button,input,textarea,select) {
+		&:has(button, input, textarea, select):not(:has(.dropdown-menu)) {
 			height: fit-content;
-			padding: var(--dropdown-option-padding);
+			padding: var(--dropdown-padding-y) var(--dropdown-option-padding);
 
 			&:hover {
 				background: transparent;
@@ -801,13 +966,12 @@ div:has(.dropdown-menu) {
 		}
 
 		/* Remove double padding between interactive elements */
-		&:has(button,input,textarea,select) ~ li:has(button,input,textarea,select) {
+		&:has(button, input, textarea, select) ~ li:has(button, input, textarea, select) {
 			padding-top: 0;
 		}
 
 		/* Mobile view modifier */
-		@media (hover: none),
-		(hover: on-demand) {
+		@media (hover: none), (hover: on-demand) {
 			min-height: var(--button-height-mobile);
 			padding: 0 calc(var(--dropdown-option-padding) * 1.5);
 
@@ -908,16 +1072,19 @@ div:has(.dropdown-menu) {
 	font-style: var(--error-msg-style);
 	font-size: var(--error-msg-size);
 	line-height: var(--error-msg-leading);
-	color: hsl(var(--error-msg-color));
+	color: var(--error-msg-color);
 	transition: var(--transition);
 }
 
 
 /*** Font smoothing (for iOS and Mac) ***/
 @media (-webkit-min-device-pixel-ratio: 2) {
-	a, blockquote, button, code, figcaption, h1, h2, h3, h4, h5, h6, kbd, li, mark, p, pre, small, span   {
-		-webkit-font-smoothing: antialiased; /* Chrome, Safari */
-		-moz-osx-font-smoothing: grayscale; /* Firefox */
+
+	a, blockquote, button, code, figcaption, h1, h2, h3, h4, h5, h6, kbd, li, mark, p, pre, small, span {
+		-webkit-font-smoothing: antialiased;
+		/* Chrome, Safari */
+		-moz-osx-font-smoothing: grayscale;
+		/* Firefox */
 	}
 }
 
@@ -926,18 +1093,26 @@ div:has(.dropdown-menu) {
 /* Apply a single <footer> at end of page for bottom navigation */
 footer {
 	display: flex;
+	flex-flow: column nowrap;
 	justify-content: center;
 	margin-top: auto;
-	padding: var(--page-margin) 0; /* Pad left/right screen edges */
+	width: 100%;
+	max-width: 100%;
+	padding: var(--page-margin);
+	/* Pad left/right screen edges */
 
 	/* Nested nav container for holding links or link groups */
 	& nav {
 		display: flex;
 		flex-flow: row wrap;
-		justify-content: space-between; /* Space out children; use inline Tailwind class(es) to modify */
-		width: var(--page-width); /* Set content width */
+		justify-content: space-between;
+		gap: var(--md);
+		/* Space out children; use inline Tailwind class(es) to modify */
+		width: var(--page-width);
+		/* Set content width */
 		max-width: 100%;
-		margin: auto; /* Centre horizontally */
+		margin: auto;
+		/* Centre horizontally */
 	}
 }
 
@@ -952,7 +1127,7 @@ h1 {
 	line-height: var(--h1-leading);
 	letter-spacing: var(--h1-kerning);
 	text-transform: var(--h1-case);
-	color: hsl(var(--h1));
+	color: var(--h1);
 }
 
 
@@ -966,7 +1141,7 @@ h2 {
 	line-height: var(--h2-leading);
 	letter-spacing: var(--h2-kerning);
 	text-transform: var(--h2-case);
-	color: hsl(var(--h2));
+	color: var(--h2);
 }
 
 
@@ -980,7 +1155,7 @@ h3 {
 	line-height: var(--h3-leading);
 	letter-spacing: var(--h3-kerning);
 	text-transform: var(--h3-case);
-	color: hsl(var(--h3));
+	color: var(--h3);
 }
 
 
@@ -994,7 +1169,7 @@ h4 {
 	line-height: var(--h4-leading);
 	letter-spacing: var(--h4-kerning);
 	text-transform: var(--h4-case);
-	color: hsl(var(--h4));
+	color: var(--h4);
 }
 
 
@@ -1008,7 +1183,7 @@ h5 {
 	line-height: var(--h5-leading);
 	letter-spacing: var(--h5-kerning);
 	text-transform: var(--h5-case);
-	color: hsl(var(--h5));
+	color: var(--h5);
 }
 
 
@@ -1022,7 +1197,7 @@ h6 {
 	line-height: var(--h6-leading);
 	letter-spacing: var(--h6-kerning);
 	text-transform: var(--h6-case);
-	color: hsl(var(--h6));
+	color: var(--h6);
 }
 
 
@@ -1031,25 +1206,34 @@ h6 {
 header {
 	display: flex;
 	justify-content: center;
-	padding: 0 var(--page-margin); /* Pad left/right screen edges */
+	width: 100%;
+	max-width: 100%;
+	padding: 0 var(--page-margin);
+	/* Pad left/right screen edges */
 
 	/* Nested nav container for holding links or link groups */
 	& nav {
 		display: flex;
 		flex-flow: row wrap;
-		justify-content: space-between; /* Space out children; use inline Tailwind class(es) to modify */
-		width: var(--page-width); /* Set content width */
+		justify-content: space-between;
+		gap: var(--md);
+		/* Space out children; use inline Tailwind class(es) to modify */
+		width: var(--page-width);
+		/* Set content width */
 		max-width: 100%;
-		margin: auto; /* Centre horizontally */
+		margin: auto;
+		/* Centre horizontally */
+		padding-top: var(--lg);
+		padding-bottom: var(--lg);
 	}
 }
 
 
 /*** Horizontal Rule ***/
 hr {
-	width: auto;
+	width: 100%;
 	height: 1px;
-	background: hsl(var(--divider));
+	background: var(--divider);
 	border: 0 none;
 }
 
@@ -1059,14 +1243,16 @@ html {
 	width: 100vw;
 	max-width: 100vw;
 	overflow-x: hidden;
-	scroll-behavior: smooth; /* Smooth anchor link scrolling */
+	scroll-behavior: smooth;
+	/* Smooth anchor link scrolling */
 }
 
 
 /*** Image ***/
-img {
+img,
+.image {
 	max-width: 100%;
-	max-height: 100vh;
+	max-height: 100%;
 	object-fit: cover;
 	border-radius: var(--image-radius);
 	box-shadow: var(--image-shadow);
@@ -1111,6 +1297,7 @@ fieldset.row {
 figure {
 	width: 100%;
 	max-width: 100%;
+	margin: 0;
 
 	/* Centre the caption */
 	& figcaption {
@@ -1128,10 +1315,18 @@ form {
 	gap: var(--lg);
 	width: 100%;
 	max-width: 100%;
-	
-	& label {
+
+	& label:not(.floating) {
 		margin-left: var(--label-offset);
 	}
+}
+
+
+/*** Icons ***/
+/* Inline icon */
+h1 .iconify, h2 .iconify, h3 .iconify, h4 .iconify, h5 .iconify, h6 .iconify, p .iconify, small .iconify, figcaption .iconify, label .iconify, li .iconify, code .iconify, kbd .iconify, span .iconify {
+	display: inline-block;
+	color: inherit;
 }
 
 
@@ -1146,45 +1341,45 @@ input, textarea, label.floating {
 	font-style: var(--input-style);
 	font-size: var(--input-size);
 	line-height: var(--input-leading);
-	color: hsl(var(--input-value));
+	color: var(--input-value);
 	text-transform: var(--input-case);
-	background: hsl(var(--input));
+	background: var(--input);
 	border-radius: var(--input-radius);
 	box-shadow: var(--input-shadow);
 	cursor: var(--input-cursor);
 
 	&::placeholder {
-		color: hsl(var(--input-placeholder));
+		color: var(--input-placeholder);
 	}
 
 	&::selection {
-		background: hsl(var(--input-selection) / var(--input-selection-opacity));
+		background: var(--input-selection);
 	}
 
 	&:hover {
 		transform: scale(var(--input-scale-hover));
-		color: hsl(var(--input-value));
-		background: hsl(var(--input-hover));
-		border-color: hsl(var(--input-border-hover));
+		color: var(--input-value);
+		background: var(--input-hover);
+		border-color: var(--input-border-hover);
 	}
 
 	&:focus {
 		transform: scale(var(--input-scale-focus));
-		color: hsl(var(--text-solid-focus));
-		background: hsl(var(--input-focus));
-		border-color: hsl(var(--input-border-focus));
+		color: var(--text-solid-focus);
+		background: var(--input-focus);
+		border-color: var(--input-border-focus);
 	}
 
 	/* Prevent browser coloring after autocomplete */
 	&:-webkit-autofill, &:-webkit-autofill:focus {
-    	transition: background-color 0s 600000s, color 0s 600000s;
-  	}
+		transition: background-color 0s 600000s, color 0s 600000s;
+	}
 }
 
 /* Text Input */
 input {
 	height: var(--input-height);
-	padding: 0 var(--input-padding);
+	padding: 0 0 0 var(--input-padding);
 }
 
 /* Text Area */
@@ -1205,9 +1400,9 @@ label.floating {
 	/* Apply focus styles to label parent */
 	&:has(input:focus, textarea:focus) {
 		transform: scale(var(--input-scale-focus));
-		color: hsl(var(--input-inverse-focus));
-		background: hsl(var(--input-focus));
-		border-color: hsl(var(--input-border-focus));
+		color: var(--input-inverse-focus);
+		background: var(--input-focus);
+		border-color: var(--input-border-focus);
 	}
 
 	/* Override default input height to avoid crowding */
@@ -1218,8 +1413,7 @@ label.floating {
 	}
 
 	/* Styles removed since parent has them */
-	& input,
-	& textarea {
+	& input, & textarea {
 		background: none;
 		border: none;
 		outline-offset: calc(var(--focus-outline-offset) + 1px);
@@ -1241,13 +1435,12 @@ label.floating {
 			padding-left: 0;
 			background: linear-gradient(to bottom,
 					transparent 49%,
-					hsl(var(--input)) 49%);
+					var(--input) 49%);
 		}
 
 		/* Small floating label when focused */
 		&:focus ~ span {
 			top: calc(0px - var(--focus-outline-width) - var(--focus-outline-offset));
-			font-size: 75%;
 			padding: calc(var(--input-padding) / 2);
 			font-size: calc(var(--input-size) * 0.75);
 		}
@@ -1265,7 +1458,7 @@ label.floating {
 		font-style: var(--input-style);
 		font-size: var(--input-size);
 		line-height: 1;
-		color: hsl(var(--input-placeholder));
+		color: var(--input-placeholder);
 		transition: var(--transition);
 		pointer-events: none;
 	}
@@ -1279,14 +1472,38 @@ label.floating {
 	}
 }
 
+/* Label positioned as placeholder */
+label.floating.placeholder {
+	background: red;
+
+	& span {
+		transform: none;
+		line-height: var(--input-floating-height);
+		padding: 0;
+	}
+
+	& input,
+	& textarea {
+
+		/* Small floating label when focused */
+		&:focus ~ span {
+			background: blue;
+			top: 0;
+			transform: translateY(-50%);
+			padding: 0;
+			font-size: calc(var(--input-size) * 0.75);
+		}
+	}
+}
+
 
 /*** Keyboard Text ***/
 kbd {
 	min-width: var(--kbd-min-width);
 	margin-right: var(--kbd-spacing);
 	padding: var(--kbd-padding);
-	background-color: hsl(var(--kbd-bg));
-	border: var(--kbd-border-width) solid hsl(var(--kbd-border));
+	background-color: var(--kbd-bg);
+	border: var(--kbd-border-width) solid var(--kbd-border);
 	border-radius: var(--kbd-radius);
 	box-shadow: var(--kbd-shadow);
 	font-family: var(--kbd-font);
@@ -1295,7 +1512,7 @@ kbd {
 	font-size: var(--kbd-size);
 	line-height: var(--kbd-leading);
 	letter-spacing: var(--kbd-kerning);
-	color: hsl(var(--kbd-text));
+	color: var(--kbd-text);
 	text-align: center;
 
 	&:last-of-type {
@@ -1312,7 +1529,7 @@ label {
 	font-style: var(--label-style);
 	font-size: var(--label-size);
 	line-height: var(--label-leading);
-	color: hsl(var(--label));
+	color: var(--label);
 	user-select: none;
 }
 
@@ -1330,15 +1547,19 @@ a {
 	font-style: var(--link-style);
 	font-size: var(--link-size);
 	line-height: var(--link-leading);
-	color: hsl(var(--link));
+	color: var(--link);
 	text-decoration: var(--link-decoration);
-	text-decoration-color: hsl(var(--link-decoration-color));
+	text-decoration-color: var(--link-decoration-color);
 	text-decoration-thickness: var(--link-decoration-thickness);
 	text-underline-offset: var(--link-underline-offset);
 
 	&:hover {
-		color: hsl(var(--link-hover));
+		color: var(--link-hover);
 		text-decoration: var(--link-decoration-hover);
+	}
+
+	& p, & small, & figcaption {
+		text-decoration: none;
 	}
 }
 
@@ -1348,83 +1569,96 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, small a, figcaption a, label a, li a, b
 	font-size: inherit;
 	font-weight: var(--a-weight);
 	font-style: var(--a-style);
-	color: hsl(var(--a));
+	color: var(--a);
 	text-decoration: var(--a-decoration);
-	text-decoration-color: hsl(var(--a-decoration-color));
+	text-decoration-color: var(--a-decoration-color);
 	text-decoration-thickness: var(--a-decoration-thickness);
 	text-underline-offset: var(--a-underline-offset);
 
 	&:hover {
-		color: hsl(var(--a-hover));
+		color: var(--a-hover);
 		text-decoration: var(--a-decoration-hover);
-		text-decoration-color: hsl(var(--a-decoration-color));
+		text-decoration-color: var(--a-decoration-color);
 		text-decoration-thickness: var(--a-decoration-thickness-hover);
 	}
 }
 
 /* Primary modifier */
 a.primary {
-	color: hsl(var(--primary-text));
-	text-decoration-color: hsl(var(--primary-text));
+	color: var(--primary-text);
+	text-decoration-color: var(--primary-text);
 
 	&:hover {
-		color: hsl(var(--primary-text));
-		text-decoration-color: hsl(var(--primary-text));
+		color: var(--primary-text);
+		text-decoration-color: var(--primary-text);
 	}
 
 	&:active {
-		color: hsl(var(--primary-text));
-		text-decoration-color: hsl(var(--primary-text));
+		color: var(--primary-text);
+		text-decoration-color: var(--primary-text);
 	}
 }
 
 /* Secondary modifier */
 a.secondary {
-	color: hsl(var(--secondary-text));
-	text-decoration-color: hsl(var(--secondary-text));
+	color: var(--secondary-text);
+	text-decoration-color: var(--secondary-text);
 
 	&:hover {
-		color: hsl(var(--secondary-text));
-		text-decoration-color: hsl(var(--secondary-text));
+		color: var(--secondary-text);
+		text-decoration-color: var(--secondary-text);
 	}
 
 	&:active {
-		color: hsl(var(--secondary-text));
-		text-decoration-color: hsl(var(--secondary-text));
+		color: var(--secondary-text);
+		text-decoration-color: var(--secondary-text);
 	}
 }
 
 /* Danger modifier */
 a.danger {
-	color: hsl(var(--danger-text));
-	text-decoration-color: hsl(var(--danger-text));
+	color: var(--danger-text);
+	text-decoration-color: var(--danger-text);
 
 	&:hover {
-		color: hsl(var(--danger-text));
-		text-decoration-color: hsl(var(--danger-text));
+		color: var(--danger-text);
+		text-decoration-color: var(--danger-text);
 	}
 
 	&:active {
-		color: hsl(var(--danger-text));
-		text-decoration-color: hsl(var(--danger-text));
+		color: var(--danger-text);
+		text-decoration-color: var(--danger-text);
 	}
 }
 
 /* Button modifier */
 a.button {
-	text-decoration: none;
+	text-decoration: none !important;
 }
 
-/* Small modifier */
-a.small {
-	font-size: var(--small-size);
-	font-weight: var(--small-weight);
-}
+/* Logo modifier */
+.logo {
+	font-family: var(--logo-font);
+	font-weight: var(--logo-weight);
+	font-style: var(--logo-style);
+	font-size: var(--logo-size);
+	line-height: var(--logo-leading);
+	letter-spacing: var(--logo-kerning);
+	color: var(--logo);
 
-/* Caption modifier */
-a.caption {
-	font-size: var(--caption-size);
-	font-weight: var(--caption-weight);
+	&:hover {
+		color: var(--logo-hover);
+	}
+
+	& span {
+		font-family: inherit;
+		font-weight: inherit;
+		font-style: inherit;
+		font-size: inherit;
+		line-height: inherit;
+		letter-spacing: inherit;
+		color: inherit;
+	}
 }
 
 /* Header modifier */
@@ -1435,15 +1669,26 @@ header {
 		font-style: var(--link-header-style);
 		font-size: var(--link-header-size);
 		line-height: var(--link-header-leading);
-		color: hsl(var(--link-header));
+		color: var(--link-header);
 		text-decoration: var(--link-header-decoration);
-		text-decoration-color: hsl(var(--link-header-decoration-color));
+		text-decoration-color: var(--link-header-decoration-color);
 		text-decoration-thickness: var(--link-header-decoration-thickness);
 		text-underline-offset: var(--link-header-underline-offset);
 
 		&:hover {
-			color: hsl(var(--link-header-hover));
+			color: var(--link-header-hover);
 			text-decoration: var(--link-header-decoration-hover);
+		}
+	}
+
+	/* Mobile drawer menu */
+	& dialog {
+		& a {
+			font-family: var(--link-header-drawer-font);
+			font-weight: var(--link-header-drawer-weight);
+			font-style: var(--link-header-drawer-style);
+			font-size: var(--link-header-drawer-size);
+			line-height: var(--link-header-drawer-leading);
 		}
 	}
 }
@@ -1456,62 +1701,67 @@ footer {
 		font-style: var(--link-footer-style);
 		font-size: var(--link-footer-size);
 		line-height: var(--link-footer-leading);
-		color: hsl(var(--link-footer));
+		color: var(--link-footer);
 		text-decoration: var(--link-footer-decoration);
-		text-decoration-color: hsl(var(--link-footer-decoration-color));
+		text-decoration-color: var(--link-footer-decoration-color);
 		text-decoration-thickness: var(--link-footer-decoration-thickness);
 		text-underline-offset: var(--link-footer-underline-offset);
 
 		&:hover {
-			color: hsl(var(--link-footer-hover));
+			color: var(--link-footer-hover);
 			text-decoration: var(--link-footer-decoration-hover);
 		}
 	}
 }
 
 
-/*** List (Ordered / Numbered) ***/
-ol {
-	padding-left: 0;
+/*** List ***/
+ol, ul {
+	display: flex;
+	flex-flow: column nowrap;
+	gap: var(--list-item-gap);
+	padding-left: 1ch;
 	font-family: var(--p-font);
 	font-weight: var(--p-weight);
 	font-style: var(--p-style);
 	font-size: var(--p-size);
 	line-height: var(--p-leading);
-	color: hsl(var(--p));
-	list-style: decimal;
+	color: var(--paragraph);
+	list-style-position: inside;
 
-	/* List item */
+	/* List item ch padding & indent aligns line wrapping for any font size */
 	& > li {
-		padding-left: 0;
-		line-height: 2;
+		padding-left: 1.2ch;
+		text-indent: -2ch;
 
-		&::marker {
-			color: hsl(var(--counter));
+		& > * {
+			display: inline;
 		}
 	}
 }
 
-/*** List (Unordered / Bullets) ***/
-ul {
-	padding-left: 0;
-	font-family: var(--p-font);
-	font-weight: var(--p-weight);
-	font-style: var(--p-style);
-	font-size: var(--p-size);
-	line-height: var(--p-leading);
-	color: hsl(var(--p));
-	list-style-type: disc;
-
-	/* List item */
-	& > li {
-		padding-left: 0;
-		line-height: 2;
-
-		&::marker {
-			color: hsl(var(--bullet));
-		}
+/* Ordered list marker color */
+ol {
+	& > li::marker {
+		color: var(--list-counter);
 	}
+}
+
+/* Unordered list marker color */
+ul {
+	& > li::marker {
+		color: var(--list-bullet);
+	}
+}
+
+/* Revert list indents for nested icons and text */
+ol:has(> li > svg), ul:has(> li > svg) {
+	padding-left: 0;
+}
+
+ol > li:has(svg), ul > li:has(svg) {
+	padding-left: 0;
+	text-indent: 0;
 }
 
 
@@ -1519,15 +1769,18 @@ ul {
 /* Apply a single <main> on a page between a <header> and <footer>, to hold key content like <section> containers */
 main {
 	display: flex;
-	flex-flow: column nowrap; /* Stack children; apply inline Tailwind class(es) to modify */
+	flex-flow: column nowrap;
+	/* Stack children; apply inline Tailwind class(es) to modify */
 	width: 100%;
 	max-width: 100%;
-	margin: auto; /* Centre horizontally if width modified */
+	margin: auto;
+	/* Centre horizontally if width modified */
 }
 
 
 /*** Modal ***/
-dialog, [popover] {
+dialog,
+[popover] {
 	display: none;
 	flex-flow: column nowrap;
 	width: var(--modal-width);
@@ -1535,7 +1788,7 @@ dialog, [popover] {
 	min-height: var(--modal-min-height);
 	max-height: 100%;
 	z-index: var(--stack-modal);
-	background: hsl(var(--modal));
+	background: var(--modal);
 	border-radius: var(--modal-radius);
 	box-shadow: var(--modal-shadow);
 	transform: scale(0.9);
@@ -1554,7 +1807,7 @@ dialog, [popover] {
 	}
 
 	&::backdrop {
-		background: hsl(var(--backdrop) / 0.2);
+		background: var(--backdrop);
 		z-index: var(--stack-backdrop);
 	}
 
@@ -1564,8 +1817,8 @@ dialog, [popover] {
 		justify-content: space-between;
 		align-items: center;
 		gap: var(--sm);
-		padding: var(--sm) var(--lg);
-		border-bottom: var(--modal-header-divider-width) solid hsl(var(--modal-divider));
+		padding: var(--lg);
+		border-bottom: var(--modal-header-divider-width) solid var(--modal-divider);
 	}
 
 	& > div {
@@ -1579,15 +1832,18 @@ dialog, [popover] {
 		align-items: center;
 		gap: var(--sm);
 		padding: var(--md) var(--lg);
-		border-top: var(--modal-footer-divider-width) solid hsl(var(--modal-divider));
+		border-top: var(--modal-footer-divider-width) solid var(--modal-divider);
 	}
 
-	hr { background: hsl(var(--modal-divider)); }
+	hr {
+		background: var(--modal-divider);
+	}
 
 	.divider {
+
 		&:before,
 		&:after {
-			background: hsl(var(--modal-divider));
+			background: var(--modal-divider);
 		}
 	}
 
@@ -1596,11 +1852,6 @@ dialog, [popover] {
 		width: calc(100vw - var(--sm) - var(--sm));
 		margin: auto;
 	}
-}
-
-/* Side menu right side modifier */
-.side-menu-right {
-
 }
 
 
@@ -1612,7 +1863,7 @@ p {
 	font-style: var(--p-style);
 	font-size: var(--p-size);
 	line-height: var(--p-leading);
-	color: hsl(var(--p));
+	color: var(--paragraph);
 }
 
 
@@ -1626,11 +1877,11 @@ pre {
 	font-weight: var(--pre-weight);
 	font-style: var(--pre-style);
 	font-size: var(--pre-size);
-	color: hsl(var(--pre-text));
+	color: var(--pre-text);
 	line-height: var(--pre-leading);
 	white-space: normal;
-	background: hsl(var(--pre-bg));
-	border: var(--pre-border-width) solid hsl(var(--pre-border));
+	background: var(--pre-bg);
+	border: var(--pre-border-width) solid var(--pre-border);
 	border-radius: var(--pre-radius);
 	box-shadow: var(--pre-shadow);
 
@@ -1652,23 +1903,35 @@ blockquote {
 	font-weight: var(--quote-weight);
 	font-style: var(--quote-style);
 	font-size: var(--quote-size);
-	color: hsl(var(--quote));
+	color: var(--quote);
 	line-height: var(--quote-leading);
-	background: hsl(var(--quote-bg));
-	border-top: var(--quote-border-top-width) solid hsl(var(--quote-border));
-	border-bottom: var(--quote-border-bottom-width) solid hsl(var(--quote-border));
-	border-left: var(--quote-border-left-width) solid hsl(var(--quote-border));
-	border-right: var(--quote-border-right-width) solid hsl(var(--quote-border));
+	background: var(--quote-bg);
+	border-top: var(--quote-border-top-width) solid var(--quote-border);
+	border-bottom: var(--quote-border-bottom-width) solid var(--quote-border);
+	border-left: var(--quote-border-left-width) solid var(--quote-border);
+	border-right: var(--quote-border-right-width) solid var(--quote-border);
 	border-radius: var(--quote-radius);
 	box-shadow: var(--quote-shadow);
+}
+
+
+/*** Radio Button (WIP) ***/
+input[type=radio] {
+	min-width: 24px;
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	cursor: pointer;
 }
 
 
 /*** Scrollbar removal ***/
 /* Apply this class to scrollable containers that should not display the scrollbar(s) */
 .no-scrollbar {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: none;
+	/* Firefox */
 
 	&::-webkit-scrollbar {
 		display: none;
@@ -1678,19 +1941,15 @@ blockquote {
 
 /*** Section (container presets) ***/
 /* Use sections within a <main> element to */
-section {
+section,
+.section {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
 	width: 100%;
 	max-width: 100%;
-	padding: var(--page-section-padding) var(--page-margin);  /* Pad top/bottom for content spacing, and left/right for screen edges */
-
-	/* Nested content in a centered div container */
-	& > div {
-		display: flex;
-		flex-flow: column nowrap; /* Stack children; apply inline Tailwind class(es) to modify */
-		width: var(--page-width); /* Set content width */
-		max-width: 100%;
-		margin: auto; /* Centre horizontally */
-	}
+	padding: var(--page-section-padding) var(--page-margin);
+	/* Pad top/bottom for content spacing, and left/right for screen edges */
 }
 
 
@@ -1749,9 +2008,15 @@ small {
 	font-style: var(--small-style);
 	font-size: var(--small-size);
 	line-height: var(--small-leading);
-	color: hsl(var(--small));
+	color: var(--small);
 }
 
+/* Small modifier */
+.small, button.small, .button.small, button.small span, button.small .iconify, button.small .iconify:only-child {
+	font-size: var(--small-size);
+	font-weight: var(--small-weight);
+	line-height: 1;
+}
 
 /*** Switch ***/
 input[role="switch"] {
@@ -1764,7 +2029,7 @@ input[role="switch"] {
 	height: var(--switch-height);
 	padding: 0;
 	box-sizing: content-box;
-	background: hsl(var(--switch-off));
+	background: var(--switch-off);
 	border-radius: var(--switch-height);
 	box-shadow: var(--switch-shadow);
 	cursor: pointer;
@@ -1779,56 +2044,56 @@ input[role="switch"] {
 		width: calc(var(--switch-height) - var(--switch-padding) * 2);
 		height: calc(var(--switch-height) - var(--switch-padding) * 2);
 		border-radius: var(--switch-marker-radius);
-		background: hsl(var(--switch-marker-off));
+		background: var(--switch-marker-off);
 		box-shadow: var(--switch-marker-shadow);
 		transition: var(--transition);
 	}
 
 	&:hover {
 		transform: scale(var(--switch-scale-hover));
-		background: hsl(var(--switch-off-hover));
-		border-color: hsl(var(--switch-border-hover));
+		background: var(--switch-off-hover);
+		border-color: var(--switch-border-hover);
 		transition: var(--transition);
 
 		&::before {
-			background: hsl(var(--switch-marker-off-hover));
+			background: var(--switch-marker-off-hover);
 		}
 	}
 
 	&:active {
 		transform: scale(var(--switch-scale-focus));
-		background: hsl(var(--switch-off-focus));
-		border-color: hsl(var(--switch-border-focus));
+		background: var(--switch-off-focus);
+		border-color: var(--switch-border-focus);
 		transition: var(--transition);
 
 		&::before {
-			background: hsl(var(--switch-marker-on-hover));
+			background: var(--switch-marker-on-hover);
 		}
 	}
 
 	/* On */
 	&:checked {
-		background: hsl(var(--switch-on));
+		background: var(--switch-on);
 
 		/* Marker */
 		&::before {
 			left: calc(100% - var(--switch-height) + var(--switch-padding));
-			background: hsl(var(--switch-marker-on));
+			background: var(--switch-marker-on);
 		}
 
 		&:hover {
-			background: hsl(var(--switch-on-hover));
+			background: var(--switch-on-hover);
 
 			&::before {
-				background: hsl(var(--switch-marker-on-hover));
+				background: var(--switch-marker-on-hover);
 			}
 		}
 
 		&:active {
-			background: hsl(var(--switch-on-focus));
+			background: var(--switch-on-focus);
 
 			&::before {
-				background: hsl(var(--switch-marker-on-focus));
+				background: var(--switch-marker-on-focus);
 			}
 		}
 	}
@@ -1840,30 +2105,32 @@ table {
 	width: 100%;
 	max-width: 100%;
 	overflow: hidden;
-	background: hsl(var(--table));
-	border: var(--table-border-width) solid hsl(var(--table-border));
+	background: var(--table);
+	border: var(--table-border-width) solid var(--table-border);
 	border-collapse: collapse;
 	border-radius: var(--table-radius);
 	box-shadow: var(--table-shadow);
-	
+
 	/* Header */
 	& thead {
-	  background: hsl(var(--table-header-row));
-	  border-bottom: 1px solid hsl(var(--table-header-divider));
-	  
+		background: var(--table-header-bg);
+		border-bottom: 1px solid var(--table-header-divider);
+
 		/* Header cell */
-	  	& th {
+		& th {
 			padding: var(--table-header-cell-padding-y) var(--table-header-cell-padding-x);
 			font-family: var(--table-header-font);
 			font-weight: var(--table-header-weight);
 			font-style: var(--table-header-style);
 			font-size: var(--table-header-size);
-			color: hsl(var(--table-header-text));
+			color: var(--table-header-text);
 			text-transform: var(--table-header-case);
 			text-align: start;
-		
+
 			/* Space between direct children */
-			> * { margin-right: var(--table-header-cell-gap); }
+			& > * {
+				margin-right: var(--table-header-cell-gap);
+			}
 
 			/* Cell container for two or more children */
 			& div {
@@ -1875,16 +2142,16 @@ table {
 				max-width: 100%;
 				height: 100%;
 			}
-	  	}
+		}
 	}
-	
+
 	/* Body */
 	& tbody {
-	  
+
 		/* Body rows */
-	  	& tr {
-			border-bottom: 1px solid hsl(var(--table-row-divider));
-		
+		& tr {
+			border-bottom: 1px solid var(--table-row-divider);
+
 			&:last-of-type {
 				border-bottom: none;
 			}
@@ -1896,14 +2163,16 @@ table {
 				font-weight: var(--table-cell-weight);
 				font-style: var(--table-cell-style);
 				font-size: var(--table-cell-size);
-				color: hsl(var(--table-cell-text));
+				color: var(--table-cell-text);
 				text-transform: var(--table-cell-case);
 				text-align: start;
 				white-space: nowrap;
-			
+
 				/* Space between direct children */
-				> * { margin-right: var(--table-cell-gap); }
-			
+				& > * {
+					margin-right: var(--table-cell-gap);
+				}
+
 				/* Cell container for two or more children */
 				& div {
 					display: flex;
@@ -1916,24 +2185,24 @@ table {
 				}
 			}
 		}
-	  
+
 		/* Even rows */
 		& tr:nth-child(even) {
-			background: hsl(var(--table-row-even));
+			background: var(--table-row-even);
 		}
-		
+
 		/* Odd rows */
 		& tr:nth-child(odd) {
-			background: hsl(var(--table-row-odd));
+			background: var(--table-row-odd);
 		}
-	  
+
 	}
 }
 
 
 /*** Transitions ***/
 /* Applies a standard transition to interactive elements and focuses */
-a, button, input, textarea, select, li {
+a, button, input, textarea, select {
 	transition: var(--transition);
 
 	&:focus {
@@ -1944,14 +2213,16 @@ a, button, input, textarea, select, li {
 	&:focus-visible {
 		outline-width: var(--focus-outline-width);
 		outline-style: var(--focus-outline-style);
-		outline-color: hsl(var(--focus-outline));
+		outline-color: var(--focus-outline);
 		outline-offset: var(--focus-outline-offset);
 	}
 }
 
 /* Hides the focus outline */
 .no-outline {
-	&:focus-visible { outline: none; }
+	&:focus-visible {
+		outline: none;
+	}
 }
 
 
@@ -1970,22 +2241,22 @@ video, .video {
 
 /* Contrast modifier */
 h1.contrast, h2.contrast, h3.contrast, h4.contrast, h5.contrast, h6.contrast, p.contrast, small.contrast, figcaption.contrast, pre.contrast, blockquote.contrast, code.contrast, kbd.contrast, li.contrast, .divider.contrast {
-	color: hsl(var(--contrast-text));
+	color: var(--contrast-text);
 }
 
 /* Danger modifier */
 h1.danger, h2.danger, h3.danger, h4.danger, h5.danger, h6.danger, p.danger, small.danger, figcaption.danger, pre.danger, blockquote.danger, code.danger, kbd.danger, li.danger, .divider.danger {
-	color: hsl(var(--danger-text));
+	color: var(--danger-text);
 }
 
 /* Primary modifier */
 h1.primary, h2.primary, h3.primary, h4.primary, h5.primary, h6.primary, p.primary, small.primary, figcaption.primary, pre.primary, blockquote.primary, code.primary, kbd.primary, li.primary, .divider.primary {
-	color: hsl(var(--primary-text));
+	color: var(--primary-text);
 }
 
 /* Secondary modifier */
 h1.secondary, h2.secondary, h3.secondary, h4.secondary, h5.secondary, h6.secondary, p.secondary, small.secondary, figcaption.secondary, pre.secondary, blockquote.secondary, code.secondary, kbd.secondary, li.secondary, .divider.secondary {
-	color: hsl(var(--secondary-text));
+	color: var(--secondary-text);
 }
 
 /*** Interactive Element Style Modifiers ***/
@@ -1995,48 +2266,88 @@ button.ghost, .button.ghost, input.ghost, textarea.ghost, label.floating.ghost {
 	background: none;
 }
 
+/* Hug modifier */
+button.hug, .button.hug, input.hug, textarea.hug, label.floating.hug {
+	min-width: 0;
+	height: fit-content;
+	padding: 0;
+	line-height: 1;
+}
+
 /* Outlined modifier (Button) */
 button.outlined, .button.outlined {
-	border: var(--button-border-width) var(--button-border-style) hsl(var(--button-border));
-	&:hover { border-color: hsl(var(--button-border-hover)); }
-	&:focus { border-color: hsl(var(--button-border-focus)); }
+	border: var(--button-border-width) var(--button-border-style) var(--button-border);
+
+	&:hover {
+		border-color: var(--button-border-hover);
+	}
+
+	&:focus {
+		border-color: var(--button-border-focus);
+	}
 }
 
 
 /* Outlined modifier (Input) */
 input.outlined:not([role="switch"]), textarea.outlined, label.floating.outlined {
-	border: var(--input-border-width) var(--input-border-style) hsl(var(--input-border));
-	&:hover { border-color: hsl(var(--input-border-hover)); }
-	&:focus { border-color: hsl(var(--input-border-focus)); }
+	border: var(--input-border-width) var(--input-border-style) var(--input-border);
+
+	&:hover {
+		border-color: var(--input-border-hover);
+	}
+
+	&:focus {
+		border-color: var(--input-border-focus);
+	}
 }
 
 /* Outlined modifier (Switch) */
 input.outlined[role="switch"] {
-	border: var(--switch-border-width) var(--switch-border-style) hsl(var(--switch-border));
-	&:hover { border-color: hsl(var(--switch-border-hover)); }
-	&:focus { border-color: hsl(var(--switch-border-focus)); }
+	border: var(--switch-border-width) var(--switch-border-style) var(--switch-border);
+
+	&:hover {
+		border-color: var(--switch-border-hover);
+	}
+
+	&:focus {
+		border-color: var(--switch-border-focus);
+	}
 }
 
 /* Outlined only modifier (Switch) */
 input[role="switch"].outlined.transparent {
-	background: transparent; 
-	&::before { background: hsl(var(--switch-off)); }
-	&:checked {
-		&::before { background: hsl(var(--switch-on)); }
+	background: transparent;
+
+	&::before {
+		background: var(--switch-off);
 	}
+
+	&:checked {
+		&::before {
+			background: var(--switch-on);
+		}
+	}
+
 	&:hover {
-		&::before { background: hsl(var(--switch-off-hover)); }
+		&::before {
+			background: var(--switch-off-hover);
+		}
+
 		&:checked {
 			&::before {
-				background: hsl(var(--switch-on-hover));
+				background: var(--switch-on-hover);
 			}
 		}
 	}
+
 	&:active {
-		&::before { background: hsl(var(--switch-off-focus)); }
+		&::before {
+			background: var(--switch-off-focus);
+		}
+
 		&:checked {
 			&::before {
-				background: hsl(var(--switch-on-focus));
+				background: var(--switch-on-focus);
 			}
 		}
 	}
@@ -2045,275 +2356,396 @@ input[role="switch"].outlined.transparent {
 /* Transparent modifier */
 button.transparent, .button.transparent, input.transparent, textarea.transparent, label.floating.transparent {
 	background: transparent;
-	&:hover { background: transparent; }
-	&:focus { background: transparent; }
+	border-radius: 0;
+	border: 0 none;
+	box-shadow: none;
+
+	&:hover {
+		background: transparent;
+	}
+
+	&:focus {
+		background: transparent;
+	}
 }
 
 /* Underlined modifier (Input) */
 input.underlined:not([role="switch"]), textarea.outlined, label.floating.outlined {
 	border-bottom-width: var(--input-border-bottom-width);
 	border-style: var(--input-border-style);
-	border-color: hsl(var(--input-border));
+	border-color: var(--input-border);
 
-	&:hover { border-color: hsl(var(--input-border-hover)); }
-	&:focus { border-color: hsl(var(--input-border-focus)); }
+	&:hover {
+		border-color: var(--input-border-hover);
+	}
+
+	&:focus {
+		border-color: var(--input-border-focus);
+	}
 }
 
 /* Primary modifier */
 button.primary, .button.primary, input.primary, textarea.primary, label.floating.primary {
-	background: hsl(var(--primary));
-	color: hsl(var(--primary-inverse));
+	background: var(--primary);
+	color: var(--primary-inverse);
 
 	&:hover {
-		background: hsl(var(--primary-hover));
-		color: hsl(var(--primary-inverse-hover));
+		background: var(--primary-hover);
+		color: var(--primary-inverse-hover);
 	}
 
 	&:focus {
-		background: hsl(var(--primary-focus));
-		color: hsl(var(--primary-inverse-focus));
-		outline-color: hsl(var(--primary-focus));
+		background: var(--primary-focus);
+		color: var(--primary-inverse-focus);
+		outline-color: var(--primary-focus);
 	}
 
-	&::placeholder { color: hsla(var(--primary-inverse) / 80%); }
+	&::placeholder {
+		color: rgba(var(--primary-inverse), 0.8);
+	}
 }
 
 /* Primary outlined modifier */
 button.primary.outlined, .button.primary.outlined, input.primary.outlined, textarea.primary.outlined, label.floating.primary.outlined {
-	color: hsl(var(--button-inverse));
-	background: hsla(var(--primary) / 60%);
-	border-color: hsl(var(--primary));
+	color: var(--button-inverse);
+	background: rgba(var(--primary), 0.6);
+	border-color: var(--primary);
 
 	&:hover {
-		color: hsl(var(--button-inverse-hover));
-		background: hsla(var(--primary-hover) / 60%);
-		border-color: hsl(var(--primary-hover));
+		color: var(--button-inverse-hover);
+		background: rgba(var(--primary-hover), 0.6);
+		border-color: var(--primary-hover);
 	}
 
 	&:focus {
-		color: hsl(var(--button-inverse-focus));
-		background: hsla(var(--primary-focus) / 60%);
-		border-color: hsl(var(--primary-focus));
-		outline-color: hsl(var(--primary-focus));
+		color: var(--button-inverse-focus);
+		background: rgba(var(--primary-focus), 0.6);
+		border-color: var(--primary-focus);
+		outline-color: var(--primary-focus);
 	}
 }
 
 /* Primary outlined only modifier; input roles are for specificity */
 button.border-primary, input:not([role="switch"]).border-primary, input[role="switch"].border-primary, textarea.border-primary, label.floating.border-primary {
-	border-color: hsl(var(--primary));
-	outline-color: hsl(var(--primary));
-	&:hover { border-color: hsl(var(--primary-hover)); }
-	&:focus { border-color: hsl(var(--primary-focus)); }
-}
+	border: var(--button-border-width) var(--button-border-style) var(--primary);
+	border-radius: var(--button-radius);
+	outline-color: var(--primary);
 
-@media (prefers-color-scheme:dark), [data-theme="dark"] {
-	button.secondary.outlined, .button.secondary.outlined, input.secondary.outlined, textarea.secondary.outlined, label.floating.secondary.outlined {
-		color: hsl(var(--primary));
+	&:hover {
+		border-color: var(--primary-hover);
+	}
+
+	&:focus {
+		border-color: var(--primary-focus);
 	}
 }
 
 /* Primary outlined only modifier (Switch) */
 input[role="switch"].outlined.transparent {
-	&::before { background: hsl(var(--primary)); }
-	&:checked { &::before { background: hsl(var(--primary)); }}
-	&:hover {
-		&::before { background: hsl(var(--primary-hover)); }
-		&:checked { &::before { background: hsl(var(--primary-hover)); }}
+	&::before {
+		background: var(--primary);
 	}
+
+	&:checked {
+		&::before {
+			background: var(--primary);
+		}
+	}
+
+	&:hover {
+		&::before {
+			background: var(--primary-hover);
+		}
+
+		&:checked {
+			&::before {
+				background: var(--primary-hover);
+			}
+		}
+	}
+
 	&:active {
-		&::before { background: hsl(var(--primary-focus)); }
-		&:checked { &::before { background: hsl(var(--primary-focus)); }}
+		&::before {
+			background: var(--primary-focus);
+		}
+
+		&:checked {
+			&::before {
+				background: var(--primary-focus);
+			}
+		}
 	}
 }
 
 /* Secondary modifier */
 button.secondary, .button.secondary, input.secondary, textarea.secondary, label.floating.secondary {
-	background: hsl(var(--secondary));
-	color: hsl(var(--secondary-inverse));
+	background: var(--secondary);
+	color: var(--secondary-inverse);
 
 	&:hover {
-		background: hsl(var(--secondary-hover));
-		color: hsl(var(--secondary-inverse-hover));
+		background: var(--secondary-hover);
+		color: var(--secondary-inverse-hover);
 	}
 
 	&:focus {
-		background: hsl(var(--secondary-focus));
-		color: hsl(var(--secondary-inverse-focus));
-		outline-color: hsl(var(--secondary-focus));
+		background: var(--secondary-focus);
+		color: var(--secondary-inverse-focus);
+		outline-color: var(--secondary-focus);
 	}
 
-	&::placeholder { color: hsla(var(--secondary-inverse) / 80%); }
+	&::placeholder {
+		color: rgba(var(--secondary-inverse), 0.8);
+	}
 }
 
 /* Secondary outlined modifier */
 button.secondary.outlined, .button.secondary.outlined, input.secondary.outlined, textarea.secondary.outlined, label.floating.secondary.outlined {
-	color: hsl(var(--secondary-inverse));
-	background: hsla(var(--secondary) / 50%);
-	border-color: hsl(var(--secondary));
+	color: var(--button-inverse);
+	background: rgba(var(--secondary), 0.5);
+	border-color: var(--secondary);
 
 	&:hover {
-		color: hsl(var(--button-inverse-hover));
-		background: hsla(var(--secondary-hover) / 50%);
-		border-color: hsl(var(--secondary-hover));
+		color: var(--button-inverse-hover);
+		background: rgba(var(--secondary-hover), 0.5);
+		border-color: var(--secondary-hover);
 	}
 
 	&:focus {
-		color: hsl(var(--button-inverse-focus));
-		background: hsla(var(--secondary-focus) / 50%);
-		border-color: hsl(var(--secondary-focus));
-		outline-color: hsl(var(--secondary-focus));
+		color: var(--button-inverse-focus);
+		background: rgba(var(--secondary-focus), 0.5);
+		border-color: var(--secondary-focus);
+		outline-color: var(--secondary-focus);
 	}
 
-	&::placeholder { color: hsla(var(--button-inverse) / 80%); }
-}
-
-@media (prefers-color-scheme:dark), [data-theme="dark"] {
-	button.secondary.outlined, .button.secondary.outlined, input.secondary.outlined, textarea.secondary.outlined, label.floating.secondary.outlined {
-		color: hsl(var(--secondary));
+	&::placeholder {
+		color: rgba(var(--button-inverse), 0.8);
 	}
 }
 
-/* Secondary outlined only modifier; input roles are for specifity */
-button.border-secondary, .button.border-secondary, input:not([role="switch"]).border-secondary, input[role="switch"].border-secondary, textarea.border-secondary, label.floating.border-secondary {
-	border-color: hsl(var(--secondary));
-	outline-color: hsl(var(--secondary));
-	&:hover { border-color: hsl(var(--secondary-hover)); }
-	&:focus { border-color: hsl(var(--secondary-focus)); }
+/* Secondary outlined only modifier; input roles are for specificity */
+button.outlined.transparent.border-secondary, .button.border-secondary, input:not([role="switch"]).border-secondary, input[role="switch"].border-secondary, textarea.border-secondary, label.floating.border-secondary {
+	border: var(--button-border-width) var(--button-border-style) var(--secondary);
+	border-radius: var(--button-radius);
+	outline-color: var(--secondary);
+
+	&:hover {
+		border-color: var(--secondary-hover);
+	}
+
+	&:focus {
+		border-color: var(--secondary-focus);
+	}
 }
 
 /* Secondary outlined only modifier (Switch) */
 input[role="switch"].outlined.transparent.border-secondary {
-					
-	&::before { background: hsl(var(--secondary)); }
-	&:checked { &::before { background: hsl(var(--danger)); }}
-	&:hover {
-		&::before { background: hsl(var(--secondary-hover)); }
-		&:checked { &::before { background: hsl(var(--secondary-hover)); }}
+
+	&::before {
+		background: var(--secondary);
 	}
+
+	&:checked {
+		&::before {
+			background: var(--danger);
+		}
+	}
+
+	&:hover {
+		&::before {
+			background: var(--secondary-hover);
+		}
+
+		&:checked {
+			&::before {
+				background: var(--secondary-hover);
+			}
+		}
+	}
+
 	&:active {
-		&::before { background: hsl(var(--secondary-focus)); }
-		&:checked { &::before { background: hsl(var(--secondary-focus)); }}
+		&::before {
+			background: var(--secondary-focus);
+		}
+
+		&:checked {
+			&::before {
+				background: var(--secondary-focus);
+			}
+		}
 	}
 }
 
 /* Danger modifier */
 button.danger, .button.danger, input.danger, textarea.danger, label.floating.danger {
-	color: hsl(var(--danger-inverse));
-	background: hsl(var(--danger));
+	color: var(--danger-inverse);
+	background: var(--danger);
 
 	&:hover {
-		color: hsl(var(--danger-inverse-hover));
-		background: hsl(var(--danger-hover));
+		color: var(--danger-inverse-hover);
+		background: var(--danger-hover);
 	}
 
 	&:focus {
-		color: hsl(var(--danger-inverse-focus));
-		background: hsl(var(--danger-focus));
-		outline-color: hsl(var(--danger-focus));
+		color: var(--danger-inverse-focus);
+		background: var(--danger-focus);
+		outline-color: var(--danger-focus);
 	}
 
-	&::placeholder { color: hsla(var(--danger-inverse) / 80%); }
+	&::placeholder {
+		color: rgba(var(--danger-inverse), 0.8);
+	}
 }
 
 /* Danger outlined modifier */
 button.danger.outlined, .button.danger.outlined, input.danger.outlined, textarea.danger.outlined, label.floating.danger.outlined {
-	color: hsl(var(--danger-inverse));
-	background: hsla(var(--danger) / 65%);
-	border-color: hsl(var(--danger));
+	color: var(--danger-inverse);
+	background: rgba(var(--danger), 0.65);
+	border-color: var(--danger);
 
 	&:hover {
-		color: hsl(var(--button-inverse-hover));
-		background: hsla(var(--danger-hover) / 60%);
-		border-color: hsl(var(--danger-hover));
+		color: var(--button-inverse-hover);
+		background: rgba(var(--danger-hover), 0.65);
+		border-color: var(--danger-hover);
 	}
 
 	&:focus {
-		color: hsl(var(--button-inverse-focus));
-		background: hsla(var(--danger-focus) / 60%);
-		border-color: hsl(var(--danger-focus));
-		outline-color: hsl(var(--danger-focus));
-	}
-}
-
-@media (prefers-color-scheme:dark), [data-theme="dark"] {
-	button.secondary.outlined, .button.secondary.outlined, input.secondary.outlined, textarea.secondary.outlined, label.floating.secondary.outlined {
-		color: hsl(var(--danger));
+		color: var(--button-inverse-focus);
+		background: rgba(var(--danger-focus), 0.6);
+		border-color: var(--danger-focus);
+		outline-color: var(--danger-focus);
 	}
 }
 
 /* Danger outlined only modifier; input roles are for specificity */
 button.border-danger, .button.border-danger, input:not([role="switch"]).border-danger, input[role="switch"].border-danger, textarea.border-danger, label.floating.border-danger {
-	border-color: hsl(var(--danger));
-	outline-color: hsl(var(--danger));
-	&:hover { border-color: hsl(var(--danger-hover)); }
-	&:focus { border-color: hsl(var(--danger-focus)); }
+	border: var(--button-border-width) var(--button-border-style) var(--danger);
+	border-radius: var(--button-radius);
+	outline-color: var(--danger);
+
+	&:hover {
+		border-color: var(--danger-hover);
+	}
+
+	&:focus {
+		border-color: var(--danger-focus);
+	}
 }
 
 /* Danger outlined only modifier (Switch) */
 input[role="switch"].outlined.transparent.border-danger {
-	border-color: hsl(var(--danger));
-	outline-color: hsl(var(--danger));
-	&::before { background: hsl(var(--danger)); }
-	&:checked { &::before { background: hsl(var(--danger)); }}
-	&:hover {
-		&::before { background: hsl(var(--danger-hover)); }
-		&:checked { &::before { background: hsl(var(--danger-hover)); }}
+	border-color: var(--danger);
+	outline-color: var(--danger);
+
+	&::before {
+		background: var(--danger);
 	}
+
+	&:checked {
+		&::before {
+			background: var(--danger);
+		}
+	}
+
+	&:hover {
+		&::before {
+			background: var(--danger-hover);
+		}
+
+		&:checked {
+			&::before {
+				background: var(--danger-hover);
+			}
+		}
+	}
+
 	&:active {
-		&::before { background: hsl(var(--danger-focus)); }
-		&:checked { &::before { background: hsl(var(--danger-focus)); }}
+		&::before {
+			background: var(--danger-focus);
+		}
+
+		&:checked {
+			&::before {
+				background: var(--danger-focus);
+			}
+		}
 	}
 }
 
 /* Contrast modifier */
 button.contrast, .button.contrast, input.contrast, textarea.contrast, label.floating.contrast {
-	color: hsl(var(--contrast-inverse));
-	background: hsl(var(--contrast));
+	color: var(--contrast-inverse);
+	background: var(--contrast);
 
 	&:hover {
-		color: hsl(var(--contrast-inverse-hover));
-		background: hsl(var(--contrast-hover));
+		color: var(--contrast-inverse-hover);
+		background: var(--contrast-hover);
 	}
 
-	&:active, &:focus {
-		background: hsl(var(--contrast-focus));
-		color: hsl(var(--contrast-inverse-focus));
-		outline-color: hsl(var(--contrast-focus));
+	&:active,
+	&:focus {
+		background: var(--contrast-focus);
+		color: var(--contrast-inverse-focus);
+		outline-color: var(--contrast-focus);
 	}
 
-	&::placeholder { color: hsla(var(--contrast-inverse) / 80%); }
+	&::placeholder {
+		color: rgba(var(--contrast-inverse), 0.6);
+	}
 }
 
 /* Contrast modifier (Switch) */
 input[role="switch"].contrast {
-	&::before { background: hsl(var(--contrast-inverse)); }
-	&:checked { &::before { background: hsl(var(--contrast-inverse)); }}
-	&:hover {
-		&::before { background: hsl(var(--contrast-inverse-hover)); }
-		&:checked { &::before { background: hsl(var(--contrast-inverse-hover)); }}
+	&::before {
+		background: var(--contrast-inverse);
 	}
+
+	&:checked {
+		&::before {
+			background: var(--contrast-inverse);
+		}
+	}
+
+	&:hover {
+		&::before {
+			background: var(--contrast-inverse-hover);
+		}
+
+		&:checked {
+			&::before {
+				background: var(--contrast-inverse-hover);
+			}
+		}
+	}
+
 	&:active {
-		&::before { background: hsl(var(--contrast-inverse-focus)); }
-		&:checked { &::before { background: hsl(var(--contrast-inverse-focus)); }}
+		&::before {
+			background: var(--contrast-inverse-focus);
+		}
+
+		&:checked {
+			&::before {
+				background: var(--contrast-inverse-focus);
+			}
+		}
 	}
 }
 
 /* Contrast outlined modifier */
 button.contrast.outlined, .button.contrast.outlined, input.contrast.outlined, textarea.contrast.outlined, label.floating.contrast.outlined {
-	color: hsl(var(--contrast-inverse));
-	background: hsla(var(--contrast) / 60%);
-	border-color: hsl(var(--contrast));
+	color: var(--contrast-inverse);
+	background: rgba(var(--contrast), 0.6);
+	border-color: var(--contrast);
 
 	&:hover {
-		color: hsl(var(--contrast-inverse-hover));
-		background: hsla(var(--contrast-hover) / 60%);
-		border-color: hsl(var(--contrast-hover));
+		color: var(--contrast-inverse-hover);
+		background: rgba(var(--contrast-hover), 0.6);
+		border-color: var(--contrast-hover);
 	}
 
 	&:focus {
-		color: hsl(var(--contrast-inverse-focus));
-		background: hsla(var(--contrast-focus) / 60%);
-		border-color: hsl(var(--contrast-focus));
-		outline-color: hsl(var(--contrast-focus));
+		color: var(--contrast-inverse-focus);
+		background: rgba(var(--contrast-focus), 0.6);
+		border-color: var(--contrast-focus);
+		outline-color: var(--contrast-focus);
 	}
 }

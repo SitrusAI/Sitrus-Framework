@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" class="light">
+<html lang="en">
 
 <head>
 	<base href="/">
@@ -8,10 +8,15 @@
 	<title>Starter Project</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
+	<link rel="preconnect" href="https://source.unsplash.com">
 	<link rel="preload" href="/style/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 	<link rel="preload" href="/style/ui.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-	<noscript><link rel="stylesheet" href="/style/theme.css"></noscript>
-	<noscript><link rel="stylesheet" href="/style/ui.css"></noscript>
+	<noscript>
+		<link rel="stylesheet" href="/style/theme.css">
+	</noscript>
+	<noscript>
+		<link rel="stylesheet" href="/style/ui.css">
+	</noscript>
 	<script src="/scripts/index.js"></script>
 	<script src="/scripts/tailwind.v3.4.js"></script>
 	<script src="/scripts/components.js"></script>
@@ -20,9 +25,16 @@
 	<script defer src="/scripts/tailwind.config.js"></script>
 	<script defer src="/scripts/alpine.v3.13.3.js"></script>
 	<script> $vui.config = { namespace: 'x' }; $vui.config.importMap = { "*": '/pages/components/${component}.html' } </script>
+	<script>
+		if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+			document.documentElement.classList.add('dark')
+		} else {
+			document.documentElement.classList.remove('dark')
+		}
+	</script>
 
 	<!-- Custom -->
-	
+
 </head>
 
 <body x-data="$store.app" x-cloak></body>
